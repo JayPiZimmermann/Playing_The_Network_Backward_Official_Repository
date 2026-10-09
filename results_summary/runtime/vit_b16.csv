@@ -1,0 +1,30 @@
+# gpu: NVIDIA A100-SXM4-40GB
+# torch: 2.14.0+cu126
+# cuda: 12.6
+# warmup: 5
+# batch_size: 1
+# split: test
+method,row_label,n_images,median_s,q25_s,q75_s,iqr_s,mean_s,failures
+gradient,gradient__cr-maxabs,50,0.02496,0.02470,0.02516,0.00046,0.02493,0
+smoothgrad,smoothgrad__spread-0.2,50,1.12105,1.11689,1.18490,0.06802,1.14620,0
+intgrad,intgrad__steps-100,50,2.35914,2.21561,2.36550,0.14988,2.30336,0
+lrp_eps,lrp_eps__eps-0.1,50,0.03924,0.03868,0.03949,0.00081,0.03896,0
+lrp_eps,lrp_eps__eps-0.25,50,0.03832,0.03810,0.03881,0.00071,0.03828,0
+lrp_gamma,lrp_gamma__eps-0.1__gamma-0.1,50,0.07815,0.07728,0.07851,0.00122,0.07811,0
+lrp_gamma,lrp_gamma__eps-0.1__gamma-1,50,0.07675,0.07645,0.07747,0.00102,0.07691,0
+lrp_gamma,lrp_gamma__eps-0.1__gamma-2,50,0.07640,0.07602,0.07698,0.00096,0.07667,0
+attnlrp,attnlrp__eattn-0.01__gcomp-on__gconv-0.25__glin-0.05,50,0.09961,0.09892,0.10059,0.00167,0.10436,0
+attnlrp,attnlrp__eattn-0.25__gcomp-on__gconv-0.25__glin-0.05,50,0.10003,0.09949,0.10061,0.00113,0.10036,0
+dave,dave__N-50__ang-0__noise-0.5__shift-0,50,1.20917,1.20804,1.21047,0.00243,1.20894,0
+tibav,tibav,50,0.15298,0.14592,0.15436,0.00844,0.15135,0
+gae,gae,50,0.02931,0.02902,0.02956,0.00055,0.02924,0
+ar,ar__wr-0.75,50,0.00980,0.00925,0.01050,0.00124,0.00995,0
+lime,lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge,50,3.03398,3.02479,3.03857,0.01378,3.03693,0
+kernelshap,kernelshap__N-auto__fill-imagemean__seg-80__sp-slic,50,6.70622,6.64477,6.80794,0.16318,6.72967,0
+rg,rg__av-merged__eps-0.5__lam-0__lamsm-0__tau-1,50,0.09729,0.09583,0.09919,0.00336,0.09766,0
+rg,rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5,50,0.17239,0.17117,0.17578,0.00461,0.17592,0
+rg,rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.6__var-5,50,0.17140,0.17069,0.17211,0.00142,0.17650,0
+rg,rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5,50,0.16866,0.16705,0.17165,0.00459,0.17055,0
+rgeq,rgeq__av-merged__eps-0.5__lam-0__lamsm-0__tau-1,50,4.92975,4.91831,5.09498,0.17667,4.98935,0
+rgeq,rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.5__var-2,50,8.65833,8.54154,8.70935,0.16782,8.62960,0
+rgeq,rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.7__var-2,50,8.64908,8.54679,8.72426,0.17747,8.64185,0

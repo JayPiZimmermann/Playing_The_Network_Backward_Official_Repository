@@ -1,0 +1,13 @@
+{
+  "name": "pixel_flipping_abs_20pct",
+  "metric_class": "pixel_flipping",
+  "enabled": true,
+  "category": "faithfulness",
+  "params": {
+    "features_in_step": 1568,
+    "abs": true,
+    "normalise": true,
+    "perturb_baseline": "mean",
+    "auc_percentage": 0.20
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "component": "input",
+  "config_latex": "$\\tau{=}0.8,\\lambda_{\\mathrm{sm}}{=}{-}10,\\sigma^2{=}2,N{=}50$",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "RG+Eq",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "rgeq",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.6099886213453998,
+      "n": 565,
+      "std": 0.21756733534785447
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 7.70217585543655,
+      "n": 565,
+      "std": 1.8146924101498292
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 8.382252008052527,
+      "n": 565,
+      "std": 1.4134474752054322
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.8053097345132744,
+      "n": 565,
+      "std": 0.39631295123030313
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 4.813587956366549,
+      "n": 565,
+      "std": 1.4438390914672103
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.8029858407079646,
+      "n": 565,
+      "std": 0.2654322444521458
+    }
+  },
+  "model": "vit_b16",
+  "n_images": 565,
+  "params": {
+    "adf_input_variance": 2.0,
+    "adf_lambda": 0.0,
+    "adf_softmax_lambda": -10.0,
+    "av_rule": "merged",
+    "equivariant_averaging": true,
+    "equivariant_flip_prob": 0.5,
+    "equivariant_max_angle": 10.0,
+    "equivariant_max_shift_frac": 0.05,
+    "equivariant_n_samples": 50,
+    "lrp_alpha": 2.0,
+    "lrp_beta": 1.0,
+    "lrp_eps": 0.5,
+    "routing_temperature": 0.8
+  },
+  "registry_name": "routing_game",
+  "row_label": "rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.8__var-2",
+  "runtime_s": {
+    "device": "NVIDIA A100-SXM4-40GB",
+    "mean": 11.99148883988372,
+    "median": 11.987773418426514,
+    "n": 565,
+    "q25": 11.815217971801758,
+    "q75": 12.161530017852783,
+    "warmup": 1
+  },
+  "selected_by": [
+    "sweep:rgeq:faith:tau",
+    "sweep:rgeq:loc:tau"
+  ],
+  "split": "test",
+  "sweeps": [
+    {
+      "center": "rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.5__var-2",
+      "param": "tau",
+      "series": "rgeq:loc:tau",
+      "value": 0.8
+    },
+    {
+      "center": "rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.7__var-2",
+      "param": "tau",
+      "series": "rgeq:faith:tau",
+      "value": 0.8
+    }
+  ],
+  "tunable": true,
+  "zero_maps": 0
+}

@@ -1,0 +1,1031 @@
+{
+  "admissibility": "rows with a failed or all-zero map, or an undefined selection metric, on any validation image are excluded from ranking",
+  "criteria": {
+    "faith": [
+      "PF5",
+      "PF20",
+      "Sel"
+    ],
+    "loc": [
+      "AL",
+      "PG",
+      "TK"
+    ]
+  },
+  "dataset": "imagenet-s",
+  "grid": "experiments/grids/imagenet_s_val_vgg16.csv",
+  "inadmissible_rows": [
+    {
+      "reason": "all-zero map on 1 image(s)",
+      "row_label": "sg__gate-off__lam-m5__var-1"
+    },
+    {
+      "reason": "all-zero map on 24 image(s)",
+      "row_label": "sg__gate-off__lam-m5__var-2"
+    },
+    {
+      "reason": "all-zero map on 50 image(s)",
+      "row_label": "sg__gate-off__lam-m5__var-5"
+    },
+    {
+      "reason": "all-zero map on 50 image(s)",
+      "row_label": "sg__gate-off__lam-m5__var-10"
+    },
+    {
+      "reason": "all-zero map on 10 image(s)",
+      "row_label": "sg__gate-off__lam-m2__var-10"
+    }
+  ],
+  "methods": {
+    "deeplift": {
+      "block": "gradient",
+      "display": "DeepLift",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 1,
+          "params": {
+            "rule": "rescale"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "deeplift__rule-rescale",
+          "val": {
+            "AL": 0.5461390480399132,
+            "PF20": 8.653674095218118,
+            "PF5": 12.190756568461657,
+            "PG": 0.68,
+            "Sel": 5.714040130035153,
+            "TK": 0.63854
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "gcam": {
+      "block": "cam",
+      "display": "GCAM",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 1,
+          "params": {
+            "target_layer_name": "features.29"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "gcam__layer-features.29",
+          "val": {
+            "AL": 0.5886350019276142,
+            "PF20": 11.687724598665769,
+            "PF5": 15.949505358934402,
+            "PG": 0.82,
+            "Sel": 5.406839573462094,
+            "TK": 0.8257800000000001
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "gcampp": {
+      "block": "cam",
+      "display": "GCAM++",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 1,
+          "params": {
+            "target_layer_name": "features.29"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "gcampp__layer-features.29",
+          "val": {
+            "AL": 0.5580892658233643,
+            "PF20": 12.082973670402641,
+            "PF5": 15.973604509234429,
+            "PG": 0.8,
+            "Sel": 5.517183992022383,
+            "TK": 0.8064199999999999
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "gradient": {
+      "block": "gradient",
+      "display": "Gradient",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 1,
+          "params": {
+            "channel_reduction": "max_abs"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "gradient__cr-maxabs",
+          "val": {
+            "AL": 0.531941132247448,
+            "PF20": 10.548533853892431,
+            "PF5": 14.133911934196949,
+            "PG": 0.76,
+            "Sel": 6.183781792115952,
+            "TK": 0.6989599999999999
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "intgrad": {
+      "block": "gradient",
+      "display": "IntGrad",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "baseline": "black",
+          "n_steps": 20
+        },
+        "rank_sum_faith": 3.0,
+        "rank_sum_loc": 6.0,
+        "row_label": "intgrad__steps-20",
+        "val": {
+          "AL": 0.5569382094591856,
+          "PF20": 11.636239692404082,
+          "PF5": 15.15226263821125,
+          "PG": 0.8,
+          "Sel": 6.122886458541666,
+          "TK": 0.70174
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "baseline": "black",
+          "n_steps": 20
+        },
+        "rank_sum_faith": 3.0,
+        "rank_sum_loc": 6.0,
+        "row_label": "intgrad__steps-20",
+        "val": {
+          "AL": 0.5569382094591856,
+          "PF20": 11.636239692404082,
+          "PF5": 15.15226263821125,
+          "PG": 0.8,
+          "Sel": 6.122886458541666,
+          "TK": 0.70174
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 4,
+      "n_configs": 4,
+      "n_evaluated": 4,
+      "ours": false,
+      "tunable": true
+    },
+    "kernelshap": {
+      "block": "perturbation",
+      "display": "KernelSHAP",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 3,
+          "params": {
+            "fill": "image_mean",
+            "n_samples": "auto",
+            "superpixel_method": "slic",
+            "superpixel_n_segments": 80
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "kernelshap__N-auto__fill-imagemean__seg-80__sp-slic",
+          "val": {
+            "AL": 0.5566264455020428,
+            "PF20": 12.426486762511102,
+            "PF5": 16.20675943672657,
+            "PG": 0.98,
+            "Sel": 5.896294961952203,
+            "TK": 0.8275999999999999
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "lcam": {
+      "block": "cam",
+      "display": "LCAM",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 1,
+          "params": {
+            "target_layer_name": "features.29"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "lcam__layer-features.29",
+          "val": {
+            "AL": 0.5529291372001172,
+            "PF20": 11.09837345676791,
+            "PF5": 15.69201595246792,
+            "PG": 0.76,
+            "Sel": 5.11677998921621,
+            "TK": 0.7697999999999999
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "lime": {
+      "block": "perturbation",
+      "display": "LIME",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 6,
+          "params": {
+            "fill": "segment_mean",
+            "kernel_distance": "binary",
+            "kernel_width": 0.25,
+            "n_samples": 1000,
+            "superpixel_method": "slic",
+            "superpixel_n_segments": 80,
+            "surrogate": "ridge"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge",
+          "val": {
+            "AL": 0.5877334000915289,
+            "PF20": 12.319563182960998,
+            "PF5": 16.381902307271957,
+            "PG": 0.92,
+            "Sel": 5.572159249650579,
+            "TK": 0.7848000000000002
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "lrp_eps": {
+      "block": "lrp",
+      "display": "LRP-$\\varepsilon$",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "epsilon": 1.0
+        },
+        "rank_sum_faith": 4.0,
+        "rank_sum_loc": 6.0,
+        "row_label": "lrp_eps__eps-1",
+        "val": {
+          "AL": 0.6298191902041436,
+          "PF20": 7.229008003724249,
+          "PF5": 11.59949841922149,
+          "PG": 0.78,
+          "Sel": 5.130361088679572,
+          "TK": 0.7269
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "epsilon": 0.5
+        },
+        "rank_sum_faith": 9.0,
+        "rank_sum_loc": 6.0,
+        "row_label": "lrp_eps__eps-0.5",
+        "val": {
+          "AL": 0.6011045187711715,
+          "PF20": 7.723573156439357,
+          "PF5": 11.81734921550611,
+          "PG": 0.8,
+          "Sel": 5.303934158647167,
+          "TK": 0.7178200000000001
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 7,
+      "n_configs": 7,
+      "n_evaluated": 7,
+      "ours": false,
+      "tunable": true
+    },
+    "lrp_gamma": {
+      "block": "lrp",
+      "display": "LRP-$\\gamma$",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "epsilon": 0.25,
+          "gamma": 0.1
+        },
+        "rank_sum_faith": 5.0,
+        "rank_sum_loc": 36.0,
+        "row_label": "lrp_gamma__eps-0.25__gamma-0.1",
+        "val": {
+          "AL": 0.6101841422915458,
+          "PF20": 6.828077420725635,
+          "PF5": 11.307131211161613,
+          "PG": 0.84,
+          "Sel": 4.793265734185863,
+          "TK": 0.68946
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "composite": "epsilon_gamma_box",
+          "epsilon": 0.5,
+          "gamma": 0.25
+        },
+        "rank_sum_faith": 43.0,
+        "rank_sum_loc": 13.0,
+        "row_label": "lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.25",
+        "val": {
+          "AL": 0.6136355572938919,
+          "PF20": 9.050075513893052,
+          "PF5": 14.18908108562231,
+          "PG": 0.88,
+          "Sel": 4.857908212984246,
+          "TK": 0.7185000000000001
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 30,
+      "n_configs": 30,
+      "n_evaluated": 30,
+      "ours": false,
+      "tunable": true
+    },
+    "rg": {
+      "block": "ours",
+      "display": "RG",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "adf_lambda": 0.0,
+          "lrp_alpha": 2.0,
+          "lrp_beta": 1.0,
+          "lrp_eps": 0.1,
+          "routing_temperature": 0.8
+        },
+        "rank_sum_faith": 5.0,
+        "rank_sum_loc": 173.5,
+        "row_label": "rg__eps-0.1__lam-0__tau-0.8",
+        "val": {
+          "AL": 0.6242355215549469,
+          "PF20": 8.03822845021753,
+          "PF5": 12.791021359860897,
+          "PG": 0.76,
+          "Sel": 4.860753019407392,
+          "TK": 0.6710200000000001
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [
+        {
+          "is_anchor": true,
+          "n_nondefault": 0,
+          "params": {
+            "adf_lambda": 0.0,
+            "lrp_alpha": 2.0,
+            "lrp_beta": 1.0,
+            "lrp_eps": 0.5,
+            "routing_temperature": 1.0
+          },
+          "rank_sum_faith": 60.0,
+          "rank_sum_loc": 339.0,
+          "row_label": "rg__eps-0.5__lam-0__tau-1",
+          "val": {
+            "AL": 0.603923174738884,
+            "PF20": 8.478549346085638,
+            "PF5": 13.138156768679618,
+            "PG": 0.8,
+            "Sel": 4.948924491754866,
+            "TK": 0.6706400000000001
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "adf_lambda": 0.0,
+          "lrp_alpha": 2.0,
+          "lrp_beta": 1.0,
+          "lrp_eps": 0.1,
+          "routing_temperature": 0.3
+        },
+        "rank_sum_faith": 194.0,
+        "rank_sum_loc": 78.0,
+        "row_label": "rg__eps-0.1__lam-0__tau-0.3",
+        "val": {
+          "AL": 0.6628266759216785,
+          "PF20": 8.547701512882975,
+          "PF5": 13.315353752076625,
+          "PG": 0.8,
+          "Sel": 5.181131069520754,
+          "TK": 0.6600999999999999
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 544,
+      "n_configs": 544,
+      "n_evaluated": 544,
+      "ours": true,
+      "tunable": true
+    },
+    "sg": {
+      "block": "ours",
+      "display": "SG",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "adf_input_variance": 1.0,
+          "adf_lambda": -0.3,
+          "adf_probabilistic": false
+        },
+        "rank_sum_faith": 6.0,
+        "rank_sum_loc": 49.5,
+        "row_label": "sg__gate-off__lam-m0.3__var-1",
+        "val": {
+          "AL": 0.5609073336422443,
+          "PF20": 12.118135315819003,
+          "PF5": 16.227656466066836,
+          "PG": 0.78,
+          "Sel": 6.020578797931649,
+          "TK": 0.7327799999999999
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [
+        {
+          "reason": "all-zero map on 1 image(s)",
+          "row_label": "sg__gate-off__lam-m5__var-1"
+        },
+        {
+          "reason": "all-zero map on 24 image(s)",
+          "row_label": "sg__gate-off__lam-m5__var-2"
+        },
+        {
+          "reason": "all-zero map on 50 image(s)",
+          "row_label": "sg__gate-off__lam-m5__var-5"
+        },
+        {
+          "reason": "all-zero map on 50 image(s)",
+          "row_label": "sg__gate-off__lam-m5__var-10"
+        },
+        {
+          "reason": "all-zero map on 10 image(s)",
+          "row_label": "sg__gate-off__lam-m2__var-10"
+        }
+      ],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "adf_input_variance": 5.0,
+          "adf_lambda": -1.0,
+          "adf_probabilistic": true
+        },
+        "rank_sum_faith": 10.0,
+        "rank_sum_loc": 37.0,
+        "row_label": "sg__gate-on__lam-m1__var-5",
+        "val": {
+          "AL": 0.5680784465372563,
+          "PF20": 12.46064780508413,
+          "PF5": 16.339446968436242,
+          "PG": 0.88,
+          "Sel": 6.007616925786117,
+          "TK": 0.7306400000000001
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 35,
+      "n_configs": 40,
+      "n_evaluated": 40,
+      "ours": true,
+      "tunable": true
+    },
+    "smoothgrad": {
+      "block": "gradient",
+      "display": "SmGrad",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "channel_reduction": "max_abs",
+          "nt_samples": 50,
+          "stdev_spread": 0.1,
+          "use_abs": false,
+          "use_std_aggregation": false
+        },
+        "rank_sum_faith": 3.0,
+        "rank_sum_loc": 3.0,
+        "row_label": "smoothgrad__spread-0.1",
+        "val": {
+          "AL": 0.530278567969799,
+          "PF20": 7.9329310205618,
+          "PF5": 12.95908146262169,
+          "PG": 0.74,
+          "Sel": 5.444749090774251,
+          "TK": 0.71538
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "channel_reduction": "max_abs",
+          "nt_samples": 50,
+          "stdev_spread": 0.1,
+          "use_abs": false,
+          "use_std_aggregation": false
+        },
+        "rank_sum_faith": 3.0,
+        "rank_sum_loc": 3.0,
+        "row_label": "smoothgrad__spread-0.1",
+        "val": {
+          "AL": 0.530278567969799,
+          "PF20": 7.9329310205618,
+          "PF5": 12.95908146262169,
+          "PG": 0.74,
+          "Sel": 5.444749090774251,
+          "TK": 0.71538
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 3,
+      "n_configs": 3,
+      "n_evaluated": 3,
+      "ours": false,
+      "tunable": true
+    }
+  },
+  "missing_rows": [],
+  "model": "vgg16",
+  "n_admissible": 630,
+  "n_grid_rows": 635,
+  "n_val_configs": 635,
+  "rows": [
+    {
+      "is_anchor": false,
+      "method": "gradient",
+      "params": {
+        "channel_reduction": "max_abs"
+      },
+      "row_label": "gradient__cr-maxabs",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "smoothgrad",
+      "params": {
+        "channel_reduction": "max_abs",
+        "nt_samples": 50,
+        "stdev_spread": 0.1,
+        "use_abs": false,
+        "use_std_aggregation": false
+      },
+      "row_label": "smoothgrad__spread-0.1",
+      "selected_by": [
+        "faith",
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "intgrad",
+      "params": {
+        "baseline": "black",
+        "n_steps": 20
+      },
+      "row_label": "intgrad__steps-20",
+      "selected_by": [
+        "faith",
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "deeplift",
+      "params": {
+        "rule": "rescale"
+      },
+      "row_label": "deeplift__rule-rescale",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "lrp_eps",
+      "params": {
+        "epsilon": 0.5
+      },
+      "row_label": "lrp_eps__eps-0.5",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "lrp_eps",
+      "params": {
+        "epsilon": 1.0
+      },
+      "row_label": "lrp_eps__eps-1",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "lrp_gamma",
+      "params": {
+        "composite": "epsilon_gamma_box",
+        "epsilon": 0.5,
+        "gamma": 0.25
+      },
+      "row_label": "lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.25",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "lrp_gamma",
+      "params": {
+        "epsilon": 0.25,
+        "gamma": 0.1
+      },
+      "row_label": "lrp_gamma__eps-0.25__gamma-0.1",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "gcam",
+      "params": {
+        "target_layer_name": "features.29"
+      },
+      "row_label": "gcam__layer-features.29",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "gcampp",
+      "params": {
+        "target_layer_name": "features.29"
+      },
+      "row_label": "gcampp__layer-features.29",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "lcam",
+      "params": {
+        "target_layer_name": "features.29"
+      },
+      "row_label": "lcam__layer-features.29",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "lime",
+      "params": {
+        "fill": "segment_mean",
+        "kernel_distance": "binary",
+        "kernel_width": 0.25,
+        "n_samples": 1000,
+        "superpixel_method": "slic",
+        "superpixel_n_segments": 80,
+        "surrogate": "ridge"
+      },
+      "row_label": "lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "kernelshap",
+      "params": {
+        "fill": "image_mean",
+        "n_samples": "auto",
+        "superpixel_method": "slic",
+        "superpixel_n_segments": 80
+      },
+      "row_label": "kernelshap__N-auto__fill-imagemean__seg-80__sp-slic",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "sg",
+      "params": {
+        "adf_input_variance": 5.0,
+        "adf_lambda": -1.0,
+        "adf_probabilistic": true
+      },
+      "row_label": "sg__gate-on__lam-m1__var-5",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "sg",
+      "params": {
+        "adf_input_variance": 1.0,
+        "adf_lambda": -0.3,
+        "adf_probabilistic": false
+      },
+      "row_label": "sg__gate-off__lam-m0.3__var-1",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": true,
+      "method": "rg",
+      "params": {
+        "adf_lambda": 0.0,
+        "lrp_alpha": 2.0,
+        "lrp_beta": 1.0,
+        "lrp_eps": 0.5,
+        "routing_temperature": 1.0
+      },
+      "row_label": "rg__eps-0.5__lam-0__tau-1",
+      "selected_by": [
+        "anchor"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "rg",
+      "params": {
+        "adf_lambda": 0.0,
+        "lrp_alpha": 2.0,
+        "lrp_beta": 1.0,
+        "lrp_eps": 0.1,
+        "routing_temperature": 0.3
+      },
+      "row_label": "rg__eps-0.1__lam-0__tau-0.3",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "rg",
+      "params": {
+        "adf_lambda": 0.0,
+        "lrp_alpha": 2.0,
+        "lrp_beta": 1.0,
+        "lrp_eps": 0.1,
+        "routing_temperature": 0.8
+      },
+      "row_label": "rg__eps-0.1__lam-0__tau-0.8",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    }
+  ],
+  "split": "val",
+  "tie_break": "anchor/default first, then fewer non-default parameters, then grid order"
+}

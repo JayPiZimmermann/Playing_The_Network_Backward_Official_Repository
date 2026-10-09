@@ -1,0 +1,195 @@
+{
+  "component": "input",
+  "config_latex": "$\\tau{=}0.7,\\lambda_{\\mathrm{sm}}{=}{-}5,\\sigma^2{=}5,\\varepsilon{=}0.1$",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "RG",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "rg",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "AvgS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "MaxS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.5490228616426477,
+      "n": 565,
+      "std": 0.22240273352907777
+    },
+    "AvgS": {
+      "coverage": 1.0,
+      "mean": 0.17370514774918555,
+      "n": 200,
+      "std": 0.039037302199232154,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "MaxS": {
+      "coverage": 1.0,
+      "mean": 0.25666212894022467,
+      "n": 200,
+      "std": 0.08364183860846452,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 6.784532472670936,
+      "n": 565,
+      "std": 2.2478004125376847
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 8.108820638644913,
+      "n": 565,
+      "std": 1.6567925576949367
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.7699115044247787,
+      "n": 565,
+      "std": 0.4212622361276545
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 4.807745410585871,
+      "n": 565,
+      "std": 1.4546111541004438
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.740987610619469,
+      "n": 565,
+      "std": 0.23426614295018372
+    }
+  },
+  "model": "vit_b16",
+  "n_images": 565,
+  "params": {
+    "adf_input_variance": 5.0,
+    "adf_lambda": 0.0,
+    "adf_softmax_lambda": -5.0,
+    "av_rule": "merged",
+    "lrp_alpha": 2.0,
+    "lrp_beta": 1.0,
+    "lrp_eps": 0.1,
+    "routing_temperature": 0.7
+  },
+  "registry_name": "routing_game",
+  "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+  "runtime_s": {
+    "device": "NVIDIA A100-SXM4-40GB",
+    "mean": 0.2091181484998855,
+    "median": 0.2073209285736084,
+    "n": 565,
+    "q25": 0.19217753410339355,
+    "q75": 0.2197587490081787,
+    "warmup": 1
+  },
+  "selected_by": [
+    "faith",
+    "sweep:rg:faith:attention",
+    "sweep:rg:faith:eps",
+    "sweep:rg:faith:lambda_sm",
+    "sweep:rg:faith:sigma2",
+    "sweep:rg:faith:tau"
+  ],
+  "split": "test",
+  "sweeps": [
+    {
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+      "param": "tau",
+      "series": "rg:faith:tau",
+      "value": 0.7
+    },
+    {
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+      "param": "lambda_sm",
+      "series": "rg:faith:lambda_sm",
+      "value": -5.0
+    },
+    {
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+      "param": "sigma2",
+      "series": "rg:faith:sigma2",
+      "value": 5.0
+    },
+    {
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+      "param": "eps",
+      "series": "rg:faith:eps",
+      "value": 0.1
+    },
+    {
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+      "param": "attention",
+      "series": "rg:faith:attention",
+      "value": 0.0
+    }
+  ],
+  "tunable": true,
+  "zero_maps": 0
+}

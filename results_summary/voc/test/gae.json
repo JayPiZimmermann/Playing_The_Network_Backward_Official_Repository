@@ -1,0 +1,118 @@
+{
+  "component": "input",
+  "config_latex": "--",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "voc",
+  "display": "GAE",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "Tesla V100-PCIE-32GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": [
+    "input"
+  ],
+  "map_failures": 0,
+  "method": "gae",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.35495957265400857,
+      "n": 2743,
+      "std": 0.23437174211678777
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 2.6297309861342875,
+      "n": 2743,
+      "std": 2.8655978037658305
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 2.999299036317747,
+      "n": 2743,
+      "std": 3.101506720939487
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.7123587313160773,
+      "n": 2743,
+      "std": 0.4527455102874898
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 1.7539962973420942,
+      "n": 2743,
+      "std": 1.8370567684743206
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.5481250455705432,
+      "n": 2743,
+      "std": 0.35137630103185746
+    }
+  },
+  "model": "vit_b16",
+  "n_images": 2743,
+  "params": {},
+  "registry_name": "grad_attention_rollout",
+  "row_label": "gae",
+  "runtime_s": {
+    "device": "Tesla V100-PCIE-32GB",
+    "mean": 0.04687891856536698,
+    "median": 0.04732990264892578,
+    "n": 2743,
+    "q25": 0.04477429389953613,
+    "q75": 0.049344658851623535,
+    "warmup": 1
+  },
+  "selected_by": [
+    "fixed"
+  ],
+  "split": "test",
+  "sweeps": [],
+  "tunable": false,
+  "zero_maps": 0
+}

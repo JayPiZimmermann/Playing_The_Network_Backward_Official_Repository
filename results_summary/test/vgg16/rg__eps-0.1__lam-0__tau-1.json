@@ -1,0 +1,136 @@
+{
+  "component": "input",
+  "config_latex": "$\\tau{=}1,\\varepsilon{=}0.1$",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "RG",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "rg",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.6183410692663319,
+      "n": 565,
+      "std": 0.2153252402850755
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 9.245259803773303,
+      "n": 565,
+      "std": 4.717019254619957
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 14.060283096444554,
+      "n": 565,
+      "std": 6.371811652513475
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.7486725663716814,
+      "n": 565,
+      "std": 0.4341607711680535
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 5.1365727616577646,
+      "n": 565,
+      "std": 2.5630575005178597
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.6952230088495576,
+      "n": 565,
+      "std": 0.21737131964545356
+    }
+  },
+  "model": "vgg16",
+  "n_images": 565,
+  "params": {
+    "adf_lambda": 0.0,
+    "lrp_alpha": 2.0,
+    "lrp_beta": 1.0,
+    "lrp_eps": 0.1,
+    "routing_temperature": 1.0
+  },
+  "registry_name": "routing_game",
+  "row_label": "rg__eps-0.1__lam-0__tau-1",
+  "runtime_s": {
+    "device": "NVIDIA A100-SXM4-40GB",
+    "mean": 0.05794215835301222,
+    "median": 0.060274362564086914,
+    "n": 565,
+    "q25": 0.04089927673339844,
+    "q75": 0.0745248794555664,
+    "warmup": 1
+  },
+  "selected_by": [
+    "sweep:rg:faith:tau",
+    "sweep:rg:loc:tau"
+  ],
+  "split": "test",
+  "sweeps": [
+    {
+      "center": "rg__eps-0.1__lam-0__tau-0.3",
+      "param": "tau",
+      "series": "rg:loc:tau",
+      "value": 1.0
+    },
+    {
+      "center": "rg__eps-0.1__lam-0__tau-0.8",
+      "param": "tau",
+      "series": "rg:faith:tau",
+      "value": 1.0
+    }
+  ],
+  "tunable": true,
+  "zero_maps": 0
+}

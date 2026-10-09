@@ -1,0 +1,26 @@
+# gpu: NVIDIA A100-SXM4-40GB
+# torch: 2.14.0+cu126
+# cuda: 12.6
+# warmup: 5
+# batch_size: 1
+# split: test
+method,row_label,n_images,median_s,q25_s,q75_s,iqr_s,mean_s,failures
+gradient,gradient__cr-maxabs,50,0.00928,0.00906,0.01058,0.00152,0.01455,0
+smoothgrad,smoothgrad__spread-0.1,50,0.43231,0.43180,0.43275,0.00096,0.43234,0
+intgrad,intgrad__steps-20,50,0.17261,0.17239,0.17276,0.00038,0.17262,0
+deeplift,deeplift__rule-rescale,50,0.01596,0.01563,0.01614,0.00051,0.01584,0
+lrp_eps,lrp_eps__eps-0.5,50,0.01879,0.01861,0.01886,0.00025,0.01877,0
+lrp_eps,lrp_eps__eps-1,50,0.01912,0.01885,0.01945,0.00061,0.01913,0
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.25,50,0.04044,0.04021,0.04076,0.00055,0.04040,0
+lrp_gamma,lrp_gamma__eps-0.25__gamma-0.1,50,0.05309,0.05284,0.05356,0.00071,0.05314,0
+lrp_gamma,lrp_gamma__eps-0.5__gamma-0.1,50,0.05297,0.05264,0.05330,0.00065,0.05302,0
+gcam,gcam__layer-features.29,50,0.00809,0.00795,0.00832,0.00037,0.00814,0
+gcampp,gcampp__layer-features.29,50,0.00828,0.00807,0.00841,0.00034,0.00829,0
+lcam,lcam__layer-features.29,50,0.00841,0.00818,0.00871,0.00053,0.00843,0
+lime,lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge,50,1.82822,1.81604,1.83547,0.01943,1.83064,0
+kernelshap,kernelshap__N-auto__fill-imagemean__seg-80__sp-slic,50,4.25832,4.09684,4.43644,0.33960,4.27601,0
+sg,sg__gate-on__lam-m1__var-5,50,0.08057,0.08005,0.08151,0.00147,0.08095,0
+sg,sg__gate-off__lam-m0.3__var-1,50,0.08016,0.07971,0.08079,0.00108,0.08155,0
+rg,rg__eps-0.5__lam-0__tau-1,50,0.03491,0.03463,0.03575,0.00112,0.03521,0
+rg,rg__eps-0.1__lam-0__tau-0.3,50,0.03719,0.03684,0.03797,0.00112,0.03739,0
+rg,rg__eps-0.1__lam-0__tau-0.8,50,0.03673,0.03656,0.03683,0.00027,0.03672,0

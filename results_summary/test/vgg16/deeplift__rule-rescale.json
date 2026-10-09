@@ -1,0 +1,152 @@
+{
+  "component": "input",
+  "config_latex": "--Rescale",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "DeepLift",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "Tesla V100-PCIE-32GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "deeplift",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "AvgS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "MaxS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.5418966462390613,
+      "n": 565,
+      "std": 0.2368811708500393
+    },
+    "AvgS": {
+      "coverage": 1.0,
+      "mean": 0.9479521284759045,
+      "n": 200,
+      "std": 0.24518168107594168,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "MaxS": {
+      "coverage": 1.0,
+      "mean": 1.1926598611474037,
+      "n": 200,
+      "std": 0.3912095727028675,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 9.321783879815118,
+      "n": 565,
+      "std": 4.435975128787744
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 13.053632644905123,
+      "n": 565,
+      "std": 5.6345725205779615
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.7008849557522124,
+      "n": 565,
+      "std": 0.45827605868211413
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 6.048978004497411,
+      "n": 565,
+      "std": 2.95003874085413
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.6540318584070797,
+      "n": 565,
+      "std": 0.27875412227511537
+    }
+  },
+  "model": "vgg16",
+  "n_images": 565,
+  "params": {
+    "rule": "rescale"
+  },
+  "registry_name": "deeplift",
+  "row_label": "deeplift__rule-rescale",
+  "runtime_s": {
+    "device": "Tesla V100-PCIE-32GB",
+    "mean": 0.034715247365225736,
+    "median": 0.03466916084289551,
+    "n": 565,
+    "q25": 0.033377885818481445,
+    "q75": 0.03616166114807129,
+    "warmup": 1
+  },
+  "selected_by": [
+    "fixed"
+  ],
+  "split": "test",
+  "sweeps": [],
+  "tunable": false,
+  "zero_maps": 0
+}

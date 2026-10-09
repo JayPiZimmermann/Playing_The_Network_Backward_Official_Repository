@@ -1,0 +1,10 @@
+{
+  "name": "top_k_intersection",
+  "metric_class": "top_k_intersection",
+  "enabled": true,
+  "category": "localisation",
+  "params": {
+    "abs": true,
+    "normalise": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "avg_sensitivity",
+  "metric_class": "avg_sensitivity",
+  "enabled": true,
+  "category": "robustness",
+  "params": {
+    "nr_samples": 50,
+    "abs": true,
+    "normalise": true
+  }
+}

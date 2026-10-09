@@ -1,0 +1,152 @@
+{
+  "component": "input",
+  "config_latex": "$\\varepsilon{=}0.5$",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "LRP-$\\varepsilon$",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "Tesla V100-PCIE-32GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "lrp_eps",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "AvgS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "MaxS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.6129862278238335,
+      "n": 565,
+      "std": 0.22476543284616174
+    },
+    "AvgS": {
+      "coverage": 1.0,
+      "mean": 0.9179495773971081,
+      "n": 200,
+      "std": 0.19630013696334503,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "MaxS": {
+      "coverage": 1.0,
+      "mean": 1.172710108458996,
+      "n": 200,
+      "std": 0.3608503571628608,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 8.606886429700724,
+      "n": 565,
+      "std": 4.2818714673585045
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 12.634211468617472,
+      "n": 565,
+      "std": 5.5098692673901795
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.831858407079646,
+      "n": 565,
+      "std": 0.37432338171732604
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 5.684778706593541,
+      "n": 565,
+      "std": 2.7631332500575625
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.7450849557522123,
+      "n": 565,
+      "std": 0.2329169331205059
+    }
+  },
+  "model": "vgg16",
+  "n_images": 565,
+  "params": {
+    "epsilon": 0.5
+  },
+  "registry_name": "lrp_standard",
+  "row_label": "lrp_eps__eps-0.5",
+  "runtime_s": {
+    "device": "Tesla V100-PCIE-32GB",
+    "mean": 0.03774748186094571,
+    "median": 0.038689613342285156,
+    "n": 565,
+    "q25": 0.02895808219909668,
+    "q75": 0.04477238655090332,
+    "warmup": 1
+  },
+  "selected_by": [
+    "loc"
+  ],
+  "split": "test",
+  "sweeps": [],
+  "tunable": true,
+  "zero_maps": 0
+}

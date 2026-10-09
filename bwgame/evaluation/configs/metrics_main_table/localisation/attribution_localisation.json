@@ -1,0 +1,10 @@
+{
+  "name": "attribution_localisation",
+  "metric_class": "attribution_localisation",
+  "enabled": true,
+  "category": "localisation",
+  "params": {
+    "abs": true,
+    "normalise": true
+  }
+}

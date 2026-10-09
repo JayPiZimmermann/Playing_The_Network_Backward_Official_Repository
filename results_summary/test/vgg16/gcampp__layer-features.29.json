@@ -1,0 +1,152 @@
+{
+  "component": "input",
+  "config_latex": "--\\texttt{features.29}",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "GCAM++",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "gcampp",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "AvgS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "MaxS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.550771896699361,
+      "n": 565,
+      "std": 0.2214782333459674
+    },
+    "AvgS": {
+      "coverage": 1.0,
+      "mean": 0.24263365112394095,
+      "n": 200,
+      "std": 0.07015443021590635,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "MaxS": {
+      "coverage": 1.0,
+      "mean": 0.3135456100106239,
+      "n": 200,
+      "std": 0.09567733924370397,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 12.874191935102246,
+      "n": 565,
+      "std": 5.8313991614206415
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 16.67787544046883,
+      "n": 565,
+      "std": 7.227267609156817
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.8230088495575221,
+      "n": 565,
+      "std": 0.38199941738972
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 5.699535460033573,
+      "n": 565,
+      "std": 2.902584582006312
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.813541592920354,
+      "n": 565,
+      "std": 0.26407788943595306
+    }
+  },
+  "model": "vgg16",
+  "n_images": 565,
+  "params": {
+    "target_layer_name": "features.29"
+  },
+  "registry_name": "gradcam_pp",
+  "row_label": "gcampp__layer-features.29",
+  "runtime_s": {
+    "device": "NVIDIA A100-SXM4-40GB",
+    "mean": 0.013144380434424476,
+    "median": 0.01517176628112793,
+    "n": 565,
+    "q25": 0.008076667785644531,
+    "q75": 0.017065763473510742,
+    "warmup": 1
+  },
+  "selected_by": [
+    "fixed"
+  ],
+  "split": "test",
+  "sweeps": [],
+  "tunable": false,
+  "zero_maps": 0
+}

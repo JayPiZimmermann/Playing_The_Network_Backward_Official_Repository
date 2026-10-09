@@ -1,0 +1,152 @@
+{
+  "component": "input",
+  "config_latex": "$\\varepsilon{=}1$",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "LRP-$\\varepsilon$",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "lrp_eps",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "AvgS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "MaxS": {
+      "abs": true,
+      "normalise": true,
+      "nr_samples": 50
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.6387833321120887,
+      "n": 565,
+      "std": 0.21854180621619665
+    },
+    "AvgS": {
+      "coverage": 1.0,
+      "mean": 0.8395566336333752,
+      "n": 200,
+      "std": 0.1479410140560063,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "MaxS": {
+      "coverage": 1.0,
+      "mean": 1.0995839694142342,
+      "n": 200,
+      "std": 0.30468525027702786,
+      "subset": {
+        "chunks": 1,
+        "n": 200,
+        "of": 565,
+        "seed": 0
+      }
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 8.165445964764515,
+      "n": 565,
+      "std": 4.102076505464775
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 12.43222679777413,
+      "n": 565,
+      "std": 5.475630893921686
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.8088495575221238,
+      "n": 565,
+      "std": 0.3935556955285489
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 5.488780549823902,
+      "n": 565,
+      "std": 2.660251775102441
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.743729203539823,
+      "n": 565,
+      "std": 0.22234698128231342
+    }
+  },
+  "model": "vgg16",
+  "n_images": 565,
+  "params": {
+    "epsilon": 1.0
+  },
+  "registry_name": "lrp_standard",
+  "row_label": "lrp_eps__eps-1",
+  "runtime_s": {
+    "device": "NVIDIA A100-SXM4-40GB",
+    "mean": 0.021453445569603845,
+    "median": 0.019039154052734375,
+    "n": 565,
+    "q25": 0.017579078674316406,
+    "q75": 0.020905733108520508,
+    "warmup": 1
+  },
+  "selected_by": [
+    "faith"
+  ],
+  "split": "test",
+  "sweeps": [],
+  "tunable": true,
+  "zero_maps": 0
+}

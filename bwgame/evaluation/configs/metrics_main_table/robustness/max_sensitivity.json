@@ -1,0 +1,11 @@
+{
+  "name": "max_sensitivity",
+  "metric_class": "max_sensitivity",
+  "enabled": true,
+  "category": "robustness",
+  "params": {
+    "nr_samples": 50,
+    "abs": true,
+    "normalise": true
+  }
+}

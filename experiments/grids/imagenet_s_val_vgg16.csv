@@ -1,0 +1,636 @@
+method,row_label,params_json,is_anchor,tunable
+gradient,gradient__cr-maxabs,"{""channel_reduction"": ""max_abs""}",0,0
+smoothgrad,smoothgrad__spread-0.1,"{""channel_reduction"": ""max_abs"", ""nt_samples"": 50, ""stdev_spread"": 0.1, ""use_abs"": false, ""use_std_aggregation"": false}",0,1
+smoothgrad,smoothgrad__spread-0.15,"{""channel_reduction"": ""max_abs"", ""nt_samples"": 50, ""stdev_spread"": 0.15, ""use_abs"": false, ""use_std_aggregation"": false}",0,1
+smoothgrad,smoothgrad__spread-0.2,"{""channel_reduction"": ""max_abs"", ""nt_samples"": 50, ""stdev_spread"": 0.2, ""use_abs"": false, ""use_std_aggregation"": false}",0,1
+intgrad,intgrad__steps-20,"{""baseline"": ""black"", ""n_steps"": 20}",0,1
+intgrad,intgrad__steps-50,"{""baseline"": ""black"", ""n_steps"": 50}",0,1
+intgrad,intgrad__steps-100,"{""baseline"": ""black"", ""n_steps"": 100}",0,1
+intgrad,intgrad__steps-300,"{""baseline"": ""black"", ""n_steps"": 300}",0,1
+deeplift,deeplift__rule-rescale,"{""rule"": ""rescale""}",0,0
+lrp_eps,lrp_eps__eps-0.01,"{""epsilon"": 0.01}",0,1
+lrp_eps,lrp_eps__eps-0.05,"{""epsilon"": 0.05}",0,1
+lrp_eps,lrp_eps__eps-0.1,"{""epsilon"": 0.1}",0,1
+lrp_eps,lrp_eps__eps-0.25,"{""epsilon"": 0.25}",0,1
+lrp_eps,lrp_eps__eps-0.5,"{""epsilon"": 0.5}",0,1
+lrp_eps,lrp_eps__eps-1,"{""epsilon"": 1.0}",0,1
+lrp_eps,lrp_eps__eps-2,"{""epsilon"": 2.0}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.1__gamma-0.1,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.1, ""gamma"": 0.1}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.1__gamma-0.25,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.1, ""gamma"": 0.25}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.1__gamma-0.5,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.1, ""gamma"": 0.5}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.1__gamma-1,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.1, ""gamma"": 1.0}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.1__gamma-2,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.1, ""gamma"": 2.0}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.25__gamma-0.1,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.25, ""gamma"": 0.1}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.25__gamma-0.25,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.25, ""gamma"": 0.25}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.25__gamma-0.5,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.25, ""gamma"": 0.5}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.25__gamma-1,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.25, ""gamma"": 1.0}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.25__gamma-2,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.25, ""gamma"": 2.0}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.1,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.5, ""gamma"": 0.1}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.25,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.5, ""gamma"": 0.25}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.5,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.5, ""gamma"": 0.5}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-1,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.5, ""gamma"": 1.0}",0,1
+lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-2,"{""composite"": ""epsilon_gamma_box"", ""epsilon"": 0.5, ""gamma"": 2.0}",0,1
+lrp_gamma,lrp_gamma__eps-0.1__gamma-0.1,"{""epsilon"": 0.1, ""gamma"": 0.1}",0,1
+lrp_gamma,lrp_gamma__eps-0.1__gamma-0.25,"{""epsilon"": 0.1, ""gamma"": 0.25}",0,1
+lrp_gamma,lrp_gamma__eps-0.1__gamma-0.5,"{""epsilon"": 0.1, ""gamma"": 0.5}",0,1
+lrp_gamma,lrp_gamma__eps-0.1__gamma-1,"{""epsilon"": 0.1, ""gamma"": 1.0}",0,1
+lrp_gamma,lrp_gamma__eps-0.1__gamma-2,"{""epsilon"": 0.1, ""gamma"": 2.0}",0,1
+lrp_gamma,lrp_gamma__eps-0.25__gamma-0.1,"{""epsilon"": 0.25, ""gamma"": 0.1}",0,1
+lrp_gamma,lrp_gamma__eps-0.25__gamma-0.25,"{""epsilon"": 0.25, ""gamma"": 0.25}",0,1
+lrp_gamma,lrp_gamma__eps-0.25__gamma-0.5,"{""epsilon"": 0.25, ""gamma"": 0.5}",0,1
+lrp_gamma,lrp_gamma__eps-0.25__gamma-1,"{""epsilon"": 0.25, ""gamma"": 1.0}",0,1
+lrp_gamma,lrp_gamma__eps-0.25__gamma-2,"{""epsilon"": 0.25, ""gamma"": 2.0}",0,1
+lrp_gamma,lrp_gamma__eps-0.5__gamma-0.1,"{""epsilon"": 0.5, ""gamma"": 0.1}",0,1
+lrp_gamma,lrp_gamma__eps-0.5__gamma-0.25,"{""epsilon"": 0.5, ""gamma"": 0.25}",0,1
+lrp_gamma,lrp_gamma__eps-0.5__gamma-0.5,"{""epsilon"": 0.5, ""gamma"": 0.5}",0,1
+lrp_gamma,lrp_gamma__eps-0.5__gamma-1,"{""epsilon"": 0.5, ""gamma"": 1.0}",0,1
+lrp_gamma,lrp_gamma__eps-0.5__gamma-2,"{""epsilon"": 0.5, ""gamma"": 2.0}",0,1
+gcam,gcam__layer-features.29,"{""target_layer_name"": ""features.29""}",0,0
+gcampp,gcampp__layer-features.29,"{""target_layer_name"": ""features.29""}",0,0
+lcam,lcam__layer-features.29,"{""target_layer_name"": ""features.29""}",0,0
+lime,lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge,"{""fill"": ""segment_mean"", ""kernel_distance"": ""binary"", ""kernel_width"": 0.25, ""n_samples"": 1000, ""superpixel_method"": ""slic"", ""superpixel_n_segments"": 80, ""surrogate"": ""ridge""}",0,0
+kernelshap,kernelshap__N-auto__fill-imagemean__seg-80__sp-slic,"{""fill"": ""image_mean"", ""n_samples"": ""auto"", ""superpixel_method"": ""slic"", ""superpixel_n_segments"": 80}",0,0
+sg,sg__gate-on__lam-m5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m2__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m2__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m2__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m2__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m2__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m2__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m2__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m2__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-m0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-m0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-0__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-0__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-0__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-0__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-0__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-0__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": false}",0,1
+sg,sg__gate-on__lam-0__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": true}",0,1
+sg,sg__gate-off__lam-0__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": 0.0, ""adf_probabilistic"": false}",0,1
+rg,rg__eps-0.5__lam-0__tau-1,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",1,1
+rg,rg__eps-0.1__lam-m5__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m5__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m5__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m5__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m5__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m2__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m2__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m2__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m2__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m1__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m1__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m1__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m1__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.3__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.3__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.3__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.3__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.3,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.3,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.3,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-1__lam-0__tau-0.3,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.3}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m5__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m5__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m5__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m5__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m2__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m2__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m2__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m2__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m1__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m1__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m1__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m1__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.4__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.4__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.4__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.4__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.4,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.4,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.4,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-1__lam-0__tau-0.4,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.4}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m5__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m5__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m5__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m5__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m2__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m2__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m2__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m2__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m1__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m1__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m1__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m1__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.5__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.5__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.5__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.5__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.5,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.5,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.5,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-1__lam-0__tau-0.5,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.5}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m5__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m5__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m5__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m5__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m2__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m2__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m2__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m2__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m1__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m1__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m1__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m1__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.6__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.6__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.6__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.6__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.6,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.6,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.6,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-1__lam-0__tau-0.6,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.6}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m5__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m5__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m5__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m5__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m2__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m2__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m2__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m2__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m1__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m1__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m1__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m1__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.7__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.7__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.7__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.7__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.7,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.7,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.7,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-1__lam-0__tau-0.7,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.7}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m5__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m5__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m5__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m5__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m2__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m2__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m2__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m2__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m1__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m1__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m1__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m1__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.8__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.8__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.8__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.8__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.8,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.8,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.8,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-1__lam-0__tau-0.8,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.8}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m5__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m5__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m5__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m5__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m5__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m5__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m5__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m2__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m2__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m2__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m2__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m2__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m2__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m2__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m1__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m1__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m1__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m1__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m1__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m1__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m1__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.9__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.9__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.9__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-m0.3__tau-0.9__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-0__tau-0.9,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.25__lam-0__tau-0.9,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.5__lam-0__tau-0.9,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-1__lam-0__tau-0.9,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 0.9}",0,1
+rg,rg__eps-0.1__lam-m5__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m5__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m5__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m5__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m5__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m5__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m5__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m5__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m5__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m5__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m5__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m5__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m5__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m5__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m5__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m5__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -5.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m2__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m2__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m2__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m2__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m2__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m2__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m2__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m2__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m2__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m2__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m2__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m2__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m2__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m2__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m2__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m2__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -2.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m1__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m1__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m1__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m1__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m1__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m1__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m1__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m1__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m1__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m1__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m1__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m1__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m1__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m1__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m1__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m1__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -1.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m0.3__tau-1__var-1,"{""adf_input_variance"": 1.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m0.3__tau-1__var-2,"{""adf_input_variance"": 2.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m0.3__tau-1__var-5,"{""adf_input_variance"": 5.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-m0.3__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-m0.3__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.5__lam-m0.3__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.5, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-m0.3__tau-1__var-10,"{""adf_input_variance"": 10.0, ""adf_lambda"": -0.3, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.1__lam-0__tau-1,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.1, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-0.25__lam-0__tau-1,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 0.25, ""routing_temperature"": 1.0}",0,1
+rg,rg__eps-1__lam-0__tau-1,"{""adf_lambda"": 0.0, ""lrp_alpha"": 2.0, ""lrp_beta"": 1.0, ""lrp_eps"": 1.0, ""routing_temperature"": 1.0}",0,1

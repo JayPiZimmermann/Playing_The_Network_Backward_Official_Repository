@@ -1,0 +1,911 @@
+{
+  "admissibility": "rows with a failed or all-zero map, or an undefined selection metric, on any validation image are excluded from ranking",
+  "criteria": {
+    "faith": [
+      "PF5",
+      "PF20",
+      "Sel"
+    ],
+    "loc": [
+      "AL",
+      "PG",
+      "TK"
+    ]
+  },
+  "dataset": "voc",
+  "grid": "experiments/grids/imagenet_s_val_vit_b16.csv",
+  "inadmissible_rows": [],
+  "methods": {
+    "ar": {
+      "block": "attention",
+      "display": "AR",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "residual_weight": 0.75
+        },
+        "rank_sum_faith": 3.0,
+        "rank_sum_loc": 3.0,
+        "row_label": "ar__wr-0.75",
+        "val": {
+          "AL": 0.27576354878514353,
+          "PF20": 3.451434428752589,
+          "PF5": 3.6112774644093504,
+          "PG": 0.4856115107913669,
+          "Sel": 2.1500746395193033,
+          "TK": 0.4282625899280575
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "residual_weight": 0.75
+        },
+        "rank_sum_faith": 3.0,
+        "rank_sum_loc": 3.0,
+        "row_label": "ar__wr-0.75",
+        "val": {
+          "AL": 0.27576354878514353,
+          "PF20": 3.451434428752589,
+          "PF5": 3.6112774644093504,
+          "PG": 0.4856115107913669,
+          "Sel": 2.1500746395193033,
+          "TK": 0.4282625899280575
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 4,
+      "n_configs": 4,
+      "n_evaluated": 4,
+      "ours": false,
+      "tunable": true
+    },
+    "attnlrp": {
+      "block": "lrp",
+      "display": "AttnLRP",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "gamma_composite": true,
+          "lrp_epsilon_attn": 0.05,
+          "lrp_gamma_conv": 0.25,
+          "lrp_gamma_linear": 0.05
+        },
+        "rank_sum_faith": 5.0,
+        "rank_sum_loc": 5.5,
+        "row_label": "attnlrp__eattn-0.05__gcomp-on__gconv-0.25__glin-0.05",
+        "val": {
+          "AL": 0.4068410269977639,
+          "PF20": 2.2388803182422903,
+          "PF5": 2.826723667296431,
+          "PG": 0.5953237410071942,
+          "Sel": 1.7150799566907746,
+          "TK": 0.541341726618705
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "gamma_composite": true,
+          "lrp_epsilon_attn": 0.05,
+          "lrp_gamma_conv": 0.25,
+          "lrp_gamma_linear": 0.05
+        },
+        "rank_sum_faith": 5.0,
+        "rank_sum_loc": 5.5,
+        "row_label": "attnlrp__eattn-0.05__gcomp-on__gconv-0.25__glin-0.05",
+        "val": {
+          "AL": 0.4068410269977639,
+          "PF20": 2.2388803182422903,
+          "PF5": 2.826723667296431,
+          "PG": 0.5953237410071942,
+          "Sel": 1.7150799566907746,
+          "TK": 0.541341726618705
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 11,
+      "n_configs": 11,
+      "n_evaluated": 11,
+      "ours": false,
+      "tunable": true
+    },
+    "dave": {
+      "block": "attention",
+      "display": "DAVE",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "batch_size": 1,
+          "flip_prob": 0.5,
+          "max_angle": 0.0,
+          "max_shift_frac": 0.0,
+          "multiply_input": true,
+          "n_samples": 50,
+          "noise_t_max": 0.5
+        },
+        "rank_sum_faith": 8.0,
+        "rank_sum_loc": 15.5,
+        "row_label": "dave__N-50__ang-0__noise-0.5__shift-0",
+        "val": {
+          "AL": 0.33653760967625834,
+          "PF20": 2.981591867548084,
+          "PF5": 3.353887067578516,
+          "PG": 0.5485611510791367,
+          "Sel": 2.1495534684381705,
+          "TK": 0.46443525179856116
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 3,
+        "params": {
+          "batch_size": 1,
+          "flip_prob": 0.5,
+          "max_angle": 0.0,
+          "max_shift_frac": 0.0,
+          "multiply_input": true,
+          "n_samples": 50,
+          "noise_t_max": 0.25
+        },
+        "rank_sum_faith": 22.0,
+        "rank_sum_loc": 4.5,
+        "row_label": "dave__N-50__ang-0__noise-0.25__shift-0",
+        "val": {
+          "AL": 0.33810476460557837,
+          "PF20": 3.0256718181191187,
+          "PF5": 3.3680139694169413,
+          "PG": 0.5665467625899281,
+          "Sel": 2.1682259229400143,
+          "TK": 0.4676438848920863
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 54,
+      "n_configs": 54,
+      "n_evaluated": 54,
+      "ours": false,
+      "tunable": true
+    },
+    "gae": {
+      "block": "attention",
+      "display": "GAE",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 0,
+          "params": {},
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "gae",
+          "val": {
+            "AL": 0.35799928605213366,
+            "PF20": 2.654900538406569,
+            "PF5": 3.009591712625649,
+            "PG": 0.7320143884892086,
+            "Sel": 1.7531044033793257,
+            "TK": 0.5445755395683453
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "gradient": {
+      "block": "gradient",
+      "display": "Gradient",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 1,
+          "params": {
+            "channel_reduction": "max_abs"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "gradient__cr-maxabs",
+          "val": {
+            "AL": 0.2954586341906205,
+            "PF20": 3.2041743290134495,
+            "PF5": 3.4492316568010066,
+            "PG": 0.3435251798561151,
+            "Sel": 2.3533183993341127,
+            "TK": 0.3493794964028777
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "intgrad": {
+      "block": "gradient",
+      "display": "IntGrad",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "baseline": "black",
+          "n_steps": 100
+        },
+        "rank_sum_faith": 5.0,
+        "rank_sum_loc": 6.0,
+        "row_label": "intgrad__steps-100",
+        "val": {
+          "AL": 0.2900489730330349,
+          "PF20": 3.209159349530107,
+          "PF5": 3.4281119911649784,
+          "PG": 0.381294964028777,
+          "Sel": 2.333196711914528,
+          "TK": 0.34916726618705035
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "baseline": "black",
+          "n_steps": 300
+        },
+        "rank_sum_faith": 6.0,
+        "rank_sum_loc": 5.0,
+        "row_label": "intgrad__steps-300",
+        "val": {
+          "AL": 0.2902286350386724,
+          "PF20": 3.209192686582962,
+          "PF5": 3.429041699028223,
+          "PG": 0.37949640287769787,
+          "Sel": 2.3331169088969177,
+          "TK": 0.34972302158273383
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 4,
+      "n_configs": 4,
+      "n_evaluated": 4,
+      "ours": false,
+      "tunable": true
+    },
+    "kernelshap": {
+      "block": "perturbation",
+      "display": "KernelSHAP",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 3,
+          "params": {
+            "fill": "image_mean",
+            "n_samples": "auto",
+            "superpixel_method": "slic",
+            "superpixel_n_segments": 80
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "kernelshap__N-auto__fill-imagemean__seg-80__sp-slic",
+          "val": {
+            "AL": 0.34119280285487136,
+            "PF20": 3.04220696428068,
+            "PF5": 3.3944638876613773,
+            "PG": 0.7787769784172662,
+            "Sel": 2.108317875596861,
+            "TK": 0.5523741007194245
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "lime": {
+      "block": "perturbation",
+      "display": "LIME",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 6,
+          "params": {
+            "fill": "segment_mean",
+            "kernel_distance": "binary",
+            "kernel_width": 0.25,
+            "n_samples": 1000,
+            "superpixel_method": "slic",
+            "superpixel_n_segments": 80,
+            "surrogate": "ridge"
+          },
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge",
+          "val": {
+            "AL": 0.35066434218397885,
+            "PF20": 3.1682389625314538,
+            "PF5": 3.4047308697890717,
+            "PG": 0.7967625899280576,
+            "Sel": 2.134655595158683,
+            "TK": 0.5262697841726619
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    },
+    "lrp_eps": {
+      "block": "lrp",
+      "display": "LRP-$\\varepsilon$",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "epsilon": 0.1
+        },
+        "rank_sum_faith": 4.0,
+        "rank_sum_loc": 7.0,
+        "row_label": "lrp_eps__eps-0.1",
+        "val": {
+          "AL": 0.38323659381611225,
+          "PF20": 2.6248717471285072,
+          "PF5": 3.0427717493052993,
+          "PG": 0.6312949640287769,
+          "Sel": 1.9395647165110013,
+          "TK": 0.5268884892086331
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "epsilon": 0.1
+        },
+        "rank_sum_faith": 4.0,
+        "rank_sum_loc": 7.0,
+        "row_label": "lrp_eps__eps-0.1",
+        "val": {
+          "AL": 0.38323659381611225,
+          "PF20": 2.6248717471285072,
+          "PF5": 3.0427717493052993,
+          "PG": 0.6312949640287769,
+          "Sel": 1.9395647165110013,
+          "TK": 0.5268884892086331
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 7,
+      "n_configs": 7,
+      "n_evaluated": 7,
+      "ours": false,
+      "tunable": true
+    },
+    "lrp_gamma": {
+      "block": "lrp",
+      "display": "LRP-$\\gamma$",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "epsilon": 0.1,
+          "gamma": 1.0
+        },
+        "rank_sum_faith": 6.0,
+        "rank_sum_loc": 13.0,
+        "row_label": "lrp_gamma__eps-0.1__gamma-1",
+        "val": {
+          "AL": 0.40755767389321906,
+          "PF20": 2.314076946581212,
+          "PF5": 2.941099754380139,
+          "PG": 0.5935251798561151,
+          "Sel": 1.6943572924586263,
+          "TK": 0.5442841726618705
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 2,
+        "params": {
+          "epsilon": 0.1,
+          "gamma": 1.0
+        },
+        "rank_sum_faith": 6.0,
+        "rank_sum_loc": 13.0,
+        "row_label": "lrp_gamma__eps-0.1__gamma-1",
+        "val": {
+          "AL": 0.40755767389321906,
+          "PF20": 2.314076946581212,
+          "PF5": 2.941099754380139,
+          "PG": 0.5935251798561151,
+          "Sel": 1.6943572924586263,
+          "TK": 0.5442841726618705
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 15,
+      "n_configs": 15,
+      "n_evaluated": 15,
+      "ours": false,
+      "tunable": true
+    },
+    "smoothgrad": {
+      "block": "gradient",
+      "display": "SmGrad",
+      "faith": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "channel_reduction": "max_abs",
+          "nt_samples": 50,
+          "stdev_spread": 0.15,
+          "use_abs": false,
+          "use_std_aggregation": false
+        },
+        "rank_sum_faith": 5.0,
+        "rank_sum_loc": 6.0,
+        "row_label": "smoothgrad__spread-0.15",
+        "val": {
+          "AL": 0.34938343684060447,
+          "PF20": 2.6542521376371906,
+          "PF5": 3.2303150386332353,
+          "PG": 0.5593525179856115,
+          "Sel": 1.9200275022153168,
+          "TK": 0.5107338129496403
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "fixed": [],
+      "inadmissible": [],
+      "loc": {
+        "is_anchor": false,
+        "n_nondefault": 1,
+        "params": {
+          "channel_reduction": "max_abs",
+          "nt_samples": 50,
+          "stdev_spread": 0.1,
+          "use_abs": false,
+          "use_std_aggregation": false
+        },
+        "rank_sum_faith": 7.0,
+        "rank_sum_loc": 5.0,
+        "row_label": "smoothgrad__spread-0.1",
+        "val": {
+          "AL": 0.3471404802184676,
+          "PF20": 2.711858180502281,
+          "PF5": 3.2240819686111855,
+          "PG": 0.5863309352517986,
+          "Sel": 1.9314368624137264,
+          "TK": 0.5147068345323741
+        },
+        "val_coverage": {
+          "AL": 1.0,
+          "PF20": 1.0,
+          "PF5": 1.0,
+          "PG": 1.0,
+          "Sel": 1.0,
+          "TK": 1.0
+        }
+      },
+      "n_admissible": 3,
+      "n_configs": 3,
+      "n_evaluated": 3,
+      "ours": false,
+      "tunable": true
+    },
+    "tibav": {
+      "block": "attention",
+      "display": "TIBAV",
+      "fixed": [
+        {
+          "is_anchor": false,
+          "n_nondefault": 0,
+          "params": {},
+          "rank_sum_faith": 3.0,
+          "rank_sum_loc": 3.0,
+          "row_label": "tibav",
+          "val": {
+            "AL": 0.42017120225766524,
+            "PF20": 2.6939540450010138,
+            "PF5": 3.052496238180708,
+            "PG": 0.737410071942446,
+            "Sel": 1.7330402140101446,
+            "TK": 0.5721888489208633
+          },
+          "val_coverage": {
+            "AL": 1.0,
+            "PF20": 1.0,
+            "PF5": 1.0,
+            "PG": 1.0,
+            "Sel": 1.0,
+            "TK": 1.0
+          }
+        }
+      ],
+      "inadmissible": [],
+      "n_admissible": 1,
+      "n_configs": 1,
+      "n_evaluated": 1,
+      "ours": false,
+      "tunable": false
+    }
+  },
+  "missing_rows": [],
+  "model": "vit_b16",
+  "n_admissible": 103,
+  "n_grid_rows": 103,
+  "n_val_configs": 103,
+  "note": "baselines only; RG / RG+Eq are not re-tuned on VOC",
+  "rows": [
+    {
+      "is_anchor": false,
+      "method": "gradient",
+      "params": {
+        "channel_reduction": "max_abs"
+      },
+      "row_label": "gradient__cr-maxabs",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "smoothgrad",
+      "params": {
+        "channel_reduction": "max_abs",
+        "nt_samples": 50,
+        "stdev_spread": 0.1,
+        "use_abs": false,
+        "use_std_aggregation": false
+      },
+      "row_label": "smoothgrad__spread-0.1",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "smoothgrad",
+      "params": {
+        "channel_reduction": "max_abs",
+        "nt_samples": 50,
+        "stdev_spread": 0.15,
+        "use_abs": false,
+        "use_std_aggregation": false
+      },
+      "row_label": "smoothgrad__spread-0.15",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "intgrad",
+      "params": {
+        "baseline": "black",
+        "n_steps": 100
+      },
+      "row_label": "intgrad__steps-100",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "intgrad",
+      "params": {
+        "baseline": "black",
+        "n_steps": 300
+      },
+      "row_label": "intgrad__steps-300",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "lrp_eps",
+      "params": {
+        "epsilon": 0.1
+      },
+      "row_label": "lrp_eps__eps-0.1",
+      "selected_by": [
+        "faith",
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "lrp_gamma",
+      "params": {
+        "epsilon": 0.1,
+        "gamma": 1.0
+      },
+      "row_label": "lrp_gamma__eps-0.1__gamma-1",
+      "selected_by": [
+        "faith",
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "attnlrp",
+      "params": {
+        "gamma_composite": true,
+        "lrp_epsilon_attn": 0.05,
+        "lrp_gamma_conv": 0.25,
+        "lrp_gamma_linear": 0.05
+      },
+      "row_label": "attnlrp__eattn-0.05__gcomp-on__gconv-0.25__glin-0.05",
+      "selected_by": [
+        "faith",
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "dave",
+      "params": {
+        "batch_size": 1,
+        "flip_prob": 0.5,
+        "max_angle": 0.0,
+        "max_shift_frac": 0.0,
+        "multiply_input": true,
+        "n_samples": 50,
+        "noise_t_max": 0.25
+      },
+      "row_label": "dave__N-50__ang-0__noise-0.25__shift-0",
+      "selected_by": [
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "dave",
+      "params": {
+        "batch_size": 1,
+        "flip_prob": 0.5,
+        "max_angle": 0.0,
+        "max_shift_frac": 0.0,
+        "multiply_input": true,
+        "n_samples": 50,
+        "noise_t_max": 0.5
+      },
+      "row_label": "dave__N-50__ang-0__noise-0.5__shift-0",
+      "selected_by": [
+        "faith"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "tibav",
+      "params": {},
+      "row_label": "tibav",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "gae",
+      "params": {},
+      "row_label": "gae",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "ar",
+      "params": {
+        "residual_weight": 0.75
+      },
+      "row_label": "ar__wr-0.75",
+      "selected_by": [
+        "faith",
+        "loc"
+      ],
+      "tunable": true
+    },
+    {
+      "is_anchor": false,
+      "method": "lime",
+      "params": {
+        "fill": "segment_mean",
+        "kernel_distance": "binary",
+        "kernel_width": 0.25,
+        "n_samples": 1000,
+        "superpixel_method": "slic",
+        "superpixel_n_segments": 80,
+        "surrogate": "ridge"
+      },
+      "row_label": "lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    },
+    {
+      "is_anchor": false,
+      "method": "kernelshap",
+      "params": {
+        "fill": "image_mean",
+        "n_samples": "auto",
+        "superpixel_method": "slic",
+        "superpixel_n_segments": 80
+      },
+      "row_label": "kernelshap__N-auto__fill-imagemean__seg-80__sp-slic",
+      "selected_by": [
+        "fixed"
+      ],
+      "tunable": false
+    }
+  ],
+  "split": "val",
+  "tie_break": "anchor/default first, then fewer non-default parameters, then grid order"
+}

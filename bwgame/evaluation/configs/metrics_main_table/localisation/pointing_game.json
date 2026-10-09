@@ -1,0 +1,9 @@
+{
+  "name": "pointing_game",
+  "metric_class": "pointing_game",
+  "enabled": true,
+  "category": "localisation",
+  "params": {
+    "abs": true
+  }
+}

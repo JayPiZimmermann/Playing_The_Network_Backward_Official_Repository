@@ -1,0 +1,344 @@
+[
+  {
+    "method": "gradient",
+    "row_label": "gradient__cr-maxabs",
+    "params": {
+      "channel_reduction": "max_abs"
+    },
+    "is_anchor": false,
+    "tunable": false,
+    "selected_by": [
+      "fixed"
+    ]
+  },
+  {
+    "method": "smoothgrad",
+    "row_label": "smoothgrad__spread-0.1",
+    "params": {
+      "channel_reduction": "max_abs",
+      "nt_samples": 50,
+      "stdev_spread": 0.1,
+      "use_abs": false,
+      "use_std_aggregation": false
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "loc"
+    ]
+  },
+  {
+    "method": "smoothgrad",
+    "row_label": "smoothgrad__spread-0.15",
+    "params": {
+      "channel_reduction": "max_abs",
+      "nt_samples": 50,
+      "stdev_spread": 0.15,
+      "use_abs": false,
+      "use_std_aggregation": false
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith"
+    ]
+  },
+  {
+    "method": "intgrad",
+    "row_label": "intgrad__steps-100",
+    "params": {
+      "baseline": "black",
+      "n_steps": 100
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith"
+    ]
+  },
+  {
+    "method": "intgrad",
+    "row_label": "intgrad__steps-300",
+    "params": {
+      "baseline": "black",
+      "n_steps": 300
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "loc"
+    ]
+  },
+  {
+    "method": "lrp_eps",
+    "row_label": "lrp_eps__eps-0.1",
+    "params": {
+      "epsilon": 0.1
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith",
+      "loc"
+    ]
+  },
+  {
+    "method": "lrp_gamma",
+    "row_label": "lrp_gamma__eps-0.1__gamma-1",
+    "params": {
+      "epsilon": 0.1,
+      "gamma": 1.0
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith",
+      "loc"
+    ]
+  },
+  {
+    "method": "attnlrp",
+    "row_label": "attnlrp__eattn-0.05__gcomp-on__gconv-0.25__glin-0.05",
+    "params": {
+      "gamma_composite": true,
+      "lrp_epsilon_attn": 0.05,
+      "lrp_gamma_conv": 0.25,
+      "lrp_gamma_linear": 0.05
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith",
+      "loc"
+    ]
+  },
+  {
+    "method": "dave",
+    "row_label": "dave__N-50__ang-0__noise-0.25__shift-0",
+    "params": {
+      "batch_size": 1,
+      "flip_prob": 0.5,
+      "max_angle": 0.0,
+      "max_shift_frac": 0.0,
+      "multiply_input": true,
+      "n_samples": 50,
+      "noise_t_max": 0.25
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "loc"
+    ]
+  },
+  {
+    "method": "dave",
+    "row_label": "dave__N-50__ang-0__noise-0.5__shift-0",
+    "params": {
+      "batch_size": 1,
+      "flip_prob": 0.5,
+      "max_angle": 0.0,
+      "max_shift_frac": 0.0,
+      "multiply_input": true,
+      "n_samples": 50,
+      "noise_t_max": 0.5
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith"
+    ]
+  },
+  {
+    "method": "tibav",
+    "row_label": "tibav",
+    "params": {},
+    "is_anchor": false,
+    "tunable": false,
+    "selected_by": [
+      "fixed"
+    ]
+  },
+  {
+    "method": "gae",
+    "row_label": "gae",
+    "params": {},
+    "is_anchor": false,
+    "tunable": false,
+    "selected_by": [
+      "fixed"
+    ]
+  },
+  {
+    "method": "ar",
+    "row_label": "ar__wr-0.75",
+    "params": {
+      "residual_weight": 0.75
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith",
+      "loc"
+    ]
+  },
+  {
+    "method": "lime",
+    "row_label": "lime__N-1000__fill-segmentmean__kd-binary__kw-0.25__seg-80__sp-slic__sur-ridge",
+    "params": {
+      "fill": "segment_mean",
+      "kernel_distance": "binary",
+      "kernel_width": 0.25,
+      "n_samples": 1000,
+      "superpixel_method": "slic",
+      "superpixel_n_segments": 80,
+      "surrogate": "ridge"
+    },
+    "is_anchor": false,
+    "tunable": false,
+    "selected_by": [
+      "fixed"
+    ]
+  },
+  {
+    "method": "kernelshap",
+    "row_label": "kernelshap__N-auto__fill-imagemean__seg-80__sp-slic",
+    "params": {
+      "fill": "image_mean",
+      "n_samples": "auto",
+      "superpixel_method": "slic",
+      "superpixel_n_segments": 80
+    },
+    "is_anchor": false,
+    "tunable": false,
+    "selected_by": [
+      "fixed"
+    ]
+  },
+  {
+    "method": "rg",
+    "row_label": "rg__av-merged__eps-0.5__lam-0__lamsm-0__tau-1",
+    "params": {
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": 0.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0
+    },
+    "is_anchor": true,
+    "tunable": true,
+    "selected_by": [
+      "anchor"
+    ]
+  },
+  {
+    "method": "rg",
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.4
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "loc"
+    ]
+  },
+  {
+    "method": "rg",
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -5.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.7
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith"
+    ]
+  },
+  {
+    "method": "rgeq",
+    "row_label": "rgeq__av-merged__eps-0.5__lam-0__lamsm-0__tau-1",
+    "params": {
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": 0.0,
+      "av_rule": "merged",
+      "equivariant_averaging": true,
+      "equivariant_flip_prob": 0.5,
+      "equivariant_max_angle": 10.0,
+      "equivariant_max_shift_frac": 0.05,
+      "equivariant_n_samples": 50,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0
+    },
+    "is_anchor": true,
+    "tunable": true,
+    "selected_by": [
+      "anchor"
+    ]
+  },
+  {
+    "method": "rgeq",
+    "row_label": "rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.5__var-2",
+    "params": {
+      "adf_input_variance": 2.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "equivariant_averaging": true,
+      "equivariant_flip_prob": 0.5,
+      "equivariant_max_angle": 10.0,
+      "equivariant_max_shift_frac": 0.05,
+      "equivariant_n_samples": 50,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 0.5
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "loc"
+    ]
+  },
+  {
+    "method": "rgeq",
+    "row_label": "rgeq__av-merged__eps-0.5__lam-0__lamsm-m10__tau-0.7__var-2",
+    "params": {
+      "adf_input_variance": 2.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "equivariant_averaging": true,
+      "equivariant_flip_prob": 0.5,
+      "equivariant_max_angle": 10.0,
+      "equivariant_max_shift_frac": 0.05,
+      "equivariant_n_samples": 50,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 0.7
+    },
+    "is_anchor": false,
+    "tunable": true,
+    "selected_by": [
+      "faith"
+    ]
+  }
+]

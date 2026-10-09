@@ -1,0 +1,110 @@
+"""DC Decomposition for Softmax. Forward/Backward: [4*batch] -> [4*batch]
+
+Softmax: s = exp(z) / sum(exp(z))
+For DC: compute softmax on z = pos - neg, cache z and s for backward.
+Output is always positive, so: out_pos = s, out_neg = 0
+Backward: Jacobian J = diag(s) - s @ s^T, apply to each sensitivity.
+"""
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch import Tensor
+from typing import Tuple
+
+from .base import make_output_4, DC_IS_OUTPUT_LAYER
+from .patch_builder import (
+    ForwardBuilder, BackwardBuilder, get_cache_info,
+    create_patch_function, create_unpatch_function,
+)
+
+
+class DCSoftmaxFunction(torch.autograd.Function):
+
+    @staticmethod
+    def forward(ctx, input_4: Tensor, dim: int,
+                is_output_layer: bool, cache, layer_name, alpha: float) -> Tensor:
+        
+        def compute(ctx, pos, neg, dim):
+            z = pos - neg
+
+            # Compute softmax on z
+            s = F.softmax(z, dim=dim)
+
+            # Softmax output is always positive, so out_pos = s, out_neg = 0
+            out_pos = s
+            out_neg = torch.zeros_like(s)
+
+            # Cache for backward
+            ctx.save_for_backward(s)
+            ctx.dim = dim
+
+            return out_pos, out_neg
+
+        # Softmax needs special output handling, so we get raw outputs and combine manually
+        pos, neg = ForwardBuilder.run(
+            ctx, input_4, compute, is_output_layer, cache, layer_name, alpha,
+            recenter=False, return_raw=True,
+            extra_args=(dim,)
+        )
+        return make_output_4(pos, neg)
+
+    @staticmethod
+    def backward(ctx, grad_4: Tensor) -> Tuple[Tensor, None, None, None, None]:
+        def compute(ctx, delta_pp, delta_np, delta_pn, delta_nn):
+            s, = ctx.saved_tensors
+            dim = ctx.dim
+
+            def softmax_backward(delta):
+                # Jacobian of softmax: J = diag(s) - s @ s^T
+                # J @ delta = s * delta - s * sum(s * delta, dim=dim)
+                # This is the standard softmax backward formula
+                sum_term = (s * delta).sum(dim=dim, keepdim=True)
+                return s * delta - s * sum_term
+
+            # Gradient through softmax for each sensitivity path
+            new_pp = softmax_backward(delta_pp)
+            new_np = softmax_backward(delta_np)
+            new_pn = softmax_backward(delta_pn)
+            new_nn = softmax_backward(delta_nn)
+
+            return new_pp, new_np, new_pn, new_nn
+
+        return BackwardBuilder.run(ctx, grad_4, compute, num_extra_returns=5)
+
+
+def dc_forward_softmax(module: nn.Softmax, x: Tensor) -> Tensor:
+    cache, layer_name, alpha = get_cache_info(module)
+    return DCSoftmaxFunction.apply(
+        x, module.dim,
+        getattr(module, DC_IS_OUTPUT_LAYER, False),
+        cache, layer_name, alpha,
+    )
+
+
+def adf_forward_softmax(module: nn.Softmax, x: Tensor) -> Tensor:
+    """ADF [2*batch] forward for Softmax: Jacobian-based variance propagation.
+
+    Softmax is a deterministic function applied to Gaussian input.
+    First-order Taylor (Jacobian) approximation around the mean:
+        mean_out = softmax(mean)
+        J_ij = s_i * (delta_ij - s_j)     (softmax Jacobian)
+        Var[y]_i = sum_j J_ij^2 * v_j     (diagonal input covariance)
+                 = s_i^2 * (v_i - 2*s_i*v_i + sum_j(s_j^2 * v_j))
+    """
+    q = x.shape[0] // 2
+    mean, var = x[:q], x[q:]
+    dim = module.dim
+
+    s = F.softmax(mean, dim=dim)
+
+    # Var[y]_i = s_i^2 * (v_i*(1-s_i)^2 + sum_{j!=i} s_j^2*v_j)
+    #          = s_i^2 * (v_i - 2*s_i*v_i + sum_j(s_j^2*v_j))
+    sv = (s ** 2 * var).sum(dim=dim, keepdim=True)
+    var_out = s ** 2 * (var - 2 * s * var + sv)
+
+    return torch.cat([s, var_out.clamp(min=0)], dim=0)
+
+
+patch_softmax = create_patch_function(dc_forward_softmax, adf_forward_fn=adf_forward_softmax)
+unpatch_softmax = create_unpatch_function()

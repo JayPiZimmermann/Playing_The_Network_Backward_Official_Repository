@@ -1,0 +1,12 @@
+{
+  "name": "selectivity",
+  "metric_class": "selectivity",
+  "enabled": true,
+  "category": "faithfulness",
+  "params": {
+    "abs": true,
+    "normalise": true,
+    "perturb_baseline": "mean",
+    "features_in_step": 1568
+  }
+}

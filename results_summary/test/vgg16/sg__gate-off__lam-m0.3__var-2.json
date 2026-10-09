@@ -1,0 +1,127 @@
+{
+  "component": "pp",
+  "config_latex": "$\\lambda{=}{-}0.3,\\sigma^2{=}2$, gate off",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "SG",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "sg",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.6014396456160904,
+      "n": 565,
+      "std": 0.25468137114216827
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 13.068679604877495,
+      "n": 565,
+      "std": 5.566113498259747
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 17.3000635013248,
+      "n": 565,
+      "std": 7.217488315867804
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.8106194690265487,
+      "n": 565,
+      "std": 0.39215779495645325
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 6.323460730904426,
+      "n": 565,
+      "std": 3.0423995016353214
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.7647327433628318,
+      "n": 565,
+      "std": 0.28656786802824724
+    }
+  },
+  "model": "vgg16",
+  "n_images": 565,
+  "params": {
+    "adf_input_variance": 2.0,
+    "adf_lambda": -0.3,
+    "adf_probabilistic": false
+  },
+  "registry_name": "adf_game",
+  "row_label": "sg__gate-off__lam-m0.3__var-2",
+  "runtime_s": {
+    "device": "NVIDIA A100-SXM4-40GB",
+    "mean": 0.13008523113959658,
+    "median": 0.15028142929077148,
+    "n": 565,
+    "q25": 0.08524656295776367,
+    "q75": 0.16377878189086914,
+    "warmup": 1
+  },
+  "selected_by": [
+    "sweep:sg:faith:sigma2"
+  ],
+  "split": "test",
+  "sweeps": [
+    {
+      "center": "sg__gate-off__lam-m0.3__var-1",
+      "param": "sigma2",
+      "series": "sg:faith:sigma2",
+      "value": 2.0
+    }
+  ],
+  "tunable": true,
+  "zero_maps": 0
+}

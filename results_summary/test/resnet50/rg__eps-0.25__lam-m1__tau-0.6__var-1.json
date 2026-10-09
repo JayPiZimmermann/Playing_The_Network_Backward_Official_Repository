@@ -1,0 +1,130 @@
+{
+  "component": "input",
+  "config_latex": "$\\tau{=}0.6,\\lambda{=}{-}1,\\sigma^2{=}1,\\varepsilon{=}0.25$",
+  "curve_len": {
+    "pixel_flipping_abs_20pct_auc_points": 20,
+    "pixel_flipping_abs_20pct_curve_len": 96,
+    "pixel_flipping_abs_5pct_auc_points": 5,
+    "pixel_flipping_abs_5pct_curve_len": 96,
+    "selectivity_curve_len": 36
+  },
+  "dataset": "imagenet-s",
+  "display": "RG",
+  "environment": {
+    "cuda": "12.6",
+    "gpu": "Tesla V100-PCIE-32GB",
+    "quantus": "0.6.0",
+    "torch": "2.14.0+cu126"
+  },
+  "is_anchor": false,
+  "kind": "row_result",
+  "layers": null,
+  "map_failures": 0,
+  "method": "rg",
+  "metric_params": {
+    "AL": {
+      "abs": true,
+      "normalise": true
+    },
+    "PF20": {
+      "abs": true,
+      "auc_percentage": 0.2,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PF5": {
+      "abs": true,
+      "auc_percentage": 0.05,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "PG": {
+      "abs": true
+    },
+    "Sel": {
+      "abs": true,
+      "features_in_step": 1568,
+      "normalise": true,
+      "perturb_baseline": "mean"
+    },
+    "TK": {
+      "abs": true,
+      "normalise": true
+    }
+  },
+  "metrics": {
+    "AL": {
+      "coverage": 1.0,
+      "mean": 0.6730408238106926,
+      "n": 565,
+      "std": 0.24132735686894113
+    },
+    "PF20": {
+      "coverage": 1.0,
+      "mean": 4.9575295319601995,
+      "n": 565,
+      "std": 1.7829474934599205
+    },
+    "PF5": {
+      "coverage": 1.0,
+      "mean": 5.994739658517384,
+      "n": 565,
+      "std": 1.5282910849478866
+    },
+    "PG": {
+      "coverage": 1.0,
+      "mean": 0.7044247787610619,
+      "n": 565,
+      "std": 0.4567052412652046
+    },
+    "Sel": {
+      "coverage": 1.0,
+      "mean": 4.27048713771631,
+      "n": 565,
+      "std": 1.4377887844673798
+    },
+    "TK": {
+      "coverage": 1.0,
+      "mean": 0.7106672566371681,
+      "n": 565,
+      "std": 0.23333221926373268
+    }
+  },
+  "model": "resnet50",
+  "n_images": 565,
+  "params": {
+    "adf_input_variance": 1.0,
+    "adf_lambda": -1.0,
+    "lrp_alpha": 2.0,
+    "lrp_beta": 1.0,
+    "lrp_eps": 0.25,
+    "routing_temperature": 0.6
+  },
+  "registry_name": "routing_game",
+  "row_label": "rg__eps-0.25__lam-m1__tau-0.6__var-1",
+  "runtime_s": {
+    "device": "Tesla V100-PCIE-32GB",
+    "mean": 0.2317629071463526,
+    "median": 0.23408865928649902,
+    "n": 565,
+    "q25": 0.2160019874572754,
+    "q75": 0.23991680145263672,
+    "warmup": 1
+  },
+  "selected_by": [
+    "sweep:rg:faith:tau"
+  ],
+  "split": "test",
+  "sweeps": [
+    {
+      "center": "rg__eps-0.25__lam-m1__tau-1__var-1",
+      "param": "tau",
+      "series": "rg:faith:tau",
+      "value": 0.6
+    }
+  ],
+  "tunable": true,
+  "zero_maps": 0
+}

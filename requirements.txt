@@ -1,0 +1,38 @@
+# Python >= 3.10 (tested with Python 3.12).
+#
+# Compatible-release pins; upper bounds where a major release is known to
+# change the API or the metric definitions.  The exact environment used for
+# the reported numbers is recorded in requirements-lock.txt (produced with
+# `pip freeze > requirements-lock.txt` in the evaluation environment); install
+# from that file for a bit-exact reproduction.
+#
+# torch: any 2.x build with CUDA support for your GPU.  Pick the wheel index
+# that matches your driver, e.g.
+#     pip install "torch>=2.0,<3" "torchvision>=0.15,<1" --index-url https://download.pytorch.org/whl/cu124
+torch>=2.0,<3
+torchvision>=0.15,<1
+# numpy<2 is required by quantus 0.6 (uses np.trapz).
+numpy>=1.24,<2
+scipy~=1.10
+matplotlib~=3.7
+pillow>=9.0,<13
+scikit-image~=0.20
+# sklearn.metrics.pairwise_distances in the baseline reference tests (also a quantus dependency)
+scikit-learn>=1.3
+pandas~=2.0
+# Quantus 0.6 broadcasts attributions over channels in PixelFlipping /
+# Selectivity; 0.5.x does not, which changes the PF curve length.  Keep 0.6.x.
+quantus~=0.6.0
+# cv2 is imported by the Quantus bridge, the Grad-CAM methods and the pointing-game granularity and figure scripts.
+opencv-python-headless>=4.8,<5
+
+# XAI method libraries
+captum~=0.7
+grad-cam~=1.5
+zennit~=1.0
+# lxt 2.x (lxt.efficient) provides the LRP rules of the ViT LRP baselines
+# (AttnLRP, LRP-epsilon, LRP-gamma); see bwgame/xai/methods/_lxt_vit.py.
+lxt~=2.0
+
+# Development
+pytest>=7.0,<10
