@@ -1,0 +1,541 @@
+{
+  "protocol": "full-spatial-deletion-insertion-v1",
+  "expected_n": 565,
+  "complete_rows": 7,
+  "expected_rows": 7,
+  "model_state_sha256": "9c82c9781a9d84787cb9cd0fd13aac603f949e55999131fa4c005157af03c40b",
+  "rows": {
+    "lrp_gamma__eps-0.1__gamma-2": {
+      "display": "LRP-$\\gamma$ (loc)",
+      "row": {
+        "method": "lrp_gamma",
+        "params": {
+          "epsilon": 0.1,
+          "gamma": 2.0
+        },
+        "row_label": "lrp_gamma__eps-0.1__gamma-2",
+        "roles": [
+          "sharpen-loc"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 3.110537727945258,
+          "ci95": [
+            2.995403459069827,
+            3.229185820769776
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -1.0751251609667403,
+            "ci95": [
+              -1.1623005192477482,
+              -0.9891997970901903
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.12754437004817698,
+          "ci95": [
+            0.1182981089884219,
+            0.13709340105347004
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -0.08305254296107983,
+            "ci95": [
+              -0.09137508407548045,
+              -0.07503742928806001
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 7.778180971608878,
+          "ci95": [
+            7.679256064182745,
+            7.872345717041526
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 1.1039565311303605,
+            "ci95": [
+              1.029195143115474,
+              1.1789545848531076
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.6167694822240057,
+          "ci95": [
+            0.5974103722825534,
+            0.6352310963993285
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.12647087430744816,
+            "ci95": [
+              0.11704120199125473,
+              0.1359702985744811
+            ]
+          }
+        }
+      }
+    },
+    "lrp_gamma__eps-0.1__gamma-0.1": {
+      "display": "LRP-$\\gamma$ (faith)",
+      "row": {
+        "method": "lrp_gamma",
+        "params": {
+          "epsilon": 0.1,
+          "gamma": 0.1
+        },
+        "row_label": "lrp_gamma__eps-0.1__gamma-0.1",
+        "roles": [
+          "sharpen-faith"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 3.1242829637597374,
+          "ci95": [
+            2.9978061768223334,
+            3.2499742585914064
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -1.0613799251522613,
+            "ci95": [
+              -1.1424438667895016,
+              -0.982495710633674
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.1260912485324011,
+          "ci95": [
+            0.1156270665865533,
+            0.13669481567436814
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -0.08450566447685565,
+            "ci95": [
+              -0.09203635688677907,
+              -0.07721133162627691
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 7.530636158521718,
+          "ci95": [
+            7.413637105694048,
+            7.645816847591445
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.8564117180432012,
+            "ci95": [
+              0.7901343128119318,
+              0.9214383815704944
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.579133474604801,
+          "ci95": [
+            0.558723167934416,
+            0.599486711744068
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.08883486668824347,
+            "ci95": [
+              0.08001084218981538,
+              0.09741145598384235
+            ]
+          }
+        }
+      }
+    },
+    "attnlrp__eattn-0.25__gcomp-on__gconv-0.25__glin-0.05": {
+      "display": "AttnLRP (loc)",
+      "row": {
+        "method": "attnlrp",
+        "params": {
+          "gamma_composite": true,
+          "lrp_epsilon_attn": 0.25,
+          "lrp_gamma_conv": 0.25,
+          "lrp_gamma_linear": 0.05
+        },
+        "row_label": "attnlrp__eattn-0.25__gcomp-on__gconv-0.25__glin-0.05",
+        "roles": [
+          "sharpen-loc"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 3.0827758436847783,
+          "ci95": [
+            2.960766538748115,
+            3.208515686495565
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -1.1028870452272201,
+            "ci95": [
+              -1.1798372833385355,
+              -1.0259138713505938
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.1256228019616968,
+          "ci95": [
+            0.11558693351490842,
+            0.13601630101246256
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -0.08497411104755997,
+            "ci95": [
+              -0.09229586224996039,
+              -0.07771714230805948
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 7.71117452241439,
+          "ci95": [
+            7.600763659556009,
+            7.815054868816962
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 1.0369500819358741,
+            "ci95": [
+              0.9718335036185846,
+              1.1018605708810656
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.6049441399513293,
+          "ci95": [
+            0.5854313174007147,
+            0.6238429924336728
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.11464553203477179,
+            "ci95": [
+              0.10634687942851187,
+              0.1230669252307623
+            ]
+          }
+        }
+      }
+    },
+    "attnlrp__eattn-0.01__gcomp-on__gconv-0.25__glin-0.05": {
+      "display": "AttnLRP (faith)",
+      "row": {
+        "method": "attnlrp",
+        "params": {
+          "gamma_composite": true,
+          "lrp_epsilon_attn": 0.01,
+          "lrp_gamma_conv": 0.25,
+          "lrp_gamma_linear": 0.05
+        },
+        "row_label": "attnlrp__eattn-0.01__gcomp-on__gconv-0.25__glin-0.05",
+        "roles": [
+          "sharpen-faith"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 2.9624494854059678,
+          "ci95": [
+            2.8349682517016266,
+            3.090670686398463
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -1.2232134035060307,
+            "ci95": [
+              -1.308046215777211,
+              -1.1411548865968517
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.11520478919470943,
+          "ci95": [
+            0.10499694309555947,
+            0.12522472123478953
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -0.09539212381454737,
+            "ci95": [
+              -0.10355384051316824,
+              -0.08780916675088787
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 7.909350181642853,
+          "ci95": [
+            7.804950282112313,
+            8.009415608798529
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 1.2351257411643348,
+            "ci95": [
+              1.164163800380427,
+              1.3072759632071806
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.6343544387987453,
+          "ci95": [
+            0.615434588458588,
+            0.6530189576919295
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.14405583088218768,
+            "ci95": [
+              0.1350204852936024,
+              0.15291350311545854
+            ]
+          }
+        }
+      }
+    },
+    "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5": {
+      "display": "RG (loc)",
+      "row": {
+        "method": "rg",
+        "params": {
+          "adf_input_variance": 5.0,
+          "adf_lambda": 0.0,
+          "adf_softmax_lambda": -10.0,
+          "av_rule": "merged",
+          "lrp_alpha": 2.0,
+          "lrp_beta": 1.0,
+          "lrp_eps": 0.1,
+          "routing_temperature": 0.4
+        },
+        "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5",
+        "roles": [
+          "tau-loc"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 4.185662888911999,
+          "ci95": [
+            4.044659326702826,
+            4.322376154530445
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.21059691300925676,
+          "ci95": [
+            0.19645682198216685,
+            0.22470925161796004
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 6.674224440478517,
+          "ci95": [
+            6.544439487314762,
+            6.801360749903118
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.4902986079165575,
+          "ci95": [
+            0.4712004210386661,
+            0.5094512155122289
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5": {
+      "display": "RG (faith)",
+      "row": {
+        "method": "rg",
+        "params": {
+          "adf_input_variance": 5.0,
+          "adf_lambda": 0.0,
+          "adf_softmax_lambda": -5.0,
+          "av_rule": "merged",
+          "lrp_alpha": 2.0,
+          "lrp_beta": 1.0,
+          "lrp_eps": 0.1,
+          "routing_temperature": 0.7
+        },
+        "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m5__tau-0.7__var-5",
+        "roles": [
+          "tau-faith"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 3.164469717390266,
+          "ci95": [
+            3.0284553585297105,
+            3.3035871510847574
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -1.0211931715217324,
+            "ci95": [
+              -1.0965457946223283,
+              -0.9431849805440506
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.14179126586522858,
+          "ci95": [
+            0.13095171429513097,
+            0.15310072735985156
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -0.06880564714402822,
+            "ci95": [
+              -0.07609707843978605,
+              -0.06162277064483004
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 6.869921914732987,
+          "ci95": [
+            6.736448056030889,
+            6.997189367460615
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.1956974742544702,
+            "ci95": [
+              0.13972543995689626,
+              0.2510534102808995
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.5003495137797853,
+          "ci95": [
+            0.48030747733908674,
+            0.519903912084364
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.010050905863227788,
+            "ci95": [
+              0.0028029182151623295,
+              0.01712424293144824
+            ]
+          }
+        }
+      }
+    },
+    "rg__av-merged__eps-0.5__lam-0__lamsm-0__tau-1": {
+      "display": "RG anchor",
+      "row": {
+        "method": "rg",
+        "params": {
+          "adf_lambda": 0.0,
+          "adf_softmax_lambda": 0.0,
+          "av_rule": "merged",
+          "lrp_alpha": 2.0,
+          "lrp_beta": 1.0,
+          "lrp_eps": 0.5,
+          "routing_temperature": 1.0
+        },
+        "row_label": "rg__av-merged__eps-0.5__lam-0__lamsm-0__tau-1",
+        "roles": [
+          "sharpen-anchor"
+        ]
+      },
+      "n": 565,
+      "metrics": {
+        "deletion_logit_auc": {
+          "mean": 3.146461751555155,
+          "ci95": [
+            3.012790239252382,
+            3.2766883327403797
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -1.0392011373568437,
+            "ci95": [
+              -1.1194643373332154,
+              -0.9572550823649644
+            ]
+          }
+        },
+        "deletion_probability_auc": {
+          "mean": 0.14647009106872982,
+          "ci95": [
+            0.13572478086728096,
+            0.1571188569198706
+          ],
+          "difference_vs_rg_loc": {
+            "mean": -0.06412682194052695,
+            "ci95": [
+              -0.0715351480453386,
+              -0.056923310105710834
+            ]
+          }
+        },
+        "insertion_logit_auc": {
+          "mean": 7.0209935183545955,
+          "ci95": [
+            6.894306971568063,
+            7.145779572138621
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.34676907787607897,
+            "ci95": [
+              0.28433435996290074,
+              0.4080042641301772
+            ]
+          }
+        },
+        "insertion_probability_auc": {
+          "mean": 0.517917992162355,
+          "ci95": [
+            0.497967617152655,
+            0.5375042504533263
+          ],
+          "difference_vs_rg_loc": {
+            "mean": 0.02761938424579752,
+            "ci95": [
+              0.01992619687900869,
+              0.035382029617390426
+            ]
+          }
+        }
+      }
+    }
+  }
+}

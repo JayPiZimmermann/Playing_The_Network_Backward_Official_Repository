@@ -1,0 +1,94 @@
+[
+  {
+    "method": "rg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.05
+    },
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.05__var-5",
+    "selected_by": [
+      "diagnostic:low_temperature"
+    ],
+    "sweep": {
+      "series": "rg:loc:low_temperature",
+      "param": "tau",
+      "value": 0.05,
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5"
+    }
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.1
+    },
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.1__var-5",
+    "selected_by": [
+      "diagnostic:low_temperature"
+    ],
+    "sweep": {
+      "series": "rg:loc:low_temperature",
+      "param": "tau",
+      "value": 0.1,
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5"
+    }
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.2
+    },
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.2__var-5",
+    "selected_by": [
+      "diagnostic:low_temperature"
+    ],
+    "sweep": {
+      "series": "rg:loc:low_temperature",
+      "param": "tau",
+      "value": 0.2,
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5"
+    }
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -10.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.3
+    },
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.3__var-5",
+    "selected_by": [
+      "diagnostic:low_temperature"
+    ],
+    "sweep": {
+      "series": "rg:loc:low_temperature",
+      "param": "tau",
+      "value": 0.3,
+      "center": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5"
+    }
+  }
+]

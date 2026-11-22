@@ -17,3 +17,6 @@ experiments/*/results_double_random/
 data/imagenet/
 data/imagenet-s/
 data/voc/
+
+# Pretrained weights downloaded by the test-suite
+weights/

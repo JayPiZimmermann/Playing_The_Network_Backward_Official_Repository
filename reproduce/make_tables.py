@@ -23,9 +23,10 @@ Outputs (file names are a fixed contract with the paper)::
     val_selection_<model>_tabular.tex    selected configs and validation rank-sums (tabular)
     numbers.tex                          \\global\\prelimfalse + macros quoted in the text
 
-Significance markers use ``reproduce.bootstrap_ci`` (paired bootstrap, McNemar
-for PG, Holm).  In the main table the Holm family of a column is the set of
-distinct rows shown in the table.
+Significance markers use ``reproduce.bootstrap_ci``: image-cluster bootstrap
+for VOC; iid paired bootstrap and McNemar for PG on ImageNet-S. For each
+column, Holm covers all unordered pairs of distinct rows shown in that table,
+before comparisons against its observed winner are reported.
 """
 from __future__ import annotations
 
@@ -105,6 +106,7 @@ class ResultSet:
         self.selection = selection
         self.n_boot, self.seed = n_boot, seed
         self._scores = None
+        self._plan = None
         self._ci = None
         self.runtime: Dict[str, Dict[str, str]] = {}
         if runtime_csv is not None and Path(runtime_csv).exists():
@@ -143,14 +145,33 @@ class ResultSet:
                 self._scores = {}
             else:
                 from reproduce.bootstrap_ci import load_scores
-                _, _, self._scores = load_scores(self.dir)
+                from reproduce.bootstrap_ci import BootstrapPlan, uses_image_clusters
+                _, image_ids, self._scores = load_scores(self.dir)
+                self._plan = BootstrapPlan(image_ids, self.n_boot, self.seed,
+                                           clustered=uses_image_clusters(self.rows))
         return self._scores
+
+    def bootstrap_plan(self):
+        self.scores()
+        return self._plan
 
     def ci(self, label: str, metric: str) -> Optional[Tuple[float, float, float]]:
         if self._ci is None:
             self._ci = {}
             p = self.dir / "ci.csv"
-            if p.exists():
+            from reproduce.bootstrap_ci import uses_image_clusters
+            clustered = uses_image_clusters(self.rows)
+            metadata_path = self.dir / "bootstrap_metadata.json"
+            valid_cache = not clustered
+            if clustered and metadata_path.exists():
+                try:
+                    metadata = json.loads(metadata_path.read_text())
+                    valid_cache = (metadata.get("sampling_unit") == "image_cluster"
+                                   and metadata.get("n_boot") == self.n_boot
+                                   and metadata.get("seed") == self.seed)
+                except (OSError, ValueError):
+                    valid_cache = False
+            if p.exists() and valid_cache:
                 with open(p) as f:
                     for r in csv.DictReader(f):
                         self._ci[(r["row"], r["metric"])] = (float(r["mean"]), float(r["lo"]), float(r["hi"]))
@@ -159,9 +180,7 @@ class ResultSet:
         sc = self.scores().get(label, {})
         if metric not in sc:
             return None
-        from reproduce.bootstrap_ci import boot_indices, ci_from_indices
-        idx = boot_indices(len(sc[metric]), self.n_boot, self.seed)
-        mean, lo, hi, _ = ci_from_indices(sc[metric], idx)
+        mean, lo, hi, _ = self.bootstrap_plan().ci(sc[metric])
         self._ci[(label, metric)] = (mean, lo, hi)
         return self._ci[(label, metric)]
 
@@ -286,7 +305,8 @@ def _column_marks(rs: ResultSet, labels: Sequence[Optional[str]], metric: str):
     approx = set()
     fam = sorted({l for l in vals if metric in rs.scores().get(l, {})})
     if len(fam) > 1:
-        for r in significance_vs_best(rs.scores(), fam, metric, rs.n_boot, rs.seed):
+        for r in significance_vs_best(rs.scores(), fam, metric, rs.n_boot, rs.seed,
+                                      plan=rs.bootstrap_plan()):
             if not r["significant"]:
                 approx.add(r["row"])
     return best, approx

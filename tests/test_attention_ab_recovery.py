@@ -86,9 +86,9 @@ def _layerwise_reference(model, x, target):
     return _ab_linear(X, W_v, b_v, R_V, ALPHA, BETA, EPS)[None]
 
 
-def _routing_game(model, x, target):
+def _routing_game(model, x, target, eps=EPS):
     mgr = _RoutingGameHookManager(
-        model=model, lrp_alpha=ALPHA, lrp_beta=BETA, lrp_eps=EPS,
+        model=model, lrp_alpha=ALPHA, lrp_beta=BETA, lrp_eps=eps,
         routing_temperature=1.0, adf_lambda=0.0, attention_mode="v_only",
         av_rule="merged",
     )
@@ -198,3 +198,100 @@ def test_merged_multi_head_matches_composite_rule():
     ref = sum(_composite_reference(A[h], X, W_v[3 * h:3 * h + 3], b_v[3 * h:3 * h + 3],
                                    R_O[h], ALPHA, BETA, EPS) for h in range(2))[None]
     assert torch.allclose(got, ref, rtol=1e-8, atol=1e-10), (got - ref).abs().max()
+
+
+class FixedValueBlock(nn.Module):
+    def __init__(self, attention, weight, bias):
+        super().__init__()
+        self.v_proj = nn.Linear(weight.shape[1], weight.shape[0], bias=True).double()
+        with torch.no_grad():
+            self.v_proj.weight.copy_(weight)
+            self.v_proj.bias.copy_(bias)
+        self.qk = DCMatMul()
+        self.av = DCMatMul()
+        self.register_buffer("attention", attention)
+
+    def forward(self, x):
+        self.qk(self.attention, torch.eye(self.attention.shape[-1], dtype=x.dtype))
+        return self.av(self.attention, self.v_proj(x))
+
+
+def _explicit_composite_relevance(attention, x, weight, bias, seed, eps):
+    result = torch.zeros_like(x)
+    for t in range(attention.shape[0]):
+        for d in range(weight.shape[0]):
+            products = attention[t, :, None] * x * weight[d]
+            for sign, multiplier in ((1, ALPHA), (-1, -BETA)):
+                contributions = (sign * products).clamp(min=0)
+                total = contributions.sum() + (sign * bias[d]).clamp(min=0) + eps
+                if total > 0:
+                    result += multiplier * contributions / total * seed[t, d]
+    return result
+
+
+@pytest.mark.parametrize("eps", [0.0, 0.5])
+@pytest.mark.parametrize("all_zero", [False, True])
+def test_merged_empty_streams_match_completed_composite_rule(eps, all_zero):
+    attention = torch.tensor([[1.0, 0.0], [0.25, 0.75]], dtype=torch.float64)
+    x = torch.tensor([[1.0, 0.0, 2.0], [0.0, 3.0, 1.0]], dtype=torch.float64)
+    weight = torch.tensor([[1.0, 2.0, 0.0], [-1.0, 0.0, -2.0],
+                           [0.0, -1.0, 0.0], [1.0, -1.0, 0.5]], dtype=torch.float64)
+    bias = torch.tensor([0.5, -0.25, 0.0, 0.0], dtype=torch.float64)
+    if all_zero:
+        weight.zero_()
+        bias.zero_()
+    seed = torch.tensor([[1.0, -2.0, 3.0, -0.5], [-1.0, 0.0, 0.5, 2.0]],
+                        dtype=torch.float64)
+    model = FixedValueBlock(attention, weight, bias).eval()
+    manager = _RoutingGameHookManager(model, lrp_alpha=ALPHA, lrp_beta=BETA, lrp_eps=eps)
+    manager.install()
+    try:
+        inputs = x.unsqueeze(0).clone().requires_grad_(True)
+        model(inputs).backward(seed.unsqueeze(0))
+        got = inputs.grad[0]
+    finally:
+        manager.remove()
+    expected = _explicit_composite_relevance(attention, x, weight, bias, seed, eps)
+    assert torch.isfinite(got).all()
+    assert torch.allclose(got, expected, rtol=1e-12, atol=1e-12)
+    if all_zero:
+        assert torch.count_nonzero(got) == 0
+
+
+@pytest.mark.parametrize("eps", [1e-8, 0.5, 2.0])
+def test_merged_positive_stabilizer_preserves_previous_arithmetic(setup, eps):
+    model, x = setup
+    manager = _RoutingGameHookManager(model, lrp_alpha=ALPHA, lrp_beta=BETA, lrp_eps=eps)
+    manager._activations["v_proj"] = x
+    attention = model.attention().detach()
+    values = model.v_proj(x).detach()
+    seed = torch.linspace(-1, 1, values.numel(), dtype=x.dtype).reshape_as(values)
+    weight, bias = model.v_proj.weight.detach(), model.v_proj.bias.detach()
+    xp, xn = torch.relu(x), torch.relu(-x)
+    wp, wn = torch.relu(weight), torch.relu(-weight)
+    vp = xp @ wp.t() + xn @ wn.t() + bias.clamp(min=0)
+    vn = xp @ wn.t() + xn @ wp.t() + (-bias).clamp(min=0)
+    sp = attention.t() @ (seed / manager._stabilize(attention @ vp, eps))
+    sn = attention.t() @ (seed / manager._stabilize(attention @ vn, eps))
+    expected = ALPHA * vp * sp - BETA * vn * sn
+    got = manager._merged_value_backward("av", attention, values, seed, eps)
+    cached_positive, cached_negative = manager._merged_value_relevance["v_proj"]
+    assert torch.equal(got, expected)
+    assert torch.equal(cached_positive, sp)
+    assert torch.equal(cached_negative, sn)
+
+
+@pytest.mark.parametrize("all_zero", [False, True])
+def test_zero_stabilizer_attention_with_affine_readout(all_zero):
+    model = TinyAttention(d=2, n_tokens=2, n_out=1).double().eval()
+    with torch.no_grad():
+        model.q.zero_()
+        model.k.zero_()
+        for layer in (model.v_proj, model.out_proj):
+            layer.weight.fill_(0.0 if all_zero else 1.0)
+            layer.bias.zero_()
+    x = torch.ones(1, 2, 2, dtype=torch.float64)
+    got = _routing_game(model, x, 0, eps=0.0)
+    expected = torch.zeros_like(x) if all_zero else torch.ones_like(x)
+    assert torch.isfinite(got).all()
+    assert torch.equal(got, expected)

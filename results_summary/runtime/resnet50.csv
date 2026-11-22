@@ -13,7 +13,6 @@ intgrad,intgrad__steps-100,50,1.36053,1.34900,1.36316,0.01416,1.34842,0
 deeplift,deeplift__rule-rescale,50,0.03832,0.03817,0.03845,0.00028,0.03823,0
 lrp_eps,lrp_eps__eps-0.5,50,0.09757,0.09684,0.10041,0.00356,0.10655,0
 lrp_eps,lrp_eps__eps-2,50,0.09825,0.09779,0.09908,0.00130,0.10678,0
-lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.25__gamma-1,50,0.16918,0.16876,0.17425,0.00549,0.18237,0
 lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.5,50,0.17394,0.17167,0.17648,0.00481,0.18544,0
 lrp_gamma,lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-2,50,0.17446,0.17339,0.17545,0.00206,0.18485,0
 gcam,gcam__layer-layer4,50,0.01577,0.01567,0.01590,0.00022,0.01574,0

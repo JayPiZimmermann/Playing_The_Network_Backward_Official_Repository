@@ -1,0 +1,21 @@
+[
+  {
+    "method": "rg",
+    "params": {
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": 0.0,
+      "adf_input_variance": 2.0,
+      "adf_probabilistic": true,
+      "_force_adf_activation_gate": true,
+      "av_rule": "merged"
+    },
+    "row_label": "rg__tau-1__eps-0.5__lam-0__var-2__probit-forced",
+    "roles": [
+      "diagnostic-gate-matched-risk-off"
+    ]
+  }
+]

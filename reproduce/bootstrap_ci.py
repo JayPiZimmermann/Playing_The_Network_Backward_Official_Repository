@@ -5,19 +5,18 @@ Usage::
 
     python -m reproduce.bootstrap_ci --results results/test/vit_b16 --n-boot 10000 --seed 0
 
-Reads every row result (``<results>/<row_label>.json``) and its per-image
-scores (``<results>/per_image/<row_label>.npz``) and writes
+Reads row results and aligned per-example scores, and writes percentile
+confidence intervals (``ci.csv``), paired comparisons (``significance.csv``),
+and the sampling design (``bootstrap_metadata.json``). ImageNet-S resamples
+individual images. VOC resamples original images as clusters, retaining all
+image--class records and their pairing across methods. Means remain weighted
+by records, including in each bootstrap replicate.
 
-* ``ci.csv`` (row, metric, mean, lo, hi, n): 95% percentile bootstrap CI of
-  the mean over images.  The resampled image indices are drawn once and
-  shared by all rows (paired resampling); images with a NaN score (failed
-  map / metric) are ignored inside each resample.
-* ``significance.csv`` (metric, best_row, row, delta, p, p_holm,
-  significant): for every metric the best row (by mean, respecting the
-  metric direction) is compared with every other row, with the paired
-  bootstrap test of ``bwgame.evaluation.stats`` (McNemar's test for the
-  binary PG) on the images where both rows have a score; p-values are
-  Holm-corrected within the metric.  delta = mean(row) - mean(best).
+VOC uses null-centered paired cluster-bootstrap tests for every metric,
+including binary PG. ImageNet-S uses the paired iid bootstrap and McNemar's
+test for PG. For each metric Holm correction covers every unordered eligible
+row pair; only comparisons against the observed best row are exported.
+Non-rejection does not establish equivalence. delta = mean(row) - mean(best).
 
 By default the sweep-only rows (selected_by only ``sweep:*``) are excluded
 from the significance family (``--include-sweeps`` adds them); CIs are
@@ -27,6 +26,8 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
+from itertools import combinations
 import logging
 import sys
 from pathlib import Path
@@ -105,6 +106,132 @@ def ci_from_indices(values, idx) -> Tuple[float, float, float, int]:
     return mean, float(lo), float(hi), n
 
 
+def uses_image_clusters(rows: Dict[str, Dict]) -> bool:
+    """VOC evaluates multiple class records from the same original image."""
+    datasets = {row.get("dataset") for row in rows.values()}
+    if "voc" in datasets and datasets != {"voc"}:
+        raise ValueError("VOC and other datasets cannot share a bootstrap design")
+    return datasets == {"voc"}
+
+
+class BootstrapPlan:
+    """Shared image draws, with record-weighted ratios for clustered records."""
+
+    def __init__(self, image_ids, n_boot: int, seed: int, clustered: bool = False):
+        import numpy as np
+        if n_boot < 1:
+            raise ValueError("n_boot must be positive")
+        self.image_ids = np.asarray(image_ids, dtype=str)
+        self.n_boot, self.seed, self.clustered = n_boot, seed, clustered
+        if clustered:
+            if any("__" not in image_id or not image_id.rsplit("__", 1)[1]
+                   for image_id in self.image_ids):
+                raise ValueError("VOC sample IDs must end in '__<class>'")
+            cluster_ids = [image_id.rsplit("__", 1)[0] for image_id in self.image_ids]
+            self.units, self.group = np.unique(cluster_ids, return_inverse=True)
+        else:
+            self.units = self.image_ids
+            self.group = np.arange(len(self.image_ids))
+        self.n_units = len(self.units)
+        self.sampling_unit = "image_cluster" if clustered else "image"
+        self._indices = None
+        self._means = {}
+        self._iid_indices = {}
+
+    @property
+    def indices(self):
+        if self._indices is None:
+            self._indices = boot_indices(self.n_units, self.n_boot, self.seed)
+        return self._indices
+
+    @indices.setter
+    def indices(self, value):
+        self._indices = value
+        self._means.clear()
+
+    def bootstrap_means(self, values, mask=None):
+        """Mean over sampled records; a sampled cluster retains every class."""
+        import numpy as np
+        v = np.asarray(values, dtype=float)
+        if v.shape != self.image_ids.shape:
+            raise ValueError("Scores must align with the plan's sample IDs")
+        finite = np.isfinite(v)
+        if mask is not None:
+            finite &= np.asarray(mask, dtype=bool)
+        key = (v.tobytes(), finite.tobytes())
+        if key not in self._means:
+            sums = np.bincount(self.group, weights=np.where(finite, v, 0.0),
+                               minlength=self.n_units)
+            counts = np.bincount(self.group, weights=finite.astype(float),
+                                 minlength=self.n_units)
+            boot = np.empty(len(self.indices))
+            for start in range(0, len(boot), 256):
+                idx = self.indices[start:start + 256]
+                with np.errstate(invalid="ignore", divide="ignore"):
+                    boot[start:start + len(idx)] = sums[idx].sum(axis=1) / counts[idx].sum(axis=1)
+            self._means[key] = boot
+        return self._means[key]
+
+    def ci(self, values) -> Tuple[float, float, float, int]:
+        import numpy as np
+        v = np.asarray(values, dtype=float)
+        finite = np.isfinite(v)
+        n = int(finite.sum())
+        mean = float(v[finite].mean()) if n else float("nan")
+        if len(np.unique(self.group[finite])) < 2:
+            return mean, float("nan"), float("nan"), n
+        boot = self.bootstrap_means(v)
+        boot = boot[np.isfinite(boot)]
+        if len(boot) == 0:
+            return mean, float("nan"), float("nan"), n
+        lo, hi = np.percentile(boot, [2.5, 97.5])
+        return mean, float(lo), float(hi), n
+
+    def compare(self, a, b, metric: str) -> Tuple[float, float, int]:
+        import numpy as np
+        from bwgame.evaluation.stats import mcnemar_test
+        a, b = np.asarray(a, dtype=float), np.asarray(b, dtype=float)
+        mask = np.isfinite(a) & np.isfinite(b)
+        n = int(mask.sum())
+        if n < 2 or len(np.unique(self.group[mask])) < 2:
+            return float("nan"), float("nan"), n
+        delta = float(a[mask].mean() - b[mask].mean())
+        if np.array_equal(a[mask], b[mask]):
+            return delta, 1.0, n
+        if self.clustered:
+            boot = self.bootstrap_means(a, mask) - self.bootstrap_means(b, mask)
+            boot = boot[np.isfinite(boot)]
+            if len(boot) == 0:
+                return delta, float("nan"), n
+            exceed = np.count_nonzero(np.abs(boot - delta) >= abs(delta))
+            p = (1.0 + exceed) / (len(boot) + 1.0)
+        elif metric == "PG":
+            p = mcnemar_test(a[mask] > 0.5, b[mask] > 0.5)["p_value"]
+        else:
+            # Same draws and statistic as paired_bootstrap_test, evaluated in batches.
+            if n not in self._iid_indices:
+                self._iid_indices[n] = boot_indices(n, self.n_boot, self.seed)
+            indices = self._iid_indices[n]
+            diff = a[mask] - b[mask]
+            observed = float(diff.mean())
+            exceed = 0
+            for start in range(0, self.n_boot, 256):
+                boot = diff[indices[start:start + 256]].mean(axis=1)
+                exceed += np.count_nonzero(np.abs(boot - observed) >= abs(observed))
+            p = exceed / self.n_boot
+        return delta, float(p), n
+
+    def metadata(self):
+        return {"sampling_unit": self.sampling_unit,
+                "estimand": "image_class_record_mean" if self.clustered else "image_mean",
+                "n_records": len(self.image_ids), "n_units": self.n_units,
+                "n_boot": self.n_boot, "seed": self.seed,
+                "ci": "percentile_95",
+                "paired_test": "null_centered_cluster_bootstrap_plus_one" if self.clustered
+                else "null_centered_iid_bootstrap_or_mcnemar_for_PG",
+                "multiplicity": "holm_all_unordered_eligible_row_pairs_per_metric"}
+
+
 def compare(a, b, metric: str, n_boot: int, seed: int) -> Tuple[float, float, int]:
     """(delta = mean(a) - mean(b), two-sided p, n) on images where both are finite."""
     import numpy as np
@@ -136,28 +263,33 @@ def best_label(means: Dict[str, float], metric: str) -> Optional[str]:
 
 
 def significance_vs_best(scores: Dict[str, Dict], labels: Sequence[str], metric: str,
-                         n_boot: int, seed: int) -> List[Dict]:
-    """Test every row in ``labels`` against the best of them; Holm within the metric."""
+                         n_boot: int, seed: int, plan: Optional[BootstrapPlan] = None) -> List[Dict]:
+    """Holm over all eligible row pairs, then report edges to the observed best."""
     import numpy as np
     from bwgame.evaluation.stats import holm_correction
-    have = [l for l in labels if metric in scores.get(l, {})]
-    means = {l: float(np.nanmean(scores[l][metric])) if np.isfinite(scores[l][metric]).any() else float("nan")
-             for l in have}
+    have = sorted({label for label in labels if metric in scores.get(label, {})})
+    means = {label: float(np.nanmean(scores[label][metric]))
+             if np.isfinite(scores[label][metric]).any() else float("nan") for label in have}
     best = best_label(means, metric)
     if best is None:
         return []
+    pairs = []
+    for left, right in combinations(have, 2):
+        args = (scores[left][metric], scores[right][metric], metric)
+        delta, p, n = plan.compare(*args) if plan else compare(*args, n_boot, seed)
+        pairs.append({"left": left, "right": right, "delta": delta, "p": p, "n": n})
+    adjusted = holm_correction([pair["p"] if np.isfinite(pair["p"]) else 1.0 for pair in pairs])
     out = []
-    for l in have:
-        if l == best:
+    for pair, ph in zip(pairs, adjusted):
+        if best not in (pair["left"], pair["right"]):
             continue
-        delta, p, n = compare(scores[l][metric], scores[best][metric], metric, n_boot, seed)
-        out.append({"metric": metric, "best_row": best, "row": l, "delta": delta, "p": p, "n": n})
-    if out:
-        ps = [r["p"] if np.isfinite(r["p"]) else 1.0 for r in out]
-        for r, ph in zip(out, holm_correction(ps)):
-            r["p_holm"] = float(ph)
-            r["significant"] = bool(np.isfinite(r["p"]) and ph < ALPHA)
-    return out
+        row = pair["right"] if pair["left"] == best else pair["left"]
+        delta = -pair["delta"] if pair["left"] == best else pair["delta"]
+        out.append({"metric": metric, "best_row": best, "row": row, "delta": delta,
+                    "p": pair["p"], "n": pair["n"], "p_holm": float(ph),
+                    "family_size": len(pairs),
+                    "significant": bool(np.isfinite(pair["p"]) and ph < ALPHA)})
+    return sorted(out, key=lambda row: row["row"])
 
 
 def run(results_dir: Path, n_boot: int, seed: int, include_sweeps: bool,
@@ -168,8 +300,9 @@ def run(results_dir: Path, n_boot: int, seed: int, include_sweeps: bool,
     if not scores:
         raise SystemExit(f"No row results with per-image files in {results_dir}")
     n = len(image_ids)
-    idx = boot_indices(n, n_boot, seed)
-    logger.info("%d rows, %d images, %d bootstrap resamples", len(scores), n, n_boot)
+    plan = BootstrapPlan(image_ids, n_boot, seed, clustered=uses_image_clusters(rows))
+    logger.info("%d rows, %d records, %d %s units, %d bootstrap resamples",
+                len(scores), n, plan.n_units, plan.sampling_unit, n_boot)
 
     ci_path = out_dir / "ci.csv"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -180,7 +313,7 @@ def run(results_dir: Path, n_boot: int, seed: int, include_sweeps: bool,
             for s in METRICS:
                 if s not in scores[label]:
                     continue
-                mean, lo, hi, k = ci_from_indices(scores[label][s], idx)
+                mean, lo, hi, k = plan.ci(scores[label][s])
                 w.writerow([label, s, f"{mean:.6g}", f"{lo:.6g}", f"{hi:.6g}", k])
 
     family = [l for l in sorted(scores) if include_sweeps or not is_sweep_only(rows[l])]
@@ -189,9 +322,13 @@ def run(results_dir: Path, n_boot: int, seed: int, include_sweeps: bool,
         w = csv.writer(f)
         w.writerow(["metric", "best_row", "row", "delta", "p", "p_holm", "significant"])
         for s in METRICS:
-            for r in significance_vs_best(scores, family, s, n_boot, seed):
+            for r in significance_vs_best(scores, family, s, n_boot, seed, plan=plan):
                 w.writerow([r["metric"], r["best_row"], r["row"], f"{r['delta']:.6g}",
                             f"{r['p']:.6g}", f"{r['p_holm']:.6g}", int(r["significant"])])
+    metadata = plan.metadata()
+    metadata["family_rows"] = family
+    metadata["source_scores"] = str(results_dir.resolve())
+    (out_dir / "bootstrap_metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
     logger.info("Wrote %s and %s", ci_path, sig_path)
     return ci_path, sig_path
 

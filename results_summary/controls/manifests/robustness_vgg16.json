@@ -1,0 +1,391 @@
+[
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": 0.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.3
+    },
+    "row_label": "rg__eps-0.1__lam-0__tau-0.3",
+    "roles": [
+      "rg:loc:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": 0.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.8
+    },
+    "row_label": "rg__eps-0.1__lam-0__tau-0.8",
+    "roles": [
+      "rg:faith:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -5.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.3,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m5__tau-0.3__var-2",
+    "roles": [
+      "rg:loc:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -2.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.3,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m2__tau-0.3__var-2",
+    "roles": [
+      "rg:loc:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -1.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.3,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m1__tau-0.3__var-2",
+    "roles": [
+      "rg:loc:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -0.3,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.3,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m0.3__tau-0.3__var-2",
+    "roles": [
+      "rg:loc:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -5.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.8,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m5__tau-0.8__var-2",
+    "roles": [
+      "rg:faith:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -2.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.8,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m2__tau-0.8__var-2",
+    "roles": [
+      "rg:faith:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -1.0,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.8,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m1__tau-0.8__var-2",
+    "roles": [
+      "rg:faith:lambda"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": -0.3,
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.8,
+      "adf_input_variance": 2.0
+    },
+    "row_label": "rg__eps-0.1__lam-m0.3__tau-0.8__var-2",
+    "roles": [
+      "rg:faith:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": -5.0,
+      "adf_probabilistic": true
+    },
+    "row_label": "sg__gate-on__lam-m5__var-5",
+    "roles": [
+      "sg:loc:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": -2.0,
+      "adf_probabilistic": true
+    },
+    "row_label": "sg__gate-on__lam-m2__var-5",
+    "roles": [
+      "sg:loc:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": -1.0,
+      "adf_probabilistic": true
+    },
+    "row_label": "sg__gate-on__lam-m1__var-5",
+    "roles": [
+      "sg:loc:lambda",
+      "sg:loc:gate"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": -0.3,
+      "adf_probabilistic": true
+    },
+    "row_label": "sg__gate-on__lam-m0.3__var-5",
+    "roles": [
+      "sg:loc:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_probabilistic": true
+    },
+    "row_label": "sg__gate-on__lam-0__var-5",
+    "roles": [
+      "sg:loc:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": -1.0,
+      "adf_probabilistic": false
+    },
+    "row_label": "sg__gate-off__lam-m1__var-5",
+    "roles": [
+      "sg:loc:gate"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 1.0,
+      "adf_lambda": -2.0,
+      "adf_probabilistic": false
+    },
+    "row_label": "sg__gate-off__lam-m2__var-1",
+    "roles": [
+      "sg:faith:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 1.0,
+      "adf_lambda": -1.0,
+      "adf_probabilistic": false
+    },
+    "row_label": "sg__gate-off__lam-m1__var-1",
+    "roles": [
+      "sg:faith:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 1.0,
+      "adf_lambda": -0.3,
+      "adf_probabilistic": false
+    },
+    "row_label": "sg__gate-off__lam-m0.3__var-1",
+    "roles": [
+      "sg:faith:lambda",
+      "sg:faith:gate"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 1.0,
+      "adf_lambda": 0.0,
+      "adf_probabilistic": false
+    },
+    "row_label": "sg__gate-off__lam-0__var-1",
+    "roles": [
+      "sg:faith:lambda"
+    ]
+  },
+  {
+    "method": "sg",
+    "params": {
+      "adf_input_variance": 1.0,
+      "adf_lambda": -0.3,
+      "adf_probabilistic": true
+    },
+    "row_label": "sg__gate-on__lam-m0.3__var-1",
+    "roles": [
+      "sg:faith:gate"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": 0.0,
+      "av_rule": "merged"
+    },
+    "row_label": "rg__av-merged__eps-0.5__lam-0__lamsm-0__tau-1",
+    "roles": [
+      "anchor-risk"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0,
+      "adf_lambda": -0.3,
+      "adf_softmax_lambda": 0.0,
+      "adf_input_variance": 2.0,
+      "av_rule": "merged"
+    },
+    "row_label": "rg__av-merged__eps-0.5__lam-m0.3__lamsm-0__tau-1__var-2",
+    "roles": [
+      "anchor-risk"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0,
+      "adf_lambda": -1.0,
+      "adf_softmax_lambda": 0.0,
+      "adf_input_variance": 2.0,
+      "av_rule": "merged"
+    },
+    "row_label": "rg__av-merged__eps-0.5__lam-m1__lamsm-0__tau-1__var-2",
+    "roles": [
+      "anchor-risk"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0,
+      "adf_lambda": -2.0,
+      "adf_softmax_lambda": 0.0,
+      "adf_input_variance": 2.0,
+      "av_rule": "merged"
+    },
+    "row_label": "rg__av-merged__eps-0.5__lam-m2__lamsm-0__tau-1__var-2",
+    "roles": [
+      "anchor-risk"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.5,
+      "routing_temperature": 1.0,
+      "adf_lambda": -5.0,
+      "adf_softmax_lambda": 0.0,
+      "adf_input_variance": 2.0,
+      "av_rule": "merged"
+    },
+    "row_label": "rg__av-merged__eps-0.5__lam-m5__lamsm-0__tau-1__var-2",
+    "roles": [
+      "anchor-risk"
+    ]
+  },
+  {
+    "method": "lrp_gamma",
+    "params": {
+      "composite": "epsilon_gamma_box",
+      "epsilon": 0.5,
+      "gamma": 0.25
+    },
+    "row_label": "lrp_gamma__comp-epsilongammabox__eps-0.5__gamma-0.25",
+    "roles": [
+      "baseline-loc"
+    ]
+  },
+  {
+    "method": "lrp_gamma",
+    "params": {
+      "epsilon": 0.25,
+      "gamma": 0.1
+    },
+    "row_label": "lrp_gamma__eps-0.25__gamma-0.1",
+    "roles": [
+      "baseline-faith"
+    ]
+  }
+]

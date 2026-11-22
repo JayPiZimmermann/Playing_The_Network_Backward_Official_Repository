@@ -1,0 +1,3469 @@
+{
+  "source": "robustness_panel/aggregate.json",
+  "source_sha256": "84440208d4077af3e9394e36556a24ceef842e87d45c85b39f6501025be75d07",
+  "complete": true,
+  "images": 50,
+  "split": "validation",
+  "risk_comparison": "loc_riskm50 minus loc_risk0",
+  "note": "Same validation images across protocols; counts are nested, not independent replications. Intervals are unadjusted paired 95% bootstrap intervals.",
+  "protocols": [
+    {
+      "distribution": "gaussian",
+      "scale": 0.05
+    },
+    {
+      "distribution": "gaussian",
+      "scale": 0.1
+    },
+    {
+      "distribution": "gaussian",
+      "scale": 0.2
+    },
+    {
+      "distribution": "uniform",
+      "scale": 0.05
+    },
+    {
+      "distribution": "uniform",
+      "scale": 0.1
+    },
+    {
+      "distribution": "uniform",
+      "scale": 0.2
+    }
+  ],
+  "counts": [
+    10,
+    25,
+    50,
+    100,
+    200
+  ],
+  "metric_summary": {
+    "MaxS": {
+      "comparisons": 30,
+      "improved_mean": 30,
+      "ci_excludes_zero_in_improving_direction": 10,
+      "delta_range": [
+        -0.17017335314564505,
+        -0.026378571392389034
+      ]
+    },
+    "AvgS": {
+      "comparisons": 30,
+      "improved_mean": 30,
+      "ci_excludes_zero_in_improving_direction": 30,
+      "delta_range": [
+        -0.14951300996949202,
+        -0.04125848096500835
+      ]
+    },
+    "P95S": {
+      "comparisons": 30,
+      "improved_mean": 30,
+      "ci_excludes_zero_in_improving_direction": 19,
+      "delta_range": [
+        -0.17097320951838782,
+        -0.03247448853526074
+      ]
+    },
+    "cosine": {
+      "comparisons": 30,
+      "improved_mean": 30,
+      "ci_excludes_zero_in_improving_direction": 10,
+      "delta_range": [
+        0.0012629943484169259,
+        0.03334282726759458
+      ]
+    },
+    "spearman": {
+      "comparisons": 30,
+      "improved_mean": 0,
+      "ci_excludes_zero_in_improving_direction": 0,
+      "delta_range": [
+        -0.053710333725690555,
+        -0.009129928504556281
+      ]
+    },
+    "top10_overlap": {
+      "comparisons": 30,
+      "improved_mean": 0,
+      "ci_excludes_zero_in_improving_direction": 0,
+      "delta_range": [
+        -0.035859386209645266,
+        -0.004465524113192481
+      ]
+    },
+    "mass_tv": {
+      "comparisons": 30,
+      "improved_mean": 8,
+      "ci_excludes_zero_in_improving_direction": 0,
+      "delta_range": [
+        -0.0012962515284243759,
+        0.002988305262096615
+      ]
+    }
+  },
+  "paired_effects": [
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.03320243376781358,
+        "ci95": [
+          -0.105284187723762,
+          0.05884499939579663
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.04125848096500835,
+        "ci95": [
+          -0.07452692310297879,
+          -0.0049250141601703415
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.03247448853526074,
+        "ci95": [
+          -0.09472104337388355,
+          0.04464924395675149
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.0012629943484169259,
+        "ci95": [
+          -0.006370557931231805,
+          0.007945231427064636
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009133296621033606,
+        "ci95": [
+          -0.013655096566797469,
+          -0.005035701916182519
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.004465524113192481,
+        "ci95": [
+          -0.013561000398565141,
+          0.004458310083698695
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0018458561824822473,
+        "ci95": [
+          -0.010375034276976428,
+          0.016795779978689085
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.03572686837306824,
+        "ci95": [
+          -0.1163142867759134,
+          0.0625500666449207
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.044801038172896705,
+        "ci95": [
+          -0.07709688411771425,
+          -0.011463984943643623
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.04970630554287579,
+        "ci95": [
+          -0.10830262195877706,
+          0.015868559365162564
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002072144856067322,
+        "ci95": [
+          -0.004784698108304774,
+          0.008061214610291533
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009268170912782751,
+        "ci95": [
+          -0.013609550737456181,
+          -0.0052227963765875155
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.004701793543244317,
+        "ci95": [
+          -0.013952889597449171,
+          0.0044148345954563425
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.001813547732994699,
+        "ci95": [
+          -0.010182496935313484,
+          0.016291899761328145
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.04082745770453162,
+        "ci95": [
+          -0.12203564991072009,
+          0.05785601431132301
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.0441333128066618,
+        "ci95": [
+          -0.07639721014344666,
+          -0.01087036560932141
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.04470073254832406,
+        "ci95": [
+          -0.1040787607074725,
+          0.022107122281263398
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002040957927820626,
+        "ci95": [
+          -0.004789906335169246,
+          0.008111780560523004
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009372603167626942,
+        "ci95": [
+          -0.013732801777621144,
+          -0.0052885527527182065
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.0052917497010761495,
+        "ci95": [
+          -0.014814782781984873,
+          0.003935677560781154
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0023211534716464383,
+        "ci95": [
+          -0.009911122976202762,
+          0.017115005578896423
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.03652153359069471,
+        "ci95": [
+          -0.12143758109870334,
+          0.06488629272323858
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.0445229659363517,
+        "ci95": [
+          -0.07694494735073648,
+          -0.012003734505257572
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.04672034929829079,
+        "ci95": [
+          -0.10476008388377733,
+          0.018014329698659338
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002089032289345638,
+        "ci95": [
+          -0.00461760004659763,
+          0.008048955846157986
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009364283007205907,
+        "ci95": [
+          -0.013675575848929146,
+          -0.005334138743533205
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.005307732164208836,
+        "ci95": [
+          -0.014822368473495396,
+          0.0038858389796731525
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002208595904079078,
+        "ci95": [
+          -0.009909345696628748,
+          0.016834255102122327
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.03981137085836396,
+        "ci95": [
+          -0.12831254120161237,
+          0.06946688842878425
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.044390914600100986,
+        "ci95": [
+          -0.07677623850412685,
+          -0.011686638681478628
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.03778813051116597,
+        "ci95": [
+          -0.10203489079967001,
+          0.03897708692416299
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002047049631203406,
+        "ci95": [
+          -0.0046533405776046635,
+          0.008029276616817346
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.00941301745915778,
+        "ci95": [
+          -0.013797472772764432,
+          -0.0053506491984261495
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.005472797927461126,
+        "ci95": [
+          -0.015261860302909528,
+          0.003810514149063375
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0023836299559326203,
+        "ci95": [
+          -0.009865539017549234,
+          0.017281228630944723
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.09887699600636747,
+        "ci95": [
+          -0.17761772071163281,
+          -0.01008160011498676
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07730787663421618,
+        "ci95": [
+          -0.13662905381904666,
+          -0.006456872172114349
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.09277715432677498,
+        "ci95": [
+          -0.16933540996704577,
+          -0.00519527382349442
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002426842760247887,
+        "ci95": [
+          -0.01875999343952212,
+          0.019218666412080223
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.02689564315171828,
+        "ci95": [
+          -0.03769709491458288,
+          -0.0165690599072644
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015484256675966495,
+        "ci95": [
+          -0.035160302909525654,
+          0.0036818453567158366
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002979735761737993,
+        "ci95": [
+          -0.018152524806375258,
+          0.02692484633206766
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.10535583734119428,
+        "ci95": [
+          -0.19079051303824968,
+          -0.007758742772968402
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07538269505942574,
+        "ci95": [
+          -0.1333376662931457,
+          -0.004667910075310266
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.09626409595434694,
+        "ci95": [
+          -0.1727505885348754,
+          -0.0070862726445949965
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.003874483762861898,
+        "ci95": [
+          -0.015502884844355663,
+          0.01969706464734164
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.026670982351261373,
+        "ci95": [
+          -0.037324562471190044,
+          -0.016414507390731796
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.014561976883220388,
+        "ci95": [
+          -0.03393712235950577,
+          0.0042760621761658
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.001403400570100958,
+        "ci95": [
+          -0.018718531196442,
+          0.024316225821387295
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.11394251629020977,
+        "ci95": [
+          -0.20077371272675498,
+          -0.015398216974257325
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07504621555403224,
+        "ci95": [
+          -0.13278632126335765,
+          -0.00547135612461817
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.0987389860179651,
+        "ci95": [
+          -0.1784599122753173,
+          -0.006252629448017458
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.003946302081329358,
+        "ci95": [
+          -0.01501946024985702,
+          0.019593876275242044
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.026839025710292227,
+        "ci95": [
+          -0.03764650493002993,
+          -0.01644701600607698
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015293662813870066,
+        "ci95": [
+          -0.03489463730569948,
+          0.003833060980470296
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002506813789585842,
+        "ci95": [
+          -0.018166819479480994,
+          0.026155471752004947
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.0995436146701805,
+        "ci95": [
+          -0.20290230371651802,
+          0.020351643464689196
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07381470501391646,
+        "ci95": [
+          -0.13308155231036495,
+          -0.0020082749201939492
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.09374693842244851,
+        "ci95": [
+          -0.17511821573268252,
+          0.0012731468106080958
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.003312168347040969,
+        "ci95": [
+          -0.01607550103605335,
+          0.01939538533680486
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.026937211633662198,
+        "ci95": [
+          -0.0377731032228345,
+          -0.01644725422691792
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015486887206058198,
+        "ci95": [
+          -0.035126834396173805,
+          0.003668873056994805
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0026745588472555804,
+        "ci95": [
+          -0.01820124329468716,
+          0.026619025906563936
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.09399983693987099,
+        "ci95": [
+          -0.2123396037394709,
+          0.03683567750978842
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07293215985956576,
+        "ci95": [
+          -0.13164214912201447,
+          -0.00241257146634061
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.08990513006762389,
+        "ci95": [
+          -0.17388871210999415,
+          0.005396399480435718
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.0034634746325497524,
+        "ci95": [
+          -0.01562841830113389,
+          0.01937149610767584
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.027001774745553934,
+        "ci95": [
+          -0.03781766537678492,
+          -0.016554494370541295
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015935233160621766,
+        "ci95": [
+          -0.035827780490235134,
+          0.003212927461139889
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002988305262096615,
+        "ci95": [
+          -0.017898173153731472,
+          0.0269626155807328
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.153557356002233,
+        "ci95": [
+          -0.249369186246463,
+          -0.05613208237188265
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.14652610343438327,
+        "ci95": [
+          -0.20493712769823247,
+          -0.0859903792511588
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.14902989247803552,
+        "ci95": [
+          -0.23623894230347467,
+          -0.05939067967624322
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.03202137128176263,
+        "ci95": [
+          0.011698190252660837,
+          0.051535225615877985
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.0536063937532256,
+        "ci95": [
+          -0.07218786982920111,
+          -0.03648292719712592
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.03492028696691906,
+        "ci95": [
+          -0.06783736548425667,
+          -0.0041461638102829506
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0003494370814603687,
+        "ci95": [
+          -0.027086438819129824,
+          0.02809564296923654
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.17017335314564505,
+        "ci95": [
+          -0.2814437506272294,
+          -0.05183906094224097
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.14951300996949202,
+        "ci95": [
+          -0.20606573690453572,
+          -0.08985206304698808
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.17097320951838782,
+        "ci95": [
+          -0.2598260406983573,
+          -0.07754521883038128
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.03334282726759458,
+        "ci95": [
+          0.013570163839445206,
+          0.05202557527620031
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.05335751589774999,
+        "ci95": [
+          -0.07216213411113617,
+          -0.036021521706466095
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.03489166998804305,
+        "ci95": [
+          -0.0681577799920287,
+          -0.003679151056197688
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0011755451268194294,
+        "ci95": [
+          -0.028044902465023242,
+          0.027139732935651327
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.11581815391081421,
+        "ci95": [
+          -0.23573045609999307,
+          0.0150919182146101
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.14337178680734602,
+        "ci95": [
+          -0.19858445511046263,
+          -0.08364869198026141
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.14716986970691517,
+        "ci95": [
+          -0.23882478633649146,
+          -0.04745564932907976
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.03282829039202853,
+        "ci95": [
+          0.012736230994979034,
+          0.051738835280488484
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.05345490186758283,
+        "ci95": [
+          -0.07210664021761157,
+          -0.03630907893922158
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.0353958549222798,
+        "ci95": [
+          -0.06850783778397769,
+          -0.00433628736548427
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0005211725610271362,
+        "ci95": [
+          -0.02680904246233971,
+          0.027887300706972352
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.055535690039022825,
+        "ci95": [
+          -0.1911088181781936,
+          0.09097283067644543
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.139963568809872,
+        "ci95": [
+          -0.19598461214767096,
+          -0.07986510420518052
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.15186246392436986,
+        "ci95": [
+          -0.23795227154373022,
+          -0.059433375187148765
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.03172354702035013,
+        "ci95": [
+          0.011418313288159027,
+          0.05090229012430972
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.053710333725690555,
+        "ci95": [
+          -0.07228590448992567,
+          -0.03664457876028035
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.035859386209645266,
+        "ci95": [
+          -0.06890250996412915,
+          -0.004882946392985239
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0006003800932378045,
+        "ci95": [
+          -0.025830048343053733,
+          0.029083047791271216
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.07058561946896008,
+        "ci95": [
+          -0.20768989627928042,
+          0.07679612327116518
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.13847787327164382,
+        "ci95": [
+          -0.19438234095118853,
+          -0.07894459985110158
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.1539348684525436,
+        "ci95": [
+          -0.2412179753848974,
+          -0.06160317074447124
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.031388944119893694,
+        "ci95": [
+          0.010980300189569712,
+          0.050551439121040105
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.053600584190780856,
+        "ci95": [
+          -0.07199776019579789,
+          -0.0365543603268372
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.03575001992825825,
+        "ci95": [
+          -0.06899044589477879,
+          -0.004751737744121164
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "uniform",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.00023499204740580316,
+        "ci95": [
+          -0.0265904252070327,
+          0.028665872285541998
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.038372597264157655,
+        "ci95": [
+          -0.09580031222648015,
+          0.023183625463619337
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.04586578767896239,
+        "ci95": [
+          -0.0793129689808042,
+          -0.0128347827931108
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.046846030614665024,
+        "ci95": [
+          -0.09603555117647126,
+          0.003435363764615614
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.0017069393523778077,
+        "ci95": [
+          -0.004770603088993585,
+          0.007649021677510727
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009129928504556281,
+        "ci95": [
+          -0.01351540662982412,
+          -0.004963372073887426
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.0052299721004384295,
+        "ci95": [
+          -0.015095625747309667,
+          0.004084665205261042
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 10,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0024259670920861224,
+        "ci95": [
+          -0.010011749077859013,
+          0.017477973534431597
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.05075895265797927,
+        "ci95": [
+          -0.11564736026674746,
+          0.016005333375729566
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.04841886917237672,
+        "ci95": [
+          -0.08186847357569627,
+          -0.015980896008972536
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.05431177717901207,
+        "ci95": [
+          -0.11260621607868827,
+          0.0016351734432922017
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002171116205555308,
+        "ci95": [
+          -0.004526385748273382,
+          0.008193637837921175
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.00913373094739782,
+        "ci95": [
+          -0.013528228593726514,
+          -0.00498092926661978
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.005389876444798738,
+        "ci95": [
+          -0.015186532483061007,
+          0.003916333200478282
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 25,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002357966847963189,
+        "ci95": [
+          -0.010200268344590107,
+          0.01771233410439957
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.053351186414164226,
+        "ci95": [
+          -0.11922965616369363,
+          0.012214675144466974
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.047514274969806695,
+        "ci95": [
+          -0.07945418276778021,
+          -0.015659636762715964
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.055722253409569315,
+        "ci95": [
+          -0.10537995692727654,
+          -0.008500089060461695
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.0024508221011743415,
+        "ci95": [
+          -0.004177122081866915,
+          0.00834718481031414
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009240582282276371,
+        "ci95": [
+          -0.013671332253312444,
+          -0.005056714840445256
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.005476683937823803,
+        "ci95": [
+          -0.015619155041849327,
+          0.003950458349940256
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 50,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002426525965535712,
+        "ci95": [
+          -0.010254298332941876,
+          0.017837232645360038
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.026378571392389034,
+        "ci95": [
+          -0.11690259075339064,
+          0.08193593103228787
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.04655596663302708,
+        "ci95": [
+          -0.07780588006776135,
+          -0.014952840359757743
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.054464484458061034,
+        "ci95": [
+          -0.10469701157878814,
+          -0.004631328094955826
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.002273447304292102,
+        "ci95": [
+          -0.00437127050663912,
+          0.00815853635248083
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.00927760796922128,
+        "ci95": [
+          -0.013717344803770357,
+          -0.005128567366674068
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.00542439218812274,
+        "ci95": [
+          -0.015539760860900738,
+          0.003986590275009965
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 100,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0022557978645690994,
+        "ci95": [
+          -0.0102985789561391,
+          0.01735386182203696
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.031186555603616984,
+        "ci95": [
+          -0.12352606820903105,
+          0.08005232691081003
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.045174725912961164,
+        "ci95": [
+          -0.07668243550083324,
+          -0.013494760102630307
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.04609897289139262,
+        "ci95": [
+          -0.10157479136535451,
+          0.011293069900458863
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.0020744190248669493,
+        "ci95": [
+          -0.00447696014387176,
+          0.00782490201654188
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.009285247045613915,
+        "ci95": [
+          -0.013681570249171849,
+          -0.005192795384689008
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.00537821841371064,
+        "ci95": [
+          -0.015308675767237935,
+          0.003974303507373436
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.05,
+      "count": 200,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0023486501539531947,
+        "ci95": [
+          -0.010060838452650394,
+          0.017393349316196533
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.08345301574799179,
+        "ci95": [
+          -0.1594400227749752,
+          0.0031432830531096883
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.0729184852579888,
+        "ci95": [
+          -0.13057979797633193,
+          -0.004012635146580167
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.07983452330566364,
+        "ci95": [
+          -0.1532426223813513,
+          0.003462715538446676
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.0044958969471794496,
+        "ci95": [
+          -0.013787709961576817,
+          0.020017493481795087
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.027054216448722652,
+        "ci95": [
+          -0.03779299999671671,
+          -0.016664851361029562
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.01584575528098846,
+        "ci95": [
+          -0.035624790753288185,
+          0.003453039059386191
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 10,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.002342396640213966,
+        "ci95": [
+          -0.01868366804225913,
+          0.026548420790068476
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.09743124705837633,
+        "ci95": [
+          -0.18198279745825194,
+          -0.0010190119016828347
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.0755624145597959,
+        "ci95": [
+          -0.1347556250404784,
+          -0.00418572391882375
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.08988094463157091,
+        "ci95": [
+          -0.1679499304721896,
+          -0.0001924059493864446
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.004421121844698053,
+        "ci95": [
+          -0.014174699230890035,
+          0.019947370404038763
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.02680249633635033,
+        "ci95": [
+          -0.03753146114027076,
+          -0.01644992673087559
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015512793941809487,
+        "ci95": [
+          -0.03533106416899165,
+          0.0036733080908728662
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 25,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0018652252266138187,
+        "ci95": [
+          -0.01907907917764698,
+          0.02575894015830738
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.09049917147299373,
+        "ci95": [
+          -0.1784136152382848,
+          0.00828294165136311
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07421853822951341,
+        "ci95": [
+          -0.1310695278274153,
+          -0.005352557455451249
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.08774531799186004,
+        "ci95": [
+          -0.16615970789860393,
+          -0.00014189768802707643
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.004295884784086736,
+        "ci95": [
+          -0.013862962584749455,
+          0.01942174436653619
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.02669525780553185,
+        "ci95": [
+          -0.037508231672808104,
+          -0.016299754464933005
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015219051414906346,
+        "ci95": [
+          -0.03465553806297333,
+          0.003872110402550784
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 50,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0014134025008990846,
+        "ci95": [
+          -0.018912272239033256,
+          0.024665976538137978
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.10872403483211719,
+        "ci95": [
+          -0.20023033952726604,
+          -0.01009954226258803
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07405502642075049,
+        "ci95": [
+          -0.131461026851745,
+          -0.0047781418396267705
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.09445577537448831,
+        "ci95": [
+          -0.1744040102343502,
+          -0.004035795608779297
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.003925966402095811,
+        "ci95": [
+          -0.014585122785925766,
+          0.019413983162201044
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.02686775044440977,
+        "ci95": [
+          -0.037730012354019925,
+          -0.016408300952099233
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.015692068553208448,
+        "ci95": [
+          -0.035295191311279436,
+          0.0034497130330809144
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 100,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0021568678775537946,
+        "ci95": [
+          -0.01863667198105521,
+          0.0260647385085969
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.08589427797422253,
+        "ci95": [
+          -0.19576424856210373,
+          0.036202788726034885
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.07491426418945782,
+        "ci95": [
+          -0.13258469501782766,
+          -0.0049950569572269855
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.09550751725089594,
+        "ci95": [
+          -0.17513823977431647,
+          -0.005505881685812765
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.004131848350306784,
+        "ci95": [
+          -0.014548078081030704,
+          0.01967636184228698
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.026824570533307064,
+        "ci95": [
+          -0.03767432118415906,
+          -0.016369038415613737
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.01563395775209246,
+        "ci95": [
+          -0.03521829862495017,
+          0.003476910621761639
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.1,
+      "count": 200,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": 0.0021303397021616433,
+        "ci95": [
+          -0.018723758909994306,
+          0.02601617876207439
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.15126590491530098,
+        "ci95": [
+          -0.23979743171131387,
+          -0.05892131002357524
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.13933729402173592,
+        "ci95": [
+          -0.19885242828581448,
+          -0.0762152703538509
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.15312487484639595,
+        "ci95": [
+          -0.23631076307942933,
+          -0.06577103545469706
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.030192505801215998,
+        "ci95": [
+          0.008474484211199371,
+          0.050753981650869084
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.052865766586099296,
+        "ci95": [
+          -0.07112118256312576,
+          -0.035991800161707076
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.03437823834196892,
+        "ci95": [
+          -0.06825310880829016,
+          -0.0031086787564767364
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 10,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0008787165725502738,
+        "ci95": [
+          -0.028148484406795526,
+          0.02746787263868024
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.15295556985236533,
+        "ci95": [
+          -0.24711176892169295,
+          -0.05608901891297032
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.14315450236277724,
+        "ci95": [
+          -0.1975515253273886,
+          -0.08441487137988143
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.14651713721149554,
+        "ci95": [
+          -0.22676156589524382,
+          -0.06211783107337069
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.03172480075587227,
+        "ci95": [
+          0.011812716752125198,
+          0.0506369470857958
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.05328378775827567,
+        "ci95": [
+          -0.07177133317940458,
+          -0.03620760981802406
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.034862654444001585,
+        "ci95": [
+          -0.06800406935033876,
+          -0.0037353607014747013
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 25,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0012488674921297327,
+        "ci95": [
+          -0.028056543284943263,
+          0.02713235862077723
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.13595764217676998,
+        "ci95": [
+          -0.24314238477539865,
+          -0.02487668292444619
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.14079664878251888,
+        "ci95": [
+          -0.19617506300873105,
+          -0.08157928339896786
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.13691508094221022,
+        "ci95": [
+          -0.21923801604638937,
+          -0.05031029623790097
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.03134295045913302,
+        "ci95": [
+          0.010990077491342416,
+          0.05030175097614918
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.053114164744079956,
+        "ci95": [
+          -0.07136813510493561,
+          -0.03615039643044851
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.03484623355918694,
+        "ci95": [
+          -0.06782786369071345,
+          -0.0039041410920685584
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 50,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0012962515284243759,
+        "ci95": [
+          -0.027902424298584267,
+          0.026846111434148258
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.09927473316057445,
+        "ci95": [
+          -0.21733081474620652,
+          0.025827050679549917
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.13838925538390925,
+        "ci95": [
+          -0.19319946117166062,
+          -0.07989961173878761
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.14466164798606485,
+        "ci95": [
+          -0.22425480442479326,
+          -0.06051067901902029
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.030434008468547744,
+        "ci95": [
+          0.010294011412660203,
+          0.049543033485879004
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.05310466728090159,
+        "ci95": [
+          -0.07146635251549292,
+          -0.03611687837870112
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.03519808688720606,
+        "ci95": [
+          -0.06828306297329614,
+          -0.004215349740932633
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 100,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0004711376108474685,
+        "ci95": [
+          -0.027251582930635912,
+          0.028018915673786542
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "MaxS",
+      "effect_on_minus_off": {
+        "mean": -0.1163149787491124,
+        "ci95": [
+          -0.24978872650987508,
+          0.026102618295887517
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "AvgS",
+      "effect_on_minus_off": {
+        "mean": -0.1391334541568633,
+        "ci95": [
+          -0.19485013820290234,
+          -0.07950655856678115
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "P95S",
+      "effect_on_minus_off": {
+        "mean": -0.14851339860812499,
+        "ci95": [
+          -0.23178700077368017,
+          -0.06114461332698503
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "cosine",
+      "effect_on_minus_off": {
+        "mean": 0.030645264415428395,
+        "ci95": [
+          0.010335173482724933,
+          0.05000510060765284
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "spearman",
+      "effect_on_minus_off": {
+        "mean": -0.05311526350269679,
+        "ci95": [
+          -0.0715139924488111,
+          -0.0361244101541965
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "top10_overlap",
+      "effect_on_minus_off": {
+        "mean": -0.035074810681546435,
+        "ci95": [
+          -0.06830197090474294,
+          -0.004061544440015953
+        ],
+        "n": 50
+      }
+    },
+    {
+      "risk_row": "loc_riskm50",
+      "off_row": "loc_risk0",
+      "distribution": "gaussian",
+      "scale": 0.2,
+      "count": 200,
+      "metric": "mass_tv",
+      "effect_on_minus_off": {
+        "mean": -0.0005880084300272365,
+        "ci95": [
+          -0.027692138575817007,
+          0.02811917364839166
+        ],
+        "n": 50
+      }
+    }
+  ]
+}

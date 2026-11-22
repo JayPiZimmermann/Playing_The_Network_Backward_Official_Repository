@@ -22,7 +22,9 @@ version changes the API or the metric definitions (notably `quantus~=0.6.0`). Th
 environment of the reported run is recorded in **`requirements-lock.txt`**, produced with
 `pip freeze > requirements-lock.txt` in the evaluation environment; install from it
 (`pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu126`)
-for a bit-exact reproduction.
+to match the recorded package versions. Hardware, accelerator kernels and
+nondeterministic operations can still affect fresh evaluations; report numerical
+tolerances when comparing independently recomputed scores.
 
 Pretrained backbones are downloaded by torchvision with pinned weight enums:
 `VGG16_Weights.IMAGENET1K_V1`, `ResNet50_Weights.IMAGENET1K_V2`, `ViT_B_16_Weights.IMAGENET1K_V1`.
@@ -38,7 +40,7 @@ python data/download_imagenet_val.py /path/to/ILSVRC2012_img_val.tar   # only th
 ```
 
 The ILSVRC2012 validation images require a (free) login at <https://image-net.org>.
-`data.imagenet_s.ImageNetS` keeps the 616 masks that have a matching validation image;
+`data.imagenet_s.ImageNetS` keeps the 616 masks whose ImageNet-S class equals the ILSVRC2012 label;
 `build_val_split` (seed 42) holds out 50 images (one per class) for configuration
 selection and `build_test_split` returns the remaining 566 images, of which the 565 whose
 object is visible in the evaluated crop form the **565-image test split**. The
@@ -75,8 +77,17 @@ files) and is resumable with `--resume`. `M` is one of `vit_b16`, `vgg16`, `resn
 selection, test-evaluation, bootstrap, runtime and table steps above sequentially on one GPU.
 `make_tables` works with partial results and writes red `??` placeholders for missing
 numbers. Table cells are test-split means; **bold** marks the best row of a column and
-`≈` rows that are not significantly different from it (paired bootstrap, McNemar for PG,
-Holm-corrected, p >= 0.05).
+`≈` marks a comparison with the observed best whose adjusted p-value is at least
+0.05; this does not establish equivalence. Holm correction covers every unordered
+pair of eligible rows in the displayed metric column before winner comparisons
+are reported. ImageNet-S uses paired image bootstrap tests and McNemar's test for
+binary PG. VOC uses paired image-cluster bootstrap tests for every metric, including
+PG: each sampled image retains all of its class records, and means remain weighted
+by image–class records. The default is 10,000 resamples with seed 0 and 95%
+percentile intervals. VOC p-values use null-centered bootstrap errors with the
+plus-one Monte Carlo correction. `bootstrap_ci` records the sampling design in
+`bootstrap_metadata.json`; `make_tables` recomputes VOC intervals if cached CIs lack
+matching image-cluster metadata.
 
 Protocol in short: every grid row is evaluated on the 50-image validation split with
 AL, PG, TK, PF5, PF20 and Sel; per method, `loc` minimises the rank-sum over
@@ -91,7 +102,13 @@ the paper comes from `reproduce.runtime_benchmark` on one GPU type.
 The paper's own runs ship in compact form in `results_summary/` (row JSONs, per-image
 scores, validation selections and runtime benchmarks; see `results_summary/README.md`):
 `python -m reproduce.make_tables --results results_summary --out tables --strict`
-regenerates every result table of the paper from them without a GPU.
+regenerates 13 outputs without a GPU: the main table, four test CI tables, three
+validation-selection tables, three ablation tables, the attention-rule table and
+`numbers.tex`. Six diagnostic outputs require inputs that are not shipped here:
+`diagnostic_numbers.tex`, `double_random_tabular.tex`, `input_baseline_tabular.tex`,
+`per_image_corr_tabular.tex`, `pg_granularity_tabular.tex` and
+`sanity_check_tabular.tex`. Recreating those diagnostics requires the corresponding
+experiment outputs or cached attribution maps.
 
 ### Compute estimate
 
@@ -105,6 +122,31 @@ the full test evaluation of all three models is several hundred GPU-hours.
 random subset of test images, identical for all rows) reduce this. The VOC transfer
 (tuning on 556 and testing on 2,743 samples, no MaxS/AvgS) is ~150 GPU-hours.
 
+## Additional controls
+
+The scripts `reproduce/control_*.py` implement the additional controls reported with the
+thesis: fixed power sharpening, full deletion and insertion curves, risk and gate
+robustness contrasts, the Stopping Game pooling and signed-gradient audits, the numerical
+alpha-beta-LRP recovery checks, and the checkpoint-aligned randomization and local
+Hellinger controls. Their aggregated outputs ship in `results_summary/controls/` (see its
+README for the mapping from files to controls). The recovery checks use three ImageNet-S
+images each and the pretrained torchvision weights:
+
+```bash
+python -m reproduce.control_rg_recovery            # VGG-16 against Zennit alpha-beta LRP
+python -m reproduce.control_rg_vit_end_to_end      # ViT-B/16, end to end
+python -m reproduce.control_rg_attention_recovery  # ViT-B/16, every attention block
+```
+
+They write to `results/controls/` by default and read the datasets from the locations of the
+Data section.
+
+`experiments/plot_rg_temperature_ablation.py` renders the qualitative routing-temperature
+sweep and `experiments/grids/vit_rg_low_temperature.json` lists the additional
+low-temperature rows; `reproduce/temperature_precision_probe.py` compares precisions at low
+temperatures. These three files assume that this directory is `code/playing_backward`
+inside the thesis repository.
+
 ## Testing
 
 ```bash
@@ -112,7 +154,37 @@ pytest                   # all tests (pytest.ini: testpaths = tests)
 pytest -m "not slow"     # skip tests that download pretrained weights
 ```
 
+## Code layout
+
+```
+bwgame/
+  dc_context.py, patcher.py, operations/   DC decomposition of the network (forward/backward kernels)
+  game_theory/                             Fan-in entropy bias, per-layer activation / ADF cache
+  xai/methods/                             Attribution methods (RG = routing_game, SG = adf_game, baselines)
+  xai/wrappers.py                          Equivariant averaging wrapper (RG+Eq)
+  evaluation/                              Evaluator, Quantus bridge, splits, statistics (see its README)
+reproduce/
+  build_grids.py, select_configs.py, evaluate_selected.py, ablation_rows.py, sweep_rows.py,
+  bootstrap_ci.py, runtime_benchmark.py, make_tables.py, pg_granularity.py, pascal_voc.py,
+  main_tables_imagenet_s.py, hellinger_sanity.py, diagnostic_figures.py,
+  qualitative_figure.py, common.py
+  control_*.py                            Additional controls (see above)
+  temperature_precision_probe.py           Low-temperature precision comparison
+experiments/
+  grids/                                   Declared validation grids (CSV), low-temperature rows (JSON)
+  plot_rg_temperature_ablation.py          Qualitative routing-temperature sweep
+  sanity_check_randomization/, hellinger_*/  Randomisation and Hellinger diagnostics
+results_summary/                           Row results, per-image scores, selections and runtime benchmarks of the paper's runs (see its README)
+  controls/                                Aggregated outputs of the additional controls
+tools/export_results_summary.py            Export of results_summary/ from a full results/ directory
+data/
+  download_imagenet_s.sh, download_imagenet_val.py, download_pascal_voc.sh
+  imagenet_s.py, pascal_voc.py, imagenet_class_index.json
+tests/                                     Unit and integration tests
+```
 
 ## License
 
 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0); see [LICENSE](LICENSE).
+The file `bwgame/xai/methods/_chefer_vit_lrp.py` is adapted from third-party code and stays under the
+MIT License reproduced in its header.

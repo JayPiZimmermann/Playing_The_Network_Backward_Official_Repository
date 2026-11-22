@@ -263,7 +263,7 @@ def smooth_l1_loss(output: Tensor, target: Tensor) -> Tensor:
 # Pytest tests
 # =============================================================================
 
-FLOAT64_CASES = {"AutoEncoder_MSE"}
+FLOAT64_CASES = {"AutoEncoder_MSE", "DeepSegNet_SmoothL1", "DeepResAutoEncoder_MSE"}
 
 
 @pytest.mark.parametrize("name,model_factory,x_shape,target_factory,loss_fn,marks", [
@@ -284,12 +284,10 @@ FLOAT64_CASES = {"AutoEncoder_MSE"}
      (2, 3, 32, 32), lambda: torch.randn(2, 3, 32, 32), mse_loss, ()),
     pytest.param("DeepSegNet_SmoothL1",
      lambda: DeepSegmentationNet(in_channels=3, num_classes=5),
-     (2, 3, 64, 64), lambda: torch.randn(2, 5, 64, 64), smooth_l1_loss, (),
-     marks=pytest.mark.xfail(reason="relative error above the tolerance of this check on deep skip-connection architectures")),
+     (2, 3, 64, 64), lambda: torch.randn(2, 5, 64, 64), smooth_l1_loss, ()),
     pytest.param("DeepResAutoEncoder_MSE",
      lambda: DeepResAutoEncoder(in_channels=3, num_blocks=2),
-     (2, 3, 32, 32), lambda: torch.randn(2, 3, 32, 32), mse_loss, (),
-     marks=pytest.mark.xfail(reason="relative error above the tolerance of this check on residual-block architectures")),
+     (2, 3, 32, 32), lambda: torch.randn(2, 3, 32, 32), mse_loss, ()),
 ])
 def test_model_with_loss_dc(name, model_factory, x_shape, target_factory, loss_fn, marks):
     # The exactness check runs in float64 for models whose float32 accumulation

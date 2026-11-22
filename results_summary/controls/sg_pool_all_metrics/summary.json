@@ -1,0 +1,952 @@
+{
+  "protocol": {
+    "protocol": "sg-original-pool-indices-all-paper-metrics-v1",
+    "model": "vgg16",
+    "split": "val",
+    "n_images": 50,
+    "cases": {
+      "anchor": {
+        "adf_lambda": 0.0,
+        "adf_input_variance": 1.0,
+        "adf_probabilistic": false
+      },
+      "loc": {
+        "adf_input_variance": 5.0,
+        "adf_lambda": -1.0,
+        "adf_probabilistic": true
+      },
+      "faith": {
+        "adf_input_variance": 1.0,
+        "adf_lambda": -0.3,
+        "adf_probabilistic": false
+      }
+    },
+    "pool_method": "adf_game_original_pool_indices",
+    "model_state_sha256": "14c3c3e9baccacf596909a4721bcdd8c4fc78240ceb00e8e2a805b6e9044bdaf",
+    "source_sha256": {
+      "bwgame/__init__.py": "c7451237ad55376330de0988280d479b847500764d79c95583763f0e69f0311e",
+      "bwgame/alignment_cache.py": "fb40b79d40b5dcb1d8696fa663beedc4929523bbf20dba8901e2fa37f06adb63",
+      "bwgame/composite_replacer.py": "a1e61829c9e550f5b1acd12adf9232a33fca948c574f1abc8a805f976d8f1d5e",
+      "bwgame/dc_context.py": "f2dcadffbd91e7c96f63a72de8b4f7221f9bbb067cad3c3f2f191a05d76c6570",
+      "bwgame/evaluation/__init__.py": "263ba42a677541d1282b91ba71425c8542213369d4a060b520bc4e510da0aaf4",
+      "bwgame/evaluation/config_loader.py": "e27afd1c91b117cb85bf10a3797764e1eaea5db264a87eab80ccaa27005c5720",
+      "bwgame/evaluation/configs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bwgame/evaluation/dataset.py": "7e6109518731ff0a838281ba53b17854739702984e84d68470bcc3110abf1625",
+      "bwgame/evaluation/evaluator.py": "221d5edc16b3b06380280a2aa556acb317ea6e259e9df1bd3f37fc3cab51c073",
+      "bwgame/evaluation/metric_spec.py": "687116934d5518be53fa9e42d42bbda29d58d33fa3e77f9e6a9aa70a38e25ddd",
+      "bwgame/evaluation/metrics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bwgame/evaluation/metrics/sanity_check.py": "8ded4ca62c5e4f9fdfd79f40984a1b10526f7362d3cca717c249c38c1dceccc3",
+      "bwgame/evaluation/quantus_bridge.py": "cc39cf7832b09f11c364ff9ea3ab76ed5891d836c13de69e389e6811d032d41f",
+      "bwgame/evaluation/run_eval.py": "5585fe43e795d1ef4b6646f7f770073c27c41d71461b97ec6cb5705988b44b9a",
+      "bwgame/evaluation/stats.py": "453eade903b07cc8a349204b6d511b8edd7414e82e8359a6842d13ad7428b864",
+      "bwgame/functional_replacer.py": "32256c95f74b4cfa677fbd9f2e764a60f5cebcdac7c0dc3a37c95c0e54551136",
+      "bwgame/game_theory/__init__.py": "32a0f5f0696a65de3c663013b868122edaee5466f97608dc8ca4175cb0939590",
+      "bwgame/game_theory/entropy.py": "d5095a34efdbb569ee20aa55ebdc385244c50432f793eae800182026bfe3dae9",
+      "bwgame/game_theory/game_context.py": "67c3c2c9894f0246f391037be88d0e44fc5ac529599a85ffaab99acf46789167",
+      "bwgame/inline_module_replacer.py": "0c8aac9dabf4c9969d93c40f6a05d7531075909849684a2b752805c16e4e2956",
+      "bwgame/logging_config.py": "63e29a61681a35dbe3643efc2a648aa009621ac660ef5a897571ae137a0ce270",
+      "bwgame/operations/__init__.py": "f8ad33180850f634ccc3f185878aade74ecf65b9e8f810ebba3cd5fe21fd182a",
+      "bwgame/operations/add.py": "cfa1f5107f470e06d1749d72d375358b97520a030776aba995a0810b473c0d17",
+      "bwgame/operations/avgpool.py": "f44e6946b4f503aa319bedbef6fe9f7f2cd29849651b874bf0193f1a16227f8e",
+      "bwgame/operations/base.py": "74087ad988f211c820627311faaae1dda9b71cf99764feb2b028ffd22e662d07",
+      "bwgame/operations/batchnorm.py": "aa4e1b8cb25a517402a621de769fb5f2cb4e10e79bd8385bf151683edfd5864b",
+      "bwgame/operations/contiguous.py": "2ea4409918e270a79d19f396b9264413d44b3d955aa814695a9b70d398bd71a6",
+      "bwgame/operations/conv.py": "67695c0d8586735b6171159f860e0a528a7bfd9c753f6b7a78f5b34de38cb58c",
+      "bwgame/operations/conv_transpose.py": "81d588cca6136faa3497cb92151d1268c6004c4b0bebb06a494bebb4df8a650f",
+      "bwgame/operations/embedding.py": "617812fa2d54411baf44ed2cc1ae840998d1a8864921d7ca97d7760d78122903",
+      "bwgame/operations/gather.py": "c2cbfc98282f2bbbd38bc750c4b40dca63877c03f152ad59e594518ce2e6a447",
+      "bwgame/operations/gelu.py": "b30483197737ab2900f5583d8803f58d1385cd0ee6c9e932b5cd396ab8c0792f",
+      "bwgame/operations/layernorm.py": "c46171225e25bfd4f7e650aac53a398cca8015a5ecf79aae03df94036d4921f5",
+      "bwgame/operations/linear.py": "c8216f8c9ef2769f66afa6b015371f27dddc9345dfa35062bb710f771d4f5085",
+      "bwgame/operations/matmul.py": "a4a5a7466a04889527ae07f04f07eeccfe7caf5dc6af884d4243dfa5ed485fb1",
+      "bwgame/operations/maxpool.py": "ba7396504e4bc1d726798a6013461f4c6a97cc9bd19637f809f062f71e5b51f2",
+      "bwgame/operations/mean.py": "be38d9b527ab0efac55fc599e06037278722027a30b7d3bb18cf3a7ab7c92fc7",
+      "bwgame/operations/mul.py": "ec422e443dc6eb8c95179f40fdbcc4f79010468e876b67d75593bb84fb183fc3",
+      "bwgame/operations/patch_builder.py": "898626577fdba272fc1fdf874a2e95c50d4e062513a85a829e9ecc515deac070",
+      "bwgame/operations/relu.py": "aced33e0e08162279816d2c8b754f17b94762c6b21064b1709702fa0775332d5",
+      "bwgame/operations/shape_ops.py": "434807d3adec68a7e3d69ff232da0b7bcd534ed63b308ac3b20408a0cb9bfb4c",
+      "bwgame/operations/softmax.py": "aaf0e61f647f1b8c2996d3e4e61ab3d5527db9c6b4bcca3bd61f386b66cfa3be",
+      "bwgame/operations/sum.py": "f0b01c772a5c01bf3fc1bc0091e2b5e31606139d7dd8ccdfee279391c8f891dd",
+      "bwgame/operations/swish.py": "235074734b13f13bca9d721e9ad6c0c642fda8edb022eec6a320a6e29a1d9639",
+      "bwgame/operations/tensor_ops.py": "44831bfb9226dc9872ed376c04a650371106c3cdd28234e44ceac355472121ac",
+      "bwgame/patcher.py": "ebfce0c77ff091eb65f29d51ecc77e31c2c4157e7cd23c9450d568ecf2c6d8b8",
+      "bwgame/xai/__init__.py": "d5c0acb8cefcdde1072bbb326834fa8ac46acff9ab73f1ddf6cafc3c6c5b2e94",
+      "bwgame/xai/base.py": "c492cf5afcdf5b5fb487ec3dc1528c15ec08990e60d71bbd0f11f4c89b2a7f40",
+      "bwgame/xai/layer_hooks.py": "ed57a67f3a69c77ca6cc6f11596a281bb0cd1b9572ce4cc4f2c35b3182eeb9a0",
+      "bwgame/xai/methods/__init__.py": "5a83bc058b0930653ed5f91ef5c7b39c79a8e77440bf7055daaa52316622059b",
+      "bwgame/xai/methods/_chefer_vit_lrp.py": "6711cc917cf3293a3a2eba8f913dea5d9f4b0e0ce08f8199135667115739d4db",
+      "bwgame/xai/methods/_deeplift_network.py": "1811c8b19c339d92afdc360e43a23a9e929a6e93dedae888b25567257f9175a8",
+      "bwgame/xai/methods/_lxt_vit.py": "712ef85b1294faef070980391fa8ae64e519eafe4b0e13722243cb457e5550ab",
+      "bwgame/xai/methods/adf_game.py": "f743b10bcc42b6c623df6d452d0f0c3e4bdd9a088a083440e224793171fca257",
+      "bwgame/xai/methods/attention_rollout.py": "bdb8dc135c2d44f920cf9e4e29698753b39eafa1bb168373a2041299c02b195d",
+      "bwgame/xai/methods/captum_methods.py": "9c3229cf0cbe4905dd189f922002df8915052a4b0ced83bd4d6b69f638a1cfce",
+      "bwgame/xai/methods/dave.py": "01a177a23f71c2f5e5e268f9a7088b047aa69b93b149c463307b87f0f729d059",
+      "bwgame/xai/methods/grad_attention_rollout.py": "c9055bfc6f009b0bae5a1bdb705da2ec5bfc6ca32595702a085e1c3edb7f61dd",
+      "bwgame/xai/methods/gradcam_methods.py": "625e20363caf35c35ff32e7ab8a8eb088cfeaf3719c100e54d77bbdb9d94e4df",
+      "bwgame/xai/methods/hellinger.py": "f0476495bfa48cd3e0df2cb75d350512cc0f1a22f5fbd9755257e40363e136ae",
+      "bwgame/xai/methods/lrp_library.py": "94e224f7ba27bc65562157ec06de2dbe38ece1d121e7c5f0ced43759d31669d4",
+      "bwgame/xai/methods/routing_game.py": "8371f6f571811e1418a5fbe29a13a8650ff65f69d433fceef9fe0520cf79fc42",
+      "bwgame/xai/methods/tibav.py": "dbaac1412b2fec1bdec5209bcdf4123bc3fa2a3e3ebab576a53cd286f0397b59",
+      "bwgame/xai/model_utils.py": "2d23abfe8266d642fbacd88f50aef937f74e8c8a4bffcb9d873a2a9d698a194e",
+      "bwgame/xai/postprocess.py": "1f38097ec26796efdff5dc5051406513cde6f8d45e665bc53f3a632f5ba864c9",
+      "bwgame/xai/registry.py": "a3fc8ec94450aafb073fbf399ecad88a11f3a2fc57b6774362d33d9f10839250",
+      "bwgame/xai/types.py": "1150a3e16d398e784b7104f3b665f638444fd63ebc1c823bb83b6fb1282901e3",
+      "bwgame/xai/wrappers.py": "03e4e81bcad587df43f84b835cc84a988e43e34017ed8f956976749bdbfcf57b",
+      "reproduce/control_sg_pool_all_metrics.py": "8792fc5d960834c3a36b5666fb69231105882ef34c9bcbe28b7c300eb64b8471",
+      "reproduce/common.py": "1a49f4ce200bda33d73c7da97f056780850a405b2b48915455e23753e2644c67",
+      "reproduce/control_common.py": "d44c67e0df3731ac053c68b9ce2c8d1bb205a6a5f27cd5bdc2b3008354e862e6"
+    },
+    "ordered_image_ids": [
+      "ILSVRC2012_val_00037846.JPEG",
+      "ILSVRC2012_val_00013484.JPEG",
+      "ILSVRC2012_val_00002668.JPEG",
+      "ILSVRC2012_val_00036066.JPEG",
+      "ILSVRC2012_val_00024981.JPEG",
+      "ILSVRC2012_val_00008113.JPEG",
+      "ILSVRC2012_val_00025887.JPEG",
+      "ILSVRC2012_val_00012507.JPEG",
+      "ILSVRC2012_val_00046856.JPEG",
+      "ILSVRC2012_val_00003498.JPEG",
+      "ILSVRC2012_val_00041378.JPEG",
+      "ILSVRC2012_val_00031690.JPEG",
+      "ILSVRC2012_val_00045758.JPEG",
+      "ILSVRC2012_val_00006447.JPEG",
+      "ILSVRC2012_val_00038578.JPEG",
+      "ILSVRC2012_val_00042787.JPEG",
+      "ILSVRC2012_val_00008292.JPEG",
+      "ILSVRC2012_val_00004924.JPEG",
+      "ILSVRC2012_val_00001098.JPEG",
+      "ILSVRC2012_val_00024318.JPEG",
+      "ILSVRC2012_val_00021541.JPEG",
+      "ILSVRC2012_val_00015394.JPEG",
+      "ILSVRC2012_val_00034755.JPEG",
+      "ILSVRC2012_val_00003062.JPEG",
+      "ILSVRC2012_val_00044185.JPEG",
+      "ILSVRC2012_val_00010195.JPEG",
+      "ILSVRC2012_val_00046789.JPEG",
+      "ILSVRC2012_val_00035775.JPEG",
+      "ILSVRC2012_val_00012634.JPEG",
+      "ILSVRC2012_val_00032753.JPEG",
+      "ILSVRC2012_val_00029840.JPEG",
+      "ILSVRC2012_val_00022317.JPEG",
+      "ILSVRC2012_val_00013468.JPEG",
+      "ILSVRC2012_val_00042747.JPEG",
+      "ILSVRC2012_val_00014725.JPEG",
+      "ILSVRC2012_val_00034159.JPEG",
+      "ILSVRC2012_val_00039205.JPEG",
+      "ILSVRC2012_val_00022600.JPEG",
+      "ILSVRC2012_val_00020607.JPEG",
+      "ILSVRC2012_val_00021184.JPEG",
+      "ILSVRC2012_val_00018712.JPEG",
+      "ILSVRC2012_val_00028133.JPEG",
+      "ILSVRC2012_val_00002873.JPEG",
+      "ILSVRC2012_val_00008077.JPEG",
+      "ILSVRC2012_val_00015348.JPEG",
+      "ILSVRC2012_val_00006693.JPEG",
+      "ILSVRC2012_val_00014999.JPEG",
+      "ILSVRC2012_val_00030967.JPEG",
+      "ILSVRC2012_val_00043642.JPEG",
+      "ILSVRC2012_val_00017627.JPEG"
+    ],
+    "transformed_dataset_sha256": "13f9d769e768a50a51bd31740df3ec164011d49eb66e13d2afdbd1cc115af422",
+    "metric_configs": [
+      {
+        "name": "pixel_flipping_abs_20pct",
+        "metric_class": "pixel_flipping",
+        "enabled": true,
+        "category": "faithfulness",
+        "params": {
+          "features_in_step": 1568,
+          "abs": true,
+          "normalise": true,
+          "perturb_baseline": "mean",
+          "auc_percentage": 0.2
+        }
+      },
+      {
+        "name": "pixel_flipping_abs_5pct",
+        "metric_class": "pixel_flipping",
+        "enabled": true,
+        "category": "faithfulness",
+        "params": {
+          "features_in_step": 1568,
+          "abs": true,
+          "normalise": true,
+          "perturb_baseline": "mean",
+          "auc_percentage": 0.05
+        }
+      },
+      {
+        "name": "selectivity",
+        "metric_class": "selectivity",
+        "enabled": true,
+        "category": "faithfulness",
+        "params": {
+          "abs": true,
+          "normalise": true,
+          "perturb_baseline": "mean",
+          "features_in_step": 1568
+        }
+      },
+      {
+        "name": "attribution_localisation",
+        "metric_class": "attribution_localisation",
+        "enabled": true,
+        "category": "localisation",
+        "params": {
+          "abs": true,
+          "normalise": true
+        }
+      },
+      {
+        "name": "pointing_game",
+        "metric_class": "pointing_game",
+        "enabled": true,
+        "category": "localisation",
+        "params": {
+          "abs": true
+        }
+      },
+      {
+        "name": "top_k_intersection",
+        "metric_class": "top_k_intersection",
+        "enabled": true,
+        "category": "localisation",
+        "params": {
+          "abs": true,
+          "normalise": true
+        }
+      },
+      {
+        "name": "avg_sensitivity",
+        "metric_class": "avg_sensitivity",
+        "enabled": true,
+        "category": "robustness",
+        "params": {
+          "nr_samples": 50,
+          "abs": true,
+          "normalise": true
+        }
+      },
+      {
+        "name": "max_sensitivity",
+        "metric_class": "max_sensitivity",
+        "enabled": true,
+        "category": "robustness",
+        "params": {
+          "nr_samples": 50,
+          "abs": true,
+          "normalise": true
+        }
+      }
+    ],
+    "pooling_change_only": true,
+    "sensitivity_alpha": 0.0,
+    "relu_zero_convention": "legacy >= 0 in both rows",
+    "target": "dataset label in both rows",
+    "sensitivity_noise": "paper content-seeded uniform +/-0.2; 50 draws",
+    "top_k": 1000,
+    "runtime_note": "controlled row includes an extra original-forward index-capture pass; unoptimized control"
+  },
+  "cases": {
+    "anchor": {
+      "params": {
+        "adf_lambda": 0.0,
+        "adf_input_variance": 1.0,
+        "adf_probabilistic": false
+      },
+      "n": 50,
+      "rows": {
+        "legacy_pp": {
+          "AL": {
+            "mean": 0.540606545805931,
+            "ci95": [
+              0.46494957751035687,
+              0.6154890470877289
+            ],
+            "n": 50
+          },
+          "PG": {
+            "mean": 0.76,
+            "ci95": [
+              0.64,
+              0.88
+            ],
+            "n": 50
+          },
+          "TK": {
+            "mean": 0.74908,
+            "ci95": [
+              0.6545400000000001,
+              0.8359030000000001
+            ],
+            "n": 50
+          },
+          "PF5": {
+            "mean": 17.396205629110337,
+            "ci95": [
+              15.297195339024068,
+              19.66560537627339
+            ],
+            "n": 50
+          },
+          "PF20": {
+            "mean": 13.720953312641697,
+            "ci95": [
+              11.809746145746427,
+              15.770481450330267
+            ],
+            "n": 50
+          },
+          "Sel": {
+            "mean": 6.595028874659643,
+            "ci95": [
+              5.699588281347375,
+              7.493257091082778
+            ],
+            "n": 50
+          },
+          "MaxS": {
+            "mean": 0.3758330237865448,
+            "ci95": [
+              0.3415756220594049,
+              0.4129461378082633
+            ],
+            "n": 50
+          },
+          "AvgS": {
+            "mean": 0.2845451340705156,
+            "ci95": [
+              0.25877593921884895,
+              0.31333720823027195
+            ],
+            "n": 50
+          },
+          "time_s": {
+            "mean": 0.07403204917907714,
+            "ci95": [
+              0.07377145171165467,
+              0.07431054723262787
+            ],
+            "n": 50
+          }
+        },
+        "original_pool_pp": {
+          "AL": {
+            "mean": 0.5406061720848083,
+            "ci95": [
+              0.46494943360239266,
+              0.6154892230182886
+            ],
+            "n": 50
+          },
+          "PG": {
+            "mean": 0.76,
+            "ci95": [
+              0.64,
+              0.88
+            ],
+            "n": 50
+          },
+          "TK": {
+            "mean": 0.74908,
+            "ci95": [
+              0.6545400000000001,
+              0.8359030000000001
+            ],
+            "n": 50
+          },
+          "PF5": {
+            "mean": 17.39461372077465,
+            "ci95": [
+              15.294908098563551,
+              19.664323895320294
+            ],
+            "n": 50
+          },
+          "PF20": {
+            "mean": 13.72001151301359,
+            "ci95": [
+              11.808078802503255,
+              15.770282774181739
+            ],
+            "n": 50
+          },
+          "Sel": {
+            "mean": 6.595028874659643,
+            "ci95": [
+              5.699588281347375,
+              7.493257091082778
+            ],
+            "n": 50
+          },
+          "MaxS": {
+            "mean": 0.37583971172571184,
+            "ci95": [
+              0.34158625584840774,
+              0.41295255030691624
+            ],
+            "n": 50
+          },
+          "AvgS": {
+            "mean": 0.2845438537448645,
+            "ci95": [
+              0.25877483793281014,
+              0.31333448887906973
+            ],
+            "n": 50
+          },
+          "time_s": {
+            "mean": 0.07260890007019043,
+            "ci95": [
+              0.07236324512958527,
+              0.07285202229022979
+            ],
+            "n": 50
+          }
+        }
+      },
+      "paired_deltas": {
+        "AL": {
+          "mean": -3.737211227416992e-07,
+          "ci95": [
+            -1.4647841453552246e-06,
+            4.31247055530548e-07
+          ],
+          "n": 50
+        },
+        "PG": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "TK": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "PF5": {
+          "mean": -0.00159190833568573,
+          "ci95": [
+            -0.004281358182430267,
+            0.0004366307109594333
+          ],
+          "n": 50
+        },
+        "PF20": {
+          "mean": -0.0009417996281072316,
+          "ci95": [
+            -0.00233702307625808,
+            0.0003060252086113509
+          ],
+          "n": 50
+        },
+        "Sel": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "MaxS": {
+          "mean": 6.687939167022705e-06,
+          "ci95": [
+            -2.3916736245155334e-06,
+            2.1802864968776704e-05
+          ],
+          "n": 50
+        },
+        "AvgS": {
+          "mean": -1.2803256511639826e-06,
+          "ci95": [
+            -3.3326029032450383e-06,
+            7.517791539456281e-07
+          ],
+          "n": 50
+        },
+        "time_s": {
+          "mean": -0.0014231491088867187,
+          "ci95": [
+            -0.0018358817100524903,
+            -0.0010416450500488283
+          ],
+          "n": 50
+        }
+      },
+      "delta_definition": "original_pool_pp - legacy_pp"
+    },
+    "loc": {
+      "params": {
+        "adf_input_variance": 5.0,
+        "adf_lambda": -1.0,
+        "adf_probabilistic": true
+      },
+      "n": 50,
+      "rows": {
+        "legacy_pp": {
+          "AL": {
+            "mean": 0.5680784480273724,
+            "ci95": [
+              0.4995670580565929,
+              0.6367099384889006
+            ],
+            "n": 50
+          },
+          "PG": {
+            "mean": 0.88,
+            "ci95": [
+              0.78,
+              0.96
+            ],
+            "n": 50
+          },
+          "TK": {
+            "mean": 0.7306400000000001,
+            "ci95": [
+              0.6503989999999998,
+              0.8057019999999999
+            ],
+            "n": 50
+          },
+          "PF5": {
+            "mean": 16.339445826411247,
+            "ci95": [
+              14.28977776297927,
+              18.49609998705983
+            ],
+            "n": 50
+          },
+          "PF20": {
+            "mean": 12.460623298163869,
+            "ci95": [
+              10.688801229903673,
+              14.335497093830796
+            ],
+            "n": 50
+          },
+          "Sel": {
+            "mean": 6.007616925786117,
+            "ci95": [
+              5.120693696244978,
+              6.907176106208776
+            ],
+            "n": 50
+          },
+          "MaxS": {
+            "mean": 0.2900141775608063,
+            "ci95": [
+              0.25842373134940866,
+              0.32613073492795225
+            ],
+            "n": 50
+          },
+          "AvgS": {
+            "mean": 0.19865484382808207,
+            "ci95": [
+              0.1795847144252062,
+              0.2202141149500012
+            ],
+            "n": 50
+          },
+          "time_s": {
+            "mean": 0.07014050006866455,
+            "ci95": [
+              0.0699535402059555,
+              0.07033178853988648
+            ],
+            "n": 50
+          }
+        },
+        "original_pool_pp": {
+          "AL": {
+            "mean": 0.5680784884095192,
+            "ci95": [
+              0.4995671613961458,
+              0.6367099704444408
+            ],
+            "n": 50
+          },
+          "PG": {
+            "mean": 0.88,
+            "ci95": [
+              0.78,
+              0.96
+            ],
+            "n": 50
+          },
+          "TK": {
+            "mean": 0.7306400000000001,
+            "ci95": [
+              0.6503989999999998,
+              0.8057019999999999
+            ],
+            "n": 50
+          },
+          "PF5": {
+            "mean": 16.340672819018366,
+            "ci95": [
+              14.291760829403996,
+              18.498166710063817
+            ],
+            "n": 50
+          },
+          "PF20": {
+            "mean": 12.460217859245052,
+            "ci95": [
+              10.688436304228969,
+              14.334715745805466
+            ],
+            "n": 50
+          },
+          "Sel": {
+            "mean": 6.007616925786117,
+            "ci95": [
+              5.120693696244978,
+              6.907176106208776
+            ],
+            "n": 50
+          },
+          "MaxS": {
+            "mean": 0.2900151786208153,
+            "ci95": [
+              0.2584258067905903,
+              0.3261314049884677
+            ],
+            "n": 50
+          },
+          "AvgS": {
+            "mean": 0.19865541014075278,
+            "ci95": [
+              0.17958554542623462,
+              0.22021456542588766
+            ],
+            "n": 50
+          },
+          "time_s": {
+            "mean": 0.07351733684539795,
+            "ci95": [
+              0.07326998126506806,
+              0.07376209270954133
+            ],
+            "n": 50
+          }
+        }
+      },
+      "paired_deltas": {
+        "AL": {
+          "mean": 4.038214683532715e-08,
+          "ci95": [
+            -1.721121370792389e-07,
+            3.020502626895904e-07
+          ],
+          "n": 50
+        },
+        "PG": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "TK": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "PF5": {
+          "mean": 0.0012269926071166992,
+          "ci95": [
+            -7.271069288253783e-05,
+            0.0026791719645261757
+          ],
+          "n": 50
+        },
+        "PF20": {
+          "mean": -0.00040543891881641427,
+          "ci95": [
+            -0.0012540167185818463,
+            0.00041472637810173577
+          ],
+          "n": 50
+        },
+        "Sel": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "MaxS": {
+          "mean": 1.0010600090026856e-06,
+          "ci95": [
+            2.008676528930664e-07,
+            1.959845423698425e-06
+          ],
+          "n": 50
+        },
+        "AvgS": {
+          "mean": 5.663126707064481e-07,
+          "ci95": [
+            -2.679040282984185e-07,
+            1.51354886591408e-06
+          ],
+          "n": 50
+        },
+        "time_s": {
+          "mean": 0.0033768367767333983,
+          "ci95": [
+            0.0031129047870635984,
+            0.003632436275482178
+          ],
+          "n": 50
+        }
+      },
+      "delta_definition": "original_pool_pp - legacy_pp"
+    },
+    "faith": {
+      "params": {
+        "adf_input_variance": 1.0,
+        "adf_lambda": -0.3,
+        "adf_probabilistic": false
+      },
+      "n": 50,
+      "rows": {
+        "legacy_pp": {
+          "AL": {
+            "mean": 0.5609073516726494,
+            "ci95": [
+              0.49024840516597035,
+              0.6322111969441175
+            ],
+            "n": 50
+          },
+          "PG": {
+            "mean": 0.78,
+            "ci95": [
+              0.66,
+              0.88
+            ],
+            "n": 50
+          },
+          "TK": {
+            "mean": 0.7327799999999999,
+            "ci95": [
+              0.6468185000000001,
+              0.8135199999999999
+            ],
+            "n": 50
+          },
+          "PF5": {
+            "mean": 16.22780059129,
+            "ci95": [
+              14.195865517646075,
+              18.39955004952103
+            ],
+            "n": 50
+          },
+          "PF20": {
+            "mean": 12.118504024657764,
+            "ci95": [
+              10.440092901157117,
+              13.925517616612348
+            ],
+            "n": 50
+          },
+          "Sel": {
+            "mean": 6.0205816293012875,
+            "ci95": [
+              5.1189807163462575,
+              6.93174222463461
+            ],
+            "n": 50
+          },
+          "MaxS": {
+            "mean": 0.5314974015951157,
+            "ci95": [
+              0.4749683444723487,
+              0.5924129882082343
+            ],
+            "n": 50
+          },
+          "AvgS": {
+            "mean": 0.41795056067705155,
+            "ci95": [
+              0.37192473304435614,
+              0.4681610723939538
+            ],
+            "n": 50
+          },
+          "time_s": {
+            "mean": 0.06981709003448486,
+            "ci95": [
+              0.06961363673210144,
+              0.0700315738916397
+            ],
+            "n": 50
+          }
+        },
+        "original_pool_pp": {
+          "AL": {
+            "mean": 0.5609073781967163,
+            "ci95": [
+              0.49024842111766337,
+              0.6322111963555217
+            ],
+            "n": 50
+          },
+          "PG": {
+            "mean": 0.78,
+            "ci95": [
+              0.66,
+              0.88
+            ],
+            "n": 50
+          },
+          "TK": {
+            "mean": 0.7327799999999999,
+            "ci95": [
+              0.6468185000000001,
+              0.8135199999999999
+            ],
+            "n": 50
+          },
+          "PF5": {
+            "mean": 16.22874342739582,
+            "ci95": [
+              14.195399655848743,
+              18.40135713608563
+            ],
+            "n": 50
+          },
+          "PF20": {
+            "mean": 12.118601696844165,
+            "ci95": [
+              10.43954970407427,
+              13.925934625902263
+            ],
+            "n": 50
+          },
+          "Sel": {
+            "mean": 6.0205816293012875,
+            "ci95": [
+              5.1189807163462575,
+              6.93174222463461
+            ],
+            "n": 50
+          },
+          "MaxS": {
+            "mean": 0.5315010887384415,
+            "ci95": [
+              0.4749737597554922,
+              0.5924210268557071
+            ],
+            "n": 50
+          },
+          "AvgS": {
+            "mean": 0.41794854772090906,
+            "ci95": [
+              0.37192483118951325,
+              0.4681608624143898
+            ],
+            "n": 50
+          },
+          "time_s": {
+            "mean": 0.0726458978652954,
+            "ci95": [
+              0.07240921306610108,
+              0.07287967324256897
+            ],
+            "n": 50
+          }
+        }
+      },
+      "paired_deltas": {
+        "AL": {
+          "mean": 2.652406692504883e-08,
+          "ci95": [
+            -3.337860107421875e-08,
+            1.195073127746582e-07
+          ],
+          "n": 50
+        },
+        "PG": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "TK": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "PF5": {
+          "mean": 0.0009428361058235169,
+          "ci95": [
+            -0.0009799497276544572,
+            0.003214448399841785
+          ],
+          "n": 50
+        },
+        "PF20": {
+          "mean": 9.76721863998442e-05,
+          "ci95": [
+            -0.0006421433875435052,
+            0.0010244008710509778
+          ],
+          "n": 50
+        },
+        "Sel": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "n": 50
+        },
+        "MaxS": {
+          "mean": 3.687143325805664e-06,
+          "ci95": [
+            -7.3916837573051455e-06,
+            2.0181797444820395e-05
+          ],
+          "n": 50
+        },
+        "AvgS": {
+          "mean": -2.0129561424264696e-06,
+          "ci95": [
+            -6.058220267292302e-06,
+            4.160352051306296e-07
+          ],
+          "n": 50
+        },
+        "time_s": {
+          "mean": 0.0028288078308105467,
+          "ci95": [
+            0.002554914951324463,
+            0.003090773820877075
+          ],
+          "n": 50
+        }
+      },
+      "delta_definition": "original_pool_pp - legacy_pp"
+    }
+  }
+}

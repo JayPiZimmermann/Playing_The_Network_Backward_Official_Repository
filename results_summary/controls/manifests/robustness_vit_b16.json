@@ -1,0 +1,35 @@
+[
+  {
+    "method": "rg",
+    "params": {
+      "adf_input_variance": 5.0,
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": -50.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.4
+    },
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m50__tau-0.4__var-5",
+    "roles": [
+      "rg:loc:lambda_sm"
+    ]
+  },
+  {
+    "method": "rg",
+    "params": {
+      "adf_lambda": 0.0,
+      "adf_softmax_lambda": 0.0,
+      "av_rule": "merged",
+      "lrp_alpha": 2.0,
+      "lrp_beta": 1.0,
+      "lrp_eps": 0.1,
+      "routing_temperature": 0.4
+    },
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-0__tau-0.4",
+    "roles": [
+      "rg:loc:lambda_sm"
+    ]
+  }
+]

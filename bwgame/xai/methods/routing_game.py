@@ -37,6 +37,51 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import Tensor
 
+
+def _power_routing_shares(mass: Tensor, coefficient: Tensor, tau: float,
+                          eps: float, dim: int = -1) -> Tensor:
+    """Normalized limit of ``coefficient * mass**(1/tau)`` with outside eps.
+
+    At tau=0 the epsilon term is an unpowered outside option, as in RG's
+    implemented denominator.  Consequently masses below one lose to eps,
+    masses equal to one tie with it, and masses above one dominate it.  Zero
+    epsilon leaves the largest positive mass (or an empty route) instead.
+    The log-domain finite-temperature branch avoids overflow for small tau.
+    """
+    if tau < 0:
+        raise ValueError("routing_temperature must be nonnegative")
+    mass = mass.clamp_min(0)
+    coefficient = coefficient.clamp_min(0)
+    log_mass = torch.where(mass > 0, mass.log(), -torch.inf)
+    log_coeff = torch.where(coefficient > 0, coefficient.log(), -torch.inf)
+    if tau == 0:
+        positive = (mass > 0) & (coefficient > 0)
+        maximum = torch.where(positive, log_mass, -torch.inf).amax(dim=dim, keepdim=True)
+        if eps > 0:
+            # Compare mass to the unit threshold.  For mass=1, coefficients
+            # and epsilon retain their usual proportional competition.
+            active = positive & ((log_mass == maximum) & (maximum > 0))
+            tied = positive & (log_mass == 0) & (maximum == 0)
+            out_wins = maximum < 0
+            edge_weight = torch.where(active, coefficient, torch.zeros_like(coefficient))
+            edge_weight = torch.where(tied, coefficient, edge_weight)
+            out_weight = torch.where(out_wins, torch.full_like(maximum, float(eps)),
+                                     torch.zeros_like(maximum))
+            out_weight = torch.where(maximum == 0, out_weight + eps, out_weight)
+        else:
+            active = positive & (log_mass == maximum) & torch.isfinite(maximum)
+            edge_weight = torch.where(active, coefficient, torch.zeros_like(coefficient))
+            out_weight = torch.zeros_like(maximum)
+        total = edge_weight.sum(dim=dim, keepdim=True) + out_weight
+        return torch.where(total > 0, edge_weight / total.clamp_min(torch.finfo(mass.dtype).tiny),
+                           torch.zeros_like(edge_weight))
+
+    edge_log = log_coeff + log_mass / tau
+    norm = torch.logsumexp(edge_log, dim=dim, keepdim=True)
+    if eps > 0:
+        norm = torch.logaddexp(norm, mass.new_tensor(float(eps)).log())
+    finite_norm = torch.isfinite(norm)
+    return torch.where(finite_norm, torch.exp(edge_log - norm), torch.zeros_like(edge_log))
 from ..base import AttributionMethod
 from ..postprocess import tensor_to_numpy
 from ..registry import MethodRegistry
@@ -91,6 +136,7 @@ class _RoutingGameHookManager:
         adf_lambda: float = 0.0,
         adf_input_variance: float = 1.0,
         adf_probabilistic: bool = True,
+        force_adf_activation_gate: bool = False,
         adf_softmax_lambda: float = 0.0,
         attention_mode: str = 'v_only',
         av_rule: str = 'merged',
@@ -114,6 +160,11 @@ class _RoutingGameHookManager:
         self.adf_lambda = adf_lambda
         self.adf_input_variance = adf_input_variance
         self.adf_probabilistic = adf_probabilistic
+        # Diagnostic control: keep the ADF variance pass and probabilistic
+        # activation gate active at lambda=0.  The default is false, preserving
+        # the submitted implementation exactly.  This is used only to separate
+        # gate smoothing from the confidence-bound shift in matched ablations.
+        self.force_adf_activation_gate = force_adf_activation_gate
         self.adf_softmax_lambda = adf_softmax_lambda
         self.attention_mode = attention_mode
         self._bn_backup: List[dict] = []  # saved BN state for unmerge
@@ -187,9 +238,95 @@ class _RoutingGameHookManager:
         std = torch.sqrt(var.clamp(min=1e-8))
         return mean + self.adf_lambda * std
 
+    @staticmethod
+    def _linear_power_route(act: Tensor, weight: Tensor, bias: Optional[Tensor],
+                            grad_out: Tensor, tau: float, eps: float,
+                            cross: bool = False) -> Tensor:
+        """Route linear relevance through normalized per-edge power masses."""
+        shape = act.shape
+        x = act.reshape(-1, shape[-1])
+        r = grad_out.reshape(-1, grad_out.shape[-1])
+        xp, xn = torch.relu(x), torch.relu(-x)
+        wp, wn = torch.relu(weight), torch.relu(-weight)
+        relevance = torch.zeros_like(x)
+        # Bound peak memory for wide ViT projections by processing output
+        # features in chunks.  Each output is normalized independently.
+        for start in range(0, weight.shape[0], 32):
+            stop = min(start + 32, weight.shape[0])
+            w = weight[start:stop]
+            if cross:
+                first, second = xp[:, None, :] * torch.relu(-w)[None, :, :], xn[:, None, :] * torch.relu(w)[None, :, :]
+                b = None if bias is None else (-bias[start:stop]).clamp_min(0)
+            else:
+                first, second = xp[:, None, :] * torch.relu(w)[None, :, :], xn[:, None, :] * torch.relu(-w)[None, :, :]
+                b = None if bias is None else bias[start:stop].clamp_min(0)
+            mass = torch.cat((first, second), dim=-1)
+            if b is not None:
+                mass = torch.cat((mass, b[None, :, None].expand(mass.shape[0], -1, -1)), dim=-1)
+            shares = _power_routing_shares(mass, torch.ones_like(mass), tau, eps)
+            routed = shares[..., :2 * x.shape[-1]] * r[:, start:stop].unsqueeze(-1)
+            relevance += (routed[..., :x.shape[-1]].sum(dim=1)
+                          + routed[..., x.shape[-1]:].sum(dim=1))
+        return relevance.reshape(shape)
+
+    @staticmethod
+    def _conv_power_route(act: Tensor, weight: Tensor, bias: Optional[Tensor],
+                          grad_out: Tensor, mod: nn.Conv2d, tau: float,
+                          eps: float, cross: bool = False) -> Tensor:
+        """Conv2d analogue of normalized per-edge power routing.
+
+        Spatial output locations are processed in small chunks so patch
+        embeddings do not materialize the full output-by-input edge tensor.
+        """
+        bsz, cin, hin, win = act.shape
+        groups = mod.groups
+        cin_g, cout_g = cin // groups, mod.out_channels // groups
+        unfolded = F.unfold(act, mod.kernel_size, dilation=mod.dilation,
+                            padding=mod.padding, stride=mod.stride)
+        locs = unfolded.shape[-1]
+        out_cols = grad_out.flatten(2).transpose(1, 2)
+        khkw = mod.kernel_size[0] * mod.kernel_size[1]
+        relevance_cols = []
+        for group in range(groups):
+            xg = unfolded[:, group * cin_g * khkw:(group + 1) * cin_g * khkw].transpose(1, 2)
+            wg = weight[group * cout_g:(group + 1) * cout_g].reshape(cout_g, -1)
+            bg = None if bias is None else bias[group * cout_g:(group + 1) * cout_g]
+            xout = []
+            for start in range(0, locs, 8):
+                stop = min(start + 8, locs)
+                x = xg[:, start:stop]
+                xp, xn = torch.relu(x), torch.relu(-x)
+                wp, wn = torch.relu(wg), torch.relu(-wg)
+                if cross:
+                    first = xp[:, :, None, :] * wn[None, None, :, :]
+                    second = xn[:, :, None, :] * wp[None, None, :, :]
+                    b = None if bg is None else (-bg).clamp_min(0)
+                else:
+                    first = xp[:, :, None, :] * wp[None, None, :, :]
+                    second = xn[:, :, None, :] * wn[None, None, :, :]
+                    b = None if bg is None else bg.clamp_min(0)
+                mass = torch.cat((first, second), dim=-1)
+                if b is not None:
+                    mass = torch.cat((mass, b[None, None, :, None].expand(x.shape[0], x.shape[1], -1, -1)), dim=-1)
+                shares = _power_routing_shares(mass, torch.ones_like(mass), tau, eps)
+                routed = shares[..., :2 * x.shape[-1]] * out_cols[:, start:stop, group * cout_g:(group + 1) * cout_g].unsqueeze(-1)
+                xout.append(routed[..., :x.shape[-1]].sum(dim=2)
+                            + routed[..., x.shape[-1]:].sum(dim=2))
+            relevance_cols.append(torch.cat(xout, dim=1).transpose(1, 2))
+        relevance_unfolded = torch.cat(relevance_cols, dim=1)
+        return F.fold(relevance_unfolded, output_size=(hin, win), kernel_size=mod.kernel_size,
+                      dilation=mod.dilation, padding=mod.padding, stride=mod.stride)
+
     def _stabilize(self, z, eps):
         """Stabilize denominator for LRP division: z + ε·sign(z), with +ε for exact zeros."""
         return z + eps * ((z == 0).float() + z.sign())
+
+    @staticmethod
+    def _divide_relevance(relevance, denominator):
+        """Empty routing streams absorb their incoming relevance."""
+        nonempty = denominator != 0
+        safe_denominator = torch.where(nonempty, denominator, torch.ones_like(denominator))
+        return torch.where(nonempty, relevance / safe_denominator, torch.zeros_like(relevance))
 
     # -----------------------------------------------------------------
     # BatchNorm canonization
@@ -423,10 +560,22 @@ class _RoutingGameHookManager:
             bias = mod.bias.data if mod.bias is not None else None
             grad_out = grad_output[0]            # (B, ..., out_features)
 
-            tau = max(self.routing_temperature, 0.1)
+            tau = self.routing_temperature
             eps = self.lrp_eps
             alpha = self.lrp_alpha
             beta = self.lrp_beta
+
+            merged = self._merged_value_relevance.pop(mod_name, None)
+            if tau < 0.1:
+                if merged is not None:
+                    s_pos, s_neg = merged
+                    lrp_grad = (alpha * self._linear_power_route(act, weight, bias, s_pos, tau, 0.0)
+                                - beta * self._linear_power_route(act, weight, bias, s_neg, tau, 0.0, cross=True))
+                else:
+                    r_alpha = self._linear_power_route(act, weight, bias, grad_out, tau, eps)
+                    r_beta = self._linear_power_route(act, weight, bias, grad_out, tau, eps, cross=True)
+                    lrp_grad = alpha * r_alpha - beta * r_beta
+                return (lrp_grad,) if len(grad_input) == 1 else (lrp_grad,) + grad_input[1:]
 
             # Positive/negative decomposition
             x_pos = torch.relu(act)
@@ -460,7 +609,6 @@ class _RoutingGameHookManager:
                     b_pos_t = b_pos
                     b_neg_t = b_neg
 
-            merged = self._merged_value_relevance.pop(mod_name, None)
             if merged is not None:
                 # Value projection under the merged rule: the attention step has
                 # already divided by the composite stream totals Z^kappa + eps and
@@ -492,12 +640,12 @@ class _RoutingGameHookManager:
             z_neg = self._stabilize(z_neg, eps)
 
             # α path: same-sign routing
-            s_pos = grad_out / z_pos
+            s_pos = self._divide_relevance(grad_out, z_pos)
             r_alpha = (x_pos_t * torch.matmul(s_pos, w_pos_t)
                        + x_neg_t * torch.matmul(s_pos, w_neg_t))
 
             # β path: cross-sign routing
-            s_neg = grad_out / z_neg
+            s_neg = self._divide_relevance(grad_out, z_neg)
             r_beta = (x_pos_t * torch.matmul(s_neg, w_neg_t)
                       + x_neg_t * torch.matmul(s_neg, w_pos_t))
 
@@ -533,7 +681,7 @@ class _RoutingGameHookManager:
             bias = mod.bias.data if mod.bias is not None else None
             grad_out = grad_output[0]            # (B, C_out, H', W')
 
-            tau = max(self.routing_temperature, 0.1)
+            tau = self.routing_temperature
             eps = self.lrp_eps
             stride = mod.stride
             padding = mod.padding
@@ -545,6 +693,12 @@ class _RoutingGameHookManager:
 
             alpha = self.lrp_alpha
             beta = self.lrp_beta
+
+            if tau < 0.1:
+                r_alpha = self._conv_power_route(act, weight, bias, grad_out, mod, tau, eps)
+                r_beta = self._conv_power_route(act, weight, bias, grad_out, mod, tau, eps, cross=True)
+                lrp_grad = alpha * r_alpha - beta * r_beta
+                return (lrp_grad,) if len(grad_input) == 1 else (lrp_grad,) + grad_input[1:]
 
             # Positive/negative decomposition
             x_pos = torch.relu(act)
@@ -601,12 +755,12 @@ class _RoutingGameHookManager:
                              stride, padding, dilation))
 
             # α path: same-sign routing
-            s_pos = grad_out / z_pos
+            s_pos = self._divide_relevance(grad_out, z_pos)
             r_alpha = (x_pos_t * F.conv_transpose2d(s_pos, w_pos_t, **tp_kw)
                        + x_neg_t * F.conv_transpose2d(s_pos, w_neg_t, **tp_kw))
 
             # β path: cross-sign routing
-            s_neg = grad_out / z_neg
+            s_neg = self._divide_relevance(grad_out, z_neg)
             r_beta = (x_pos_t * F.conv_transpose2d(s_neg, w_neg_t, **tp_kw)
                       + x_neg_t * F.conv_transpose2d(s_neg, w_pos_t, **tp_kw))
 
@@ -644,7 +798,7 @@ class _RoutingGameHookManager:
             grad_out = grad_output[0]
             eps = self.lrp_eps
             z = self._stabilize(x, eps)
-            s = grad_out / z
+            s = self._divide_relevance(grad_out, z)
             new_grad = x * s
             if len(grad_input) == 1:
                 return (new_grad,)
@@ -675,7 +829,7 @@ class _RoutingGameHookManager:
 
             # Get ADF variance for this layer
             var = self._adf_variances.get(mod_name)
-            if var is not None and self.adf_lambda != 0.0:
+            if var is not None and (self.adf_lambda != 0.0 or self.force_adf_activation_gate):
                 z_eff = self._compute_z_eff(pre_act, var)
                 if self.adf_probabilistic:
                     # Smooth GELU derivative: gelu'(z) = Φ(z) + z·φ(z)
@@ -719,7 +873,7 @@ class _RoutingGameHookManager:
             grad_out = grad_output[0]
 
             var = self._adf_variances.get(mod_name)
-            if var is not None and self.adf_lambda != 0.0:
+            if var is not None and (self.adf_lambda != 0.0 or self.force_adf_activation_gate):
                 z_eff = self._compute_z_eff(pre_act, var)
                 if self.adf_probabilistic:
                     std = torch.sqrt(var.clamp(min=1e-8))
@@ -928,19 +1082,79 @@ class _RoutingGameHookManager:
         x = self._activations.get(vp_name)
         if x is None or not isinstance(vp, nn.Linear):
             raise RuntimeError(f"av_rule='merged': no cached input of {vp_name}")
-        tau = max(self.routing_temperature, 0.1)
+        tau = self.routing_temperature
+        if tau < 0.1:
+            # Keep the composite A·V normalization and the local Value
+            # projection decomposition in log space.  At tau=0 the local
+            # tie count is part of the A-weighted key competition; the paired
+            # Linear hook then divides each selected key's share uniformly
+            # among those tied input edges.
+            x_pos, x_neg = torch.relu(x), torch.relu(-x)
+            weight = vp.weight.data
+            n_heads = V.shape[-3] if V.dim() == 4 else 1
+            value_dim = V.shape[-1]
+            A_heads = A.unsqueeze(1) if A.dim() == 3 else A
+            R_heads = R_O.unsqueeze(1) if R_O.dim() == 3 else R_O
+            if A_heads.shape[1] == 1 and n_heads > 1:
+                A_heads = A_heads.expand(-1, n_heads, -1, -1)
+            if R_heads.shape[1] == 1 and n_heads > 1:
+                R_heads = R_heads.expand(-1, n_heads, -1, -1)
+
+            def route_head(head, cross):
+                start, stop = head * value_dim, (head + 1) * value_dim
+                w = weight[start:stop]
+                wp, wn = torch.relu(w), torch.relu(-w)
+                if cross:
+                    first = x_pos[:, :, None, :] * wn[None, None, :, :]
+                    second = x_neg[:, :, None, :] * wp[None, None, :, :]
+                    bias = None if vp.bias is None else (-vp.bias.data[start:stop]).clamp_min(0)
+                else:
+                    first = x_pos[:, :, None, :] * wp[None, None, :, :]
+                    second = x_neg[:, :, None, :] * wn[None, None, :, :]
+                    bias = None if vp.bias is None else vp.bias.data[start:stop].clamp_min(0)
+                edges = torch.cat((first, second), dim=-1)
+                if bias is not None:
+                    edges = torch.cat((edges, bias[None, None, :, None].expand(edges.shape[0], edges.shape[1], -1, -1)), dim=-1)
+                log_edges = torch.where(edges > 0, edges.log(), -torch.inf)
+                A_head = A_heads[:, head:head + 1]
+                R_head = R_heads[:, head:head + 1]
+                if tau == 0:
+                    local_max = log_edges.amax(dim=-1)
+                    ties = (log_edges == local_max.unsqueeze(-1)) & torch.isfinite(local_max.unsqueeze(-1))
+                    tie_count = ties.sum(dim=-1).to(log_edges.dtype).unsqueeze(1)
+                    local_max = local_max.unsqueeze(1)
+                    local_mass = torch.where(torch.isfinite(local_max), local_max.exp(), torch.zeros_like(local_max))
+                    coeff = A_head.unsqueeze(-1) * tie_count.unsqueeze(-3)
+                    key_share = _power_routing_shares(local_mass.unsqueeze(-3).expand_as(coeff), coeff,
+                                                       0.0, eps, dim=-2)
+                else:
+                    local_log_total = torch.logsumexp(log_edges / tau, dim=-1).unsqueeze(1)
+                    scores = A_head.unsqueeze(-1).log() + local_log_total.unsqueeze(-3)
+                    norm = torch.logsumexp(scores, dim=-2, keepdim=True)
+                    if eps > 0:
+                        norm = torch.logaddexp(norm, scores.new_tensor(float(eps)).log())
+                    key_share = torch.where(torch.isfinite(norm), torch.exp(scores - norm), torch.zeros_like(scores))
+                s_heads = (key_share * R_head.unsqueeze(-2)).sum(dim=-3)
+                return s_heads.squeeze(1)
+
+            s_pos = torch.cat([route_head(head, False) for head in range(n_heads)], dim=-1)
+            s_neg = torch.cat([route_head(head, True) for head in range(n_heads)], dim=-1)
+            self._merged_value_relevance[vp_name] = (s_pos, s_neg)
+            return torch.zeros_like(V)
+
         x_pos, x_neg = torch.relu(x), torch.relu(-x)
         w_pos, w_neg = torch.relu(vp.weight.data), torch.relu(-vp.weight.data)
         if tau != 1.0:
-            x_pos, x_neg = x_pos.pow(1.0 / tau), x_neg.pow(1.0 / tau)
-            w_pos, w_neg = w_pos.pow(1.0 / tau), w_neg.pow(1.0 / tau)
+            inv_tau = 1.0 / tau
+            x_pos, x_neg = x_pos.pow(inv_tau), x_neg.pow(inv_tau)
+            w_pos, w_neg = w_pos.pow(inv_tau), w_neg.pow(inv_tau)
         v_pos = torch.matmul(x_pos, w_pos.t()) + torch.matmul(x_neg, w_neg.t())
         v_neg = torch.matmul(x_pos, w_neg.t()) + torch.matmul(x_neg, w_pos.t())
         if vp.bias is not None:
             b = vp.bias.data
             b_pos, b_neg = b.clamp(min=0), (-b).clamp(min=0)
             if tau != 1.0:
-                b_pos, b_neg = b_pos.pow(1.0 / tau), b_neg.pow(1.0 / tau)
+                b_pos, b_neg = b_pos.pow(inv_tau), b_neg.pow(inv_tau)
             v_pos, v_neg = v_pos + b_pos, v_neg + b_neg
 
         def to_heads(t):   # (B, S, H*d) -> layout of V, e.g. (B, H, S, d)
@@ -955,8 +1169,13 @@ class _RoutingGameHookManager:
 
         v_pos, v_neg = to_heads(v_pos), to_heads(v_neg)
         At = A.transpose(-2, -1)
-        s_pos = torch.matmul(At, R_O / self._stabilize(torch.matmul(A, v_pos), eps))
-        s_neg = torch.matmul(At, R_O / self._stabilize(torch.matmul(A, v_neg), eps))
+
+        def route_stream(value_mass):
+            denominator = self._stabilize(torch.matmul(A, value_mass), eps)
+            scaled_relevance = self._divide_relevance(R_O, denominator)
+            return torch.matmul(At, scaled_relevance)
+
+        s_pos, s_neg = route_stream(v_pos), route_stream(v_neg)
         self._merged_value_relevance[vp_name] = (from_heads(s_pos), from_heads(s_neg))
         return self.lrp_alpha * v_pos * s_pos - self.lrp_beta * v_neg * s_neg
 
@@ -1041,6 +1260,9 @@ class RoutingGame(AttributionMethod):
         self.adf_input_variance = 1.0
         # Smooth (Phi) or hard (step) gate of the risk-modified activations
         self.adf_probabilistic = True
+        # Diagnostic-only matched-gate control.  The public/default path keeps
+        # this false, so lambda=0 remains the ordinary RG anchor.
+        self._force_adf_activation_gate = False
         # Softmax risk lambda_sm (attention routing)
         self.adf_softmax_lambda = 0.0
         # Attention mode: 'v_only' or 'gradient_fallback'
@@ -1078,6 +1300,7 @@ class RoutingGame(AttributionMethod):
             adf_lambda=self.adf_lambda,
             adf_input_variance=self.adf_input_variance,
             adf_probabilistic=self.adf_probabilistic,
+            force_adf_activation_gate=self._force_adf_activation_gate,
             adf_softmax_lambda=self.adf_softmax_lambda,
             attention_mode=self.attention_mode,
             av_rule=self.av_rule,
@@ -1085,7 +1308,8 @@ class RoutingGame(AttributionMethod):
 
         # Step 1: ADF forward pass to collect variances (needed only when a
         # risk parameter is active).
-        if self.adf_lambda != 0 or self.adf_softmax_lambda != 0:
+        if (self.adf_lambda != 0 or self.adf_softmax_lambda != 0
+                or self._force_adf_activation_gate):
             hook_mgr.run_adf_pass(x)
 
         # Step 2: LRP hooks.

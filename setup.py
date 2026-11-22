@@ -4,6 +4,7 @@ setup(
     name="bwgame",
     version="0.1.0",
     description="Backward-game framework for neural-network attribution",
+    license="CC-BY-SA-4.0",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(),

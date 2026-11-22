@@ -213,3 +213,97 @@ def test_tau_zero_no_crash(seed):
     rg = _routing_game_attribution(model, x, target_class=0, tau=0.0)
     assert rg is not None
     assert not torch.isnan(rg).any(), "NaN in attribution with τ=0"
+
+
+def _routing_seed(model, x, relevance, eps, previous_division=False):
+    from bwgame.xai.methods.routing_game import _RoutingGameHookManager
+
+    manager = _RoutingGameHookManager(model, lrp_alpha=2.0, lrp_beta=1.0, lrp_eps=eps)
+    if previous_division:
+        manager._divide_relevance = lambda numerator, denominator: numerator / denominator
+    manager.install()
+    try:
+        inputs = x.detach().clone().requires_grad_(True)
+        model(inputs).backward(relevance)
+        return inputs.grad.detach()
+    finally:
+        manager.remove()
+
+
+@pytest.mark.parametrize("operator", ["linear", "conv"])
+@pytest.mark.parametrize("case", ["zero", "positive", "signed_cancellation"])
+@pytest.mark.parametrize("eps", [0.0, 0.5])
+def test_empty_linear_and_convolution_streams(operator, case, eps):
+    weight = torch.tensor([[1.0, 2.0], [-1.0, -2.0], [1.0, -1.0], [0.0, 0.0]],
+                          dtype=torch.float64)
+    bias = torch.zeros(4, dtype=torch.float64)
+    x_rows = torch.tensor([[1.0, 1.0], [2.0, -2.0], [-1.0, 1.0], [0.0, 0.0]],
+                          dtype=torch.float64)
+    if case == "zero":
+        weight.zero_()
+    elif case == "positive":
+        weight.abs_()
+        x_rows.abs_()
+    seed_rows = torch.tensor([[1.0, -2.0, 0.5, 3.0], [-1.0, 0.0, 1.0, -2.0],
+                              [2.0, 1.0, -1.0, 0.5], [0.5, -0.5, 1.0, 2.0]],
+                             dtype=torch.float64)
+    expected = torch.zeros_like(x_rows)
+    for row in range(x_rows.shape[0]):
+        for output in range(weight.shape[0]):
+            products = x_rows[row] * weight[output]
+            for sign, factor in ((1, 2.0), (-1, -1.0)):
+                contributions = (sign * products).clamp(min=0)
+                denominator = contributions.sum() + (sign * bias[output]).clamp(min=0) + eps
+                if denominator > 0:
+                    expected[row] += factor * contributions / denominator * seed_rows[row, output]
+
+    if operator == "linear":
+        layer = nn.Linear(2, 4).double()
+        x, relevance = x_rows, seed_rows
+    else:
+        layer = nn.Conv2d(2, 4, kernel_size=1).double()
+        x = x_rows.t().reshape(1, 2, 2, 2)
+        relevance = seed_rows.t().reshape(1, 4, 2, 2)
+        expected = expected.t().reshape_as(x)
+    with torch.no_grad():
+        layer.weight.copy_(weight.reshape_as(layer.weight))
+        layer.bias.copy_(bias)
+    model = nn.Sequential(layer).eval()
+    got = _routing_seed(model, x, relevance, eps)
+    assert torch.isfinite(got).all()
+    assert torch.allclose(got, expected, rtol=1e-12, atol=1e-12)
+    if case == "zero":
+        assert torch.count_nonzero(got) == 0
+    if eps > 0:
+        previous = _routing_seed(model, x, relevance, eps, previous_division=True)
+        assert torch.equal(got, previous)
+
+
+def _cancelling_conv_model(with_batchnorm):
+    conv = nn.Conv2d(2, 1, kernel_size=1, bias=False)
+    linear = nn.Linear(2, 1)
+    with torch.no_grad():
+        conv.weight.copy_(torch.tensor([1.0, -1.0]).reshape(1, 2, 1, 1))
+        linear.weight.fill_(1.0)
+        linear.bias.zero_()
+    layers = [conv] + ([nn.BatchNorm2d(1)] if with_batchnorm else [])
+    layers += [nn.ReLU(), nn.Flatten(), linear]
+    return nn.Sequential(*layers).double().eval()
+
+
+@pytest.mark.parametrize("eps", [0.0, 0.5])
+def test_batchnorm_rule_is_finite_at_zero_activations(eps):
+    """A merged BatchNorm passes relevance through, also where its input cancels to zero."""
+    # The two channels cancel exactly at the first position, so the BatchNorm input is zero there.
+    x = torch.tensor([[1.0, 2.0], [1.0, 0.5]], dtype=torch.float64).reshape(1, 2, 1, 2)
+    relevance = torch.ones(1, 1, dtype=torch.float64)
+    got = _routing_seed(_cancelling_conv_model(True), x, relevance, eps)
+    assert torch.isfinite(got).all()
+    if eps == 0:
+        reference = _routing_seed(_cancelling_conv_model(False), x, relevance, eps)
+        assert torch.allclose(got, reference, rtol=1e-12, atol=1e-12)
+        assert torch.equal(got.flatten()[[0, 2]], torch.zeros(2, dtype=torch.float64))
+    else:
+        previous = _routing_seed(_cancelling_conv_model(True), x, relevance, eps,
+                                 previous_division=True)
+        assert torch.equal(got, previous)

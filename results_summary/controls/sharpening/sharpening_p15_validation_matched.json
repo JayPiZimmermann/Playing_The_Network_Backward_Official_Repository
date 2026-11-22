@@ -1,0 +1,145 @@
+{
+  "status": "complete",
+  "reported_powers": [
+    1.0,
+    1.5
+  ],
+  "selection_rule": "At fixed p=1.5, choose the declared baseline configuration whose validation AL is nearest the fixed RG validation AL; ties use row label. No test metric enters this restriction audit.",
+  "scope": "Only the p=1.5 sharpening control is reported.",
+  "reference": {
+    "method": "RG",
+    "row_label": "rg__av-merged__eps-0.1__lam-0__lamsm-m10__tau-0.4__var-5",
+    "params": {
+      "routing_temperature": 0.4,
+      "adf_softmax_lambda": -10.0,
+      "adf_input_variance": 5.0,
+      "lrp_eps": 0.1
+    },
+    "power": 1.0,
+    "validation": {
+      "n": 50,
+      "AL": 0.6792566709956885,
+      "PF20": 7.555336987344842
+    },
+    "test": {
+      "n": 565,
+      "AL": 0.7112254398575133,
+      "PF20": 7.480663531298242
+    }
+  },
+  "candidates": {
+    "LRP-gamma": [
+      {
+        "row_label": "lrp_gamma__eps-0.1__gamma-0.1",
+        "power": 1.5,
+        "n_validation": 50,
+        "validation_AL": 0.6847123644975192,
+        "absolute_difference_from_reference": 0.005455693501830616
+      },
+      {
+        "row_label": "lrp_gamma__eps-0.1__gamma-2",
+        "power": 1.5,
+        "n_validation": 50,
+        "validation_AL": 0.7126892160198779,
+        "absolute_difference_from_reference": 0.03343254502418935
+      }
+    ],
+    "AttnLRP": [
+      {
+        "row_label": "attnlrp__eattn-0.01__gcomp-on__gconv-0.25__glin-0.05",
+        "power": 1.5,
+        "n_validation": 50,
+        "validation_AL": 0.7074337397788232,
+        "absolute_difference_from_reference": 0.02817706878313464
+      },
+      {
+        "row_label": "attnlrp__eattn-0.25__gcomp-on__gconv-0.25__glin-0.05",
+        "power": 1.5,
+        "n_validation": 50,
+        "validation_AL": 0.7261206044560784,
+        "absolute_difference_from_reference": 0.04686393346038986
+      }
+    ]
+  },
+  "matches": [
+    {
+      "method": "LRP-gamma",
+      "row_label": "lrp_gamma__eps-0.1__gamma-0.1",
+      "params": {
+        "epsilon": 0.1,
+        "gamma": 0.1
+      },
+      "power": 1.5,
+      "validation": {
+        "n": 50,
+        "AL": 0.684712364497519,
+        "PF20": 6.526886315188911
+      },
+      "test": {
+        "n": 565,
+        "AL": 0.6941900576206381,
+        "PF20": 6.397662809732686
+      },
+      "paired_test_difference_baseline_minus_rg": {
+        "AL": {
+          "mean": -0.017035382236875,
+          "ci95": [
+            -0.02715593083999106,
+            -0.00669501097540605
+          ]
+        },
+        "PF20": {
+          "mean": -1.0830007215655568,
+          "ci95": [
+            -1.1880556835108826,
+            -0.9771969055881249
+          ]
+        }
+      }
+    },
+    {
+      "method": "AttnLRP",
+      "row_label": "attnlrp__eattn-0.01__gcomp-on__gconv-0.25__glin-0.05",
+      "params": {
+        "gamma_composite": true,
+        "lrp_epsilon_attn": 0.01,
+        "lrp_gamma_conv": 0.25,
+        "lrp_gamma_linear": 0.05
+      },
+      "power": 1.5,
+      "validation": {
+        "n": 50,
+        "AL": 0.707433739778823,
+        "PF20": 6.412063451490708
+      },
+      "test": {
+        "n": 565,
+        "AL": 0.7152731365187096,
+        "PF20": 6.122575564423258
+      },
+      "paired_test_difference_baseline_minus_rg": {
+        "AL": {
+          "mean": 0.004047696661196354,
+          "ci95": [
+            -0.006883482444754962,
+            0.01545072041863175
+          ]
+        },
+        "PF20": {
+          "mean": -1.3580879668749843,
+          "ci95": [
+            -1.4753516898978098,
+            -1.2422621224061199
+          ]
+        }
+      }
+    }
+  ],
+  "original_matching_artifact_sha256": "f82512c195dd4655288348bb39186e66e5282a9f0c42854109067cd6c1a2d66e",
+  "bootstrap": {
+    "resamples": 10000,
+    "paired_by": "image",
+    "interval": "percentile 95%"
+  },
+  "interpretation": "At p=1.5, sharpened AttnLRP has similar mean AL and lower PF20 than selected RG; the common-p=1.5 RG row has higher AL and worse PF20. These are distinct comparisons, with no ranking or complete-frontier superiority claim."
+}
