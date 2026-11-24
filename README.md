@@ -121,8 +121,8 @@ python -m reproduce.pg_granularity --results results_summary --out tables  # poi
 `results_summary/diagnostics/` holds the gzip-compressed CSV measurements (per image, per
 round and per noise level) and is written by `python -m reproduce.collect_diagnostics`
 after the experiment runs; `results_summary/README.md` lists the files and the table each
-one feeds. **This release does not yet contain these measurement files**, so the two
-commands above currently need the outputs of the `experiments/` runs (table above). The
+one feeds. The measurements of the paper's runs ship in this directory, so the two
+commands above regenerate all six outputs from it. The
 pointing-game table is then recomputed from recorded per-image hit values, which checks
 the reported statistics and paired tests but not the map processing; the latter needs the
 maps cached by `evaluate_selected --cache-maps`.

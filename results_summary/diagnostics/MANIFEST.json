@@ -1,0 +1,52 @@
+{
+  "double_random/aggregate.csv.gz": {
+    "bytes": 184,
+    "sha256": "acaaa80f26b4b481f4cfec8ae5f9c71ae9debefc204b701162b667eb8bd07c4e",
+    "source": "hellinger_randomization/results_double_random/aggregate.csv"
+  },
+  "double_random/per_round.csv.gz": {
+    "bytes": 47168,
+    "sha256": "4d300356ace8172dcb0abaff696bc135b34c2efb0d920557395688307397684a",
+    "source": "hellinger_randomization/results_double_random/per_round.csv"
+  },
+  "hellinger_input_noise/avg.csv.gz": {
+    "bytes": 2898,
+    "sha256": "44a9d958827e82debd20cee16165092e7cb80bc63b9451719b1846b233a306bc",
+    "source": "hellinger_input_noise/results/avg.csv"
+  },
+  "hellinger_input_noise/clean_pair_baselines.csv.gz": {
+    "bytes": 608,
+    "sha256": "989f44817d069aa690623681ed1a9160d12503e06283421603cc92ca587b45fb",
+    "source": "hellinger_input_noise/results/clean_pair_baselines.csv"
+  },
+  "hellinger_input_noise/random_baselines.csv.gz": {
+    "bytes": 605,
+    "sha256": "cfd4631dbace9087ebdc09b84e2a8da3e2e0db8847ba221fde279e0b541414a1",
+    "source": "hellinger_input_noise/results/random_baselines.csv"
+  },
+  "hellinger_randomization/avg.csv.gz": {
+    "bytes": 10695,
+    "sha256": "131a3e56355f34abfc5455ebc32a7023af83047128b681e914f21192757e2f57",
+    "source": "hellinger_randomization/results/avg.csv"
+  },
+  "hellinger_randomization/per_image.csv.gz": {
+    "bytes": 5607496,
+    "sha256": "bf96b4c68ff9dcd2c38d10e83b7bcf3d2eaaa83c5abd9bfb1f2877fbf7971294",
+    "source": "hellinger_randomization/results/per_image.csv"
+  },
+  "pg_granularity_per_image.csv.gz": {
+    "bytes": 143255,
+    "sha256": "0ba10f52237811bda2c8c171039d589c013a7ea5d8e0a69942db83e12c525dc2",
+    "source": "analysis/pg_granularity_per_image.csv.gz"
+  },
+  "sanity_check_randomization/avg.csv.gz": {
+    "bytes": 22007,
+    "sha256": "f67545569e20361e9b7cc7ef7457cbb6bddae460137deb8f65a10697043ac7c1",
+    "source": "sanity_check_randomization/results/avg.csv"
+  },
+  "sanity_check_randomization/per_image.csv.gz": {
+    "bytes": 1135248,
+    "sha256": "2b840d972561ea644c48d34386b3e9a090497f0ba766f3cc712d088d528910c6",
+    "source": "sanity_check_randomization/results/per_image.csv"
+  }
+}

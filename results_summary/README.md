@@ -33,9 +33,11 @@ recomputes the intervals and tests of one setting.
 ## Diagnostic measurements
 
 The randomization, Hellinger and pointing-game granularity tables are not computed from
-`test/`. Their recorded measurements belong in `diagnostics/`, written by
+`test/`. Their recorded measurements are in `diagnostics/`, written by
 `python -m reproduce.collect_diagnostics` from the outputs of the `experiments/` runs and
-of `reproduce.pg_granularity`. **This release does not yet contain that directory.**
+of `reproduce.pg_granularity`. The six outputs `sanity_check_tabular.tex`,
+`double_random_tabular.tex`, `per_image_corr_tabular.tex`, `input_baseline_tabular.tex`,
+`diagnostic_numbers.tex` and `pg_granularity_tabular.tex` regenerate from that directory.
 
 | File under `diagnostics/` | Content | Output |
 |---|---|---|
@@ -47,7 +49,7 @@ of `reproduce.pg_granularity`. **This release does not yet contain that director
 | `pg_granularity_per_image.csv.gz` | per model, reported row and test image: pointing-game hit, single-pixel hit fraction, hit on the 16-pixel grid, size of the maximum set | `pg_granularity_tabular.tex` and its paired tests |
 | `MANIFEST.json` | source path, size and SHA-256 of every file | |
 
-With the directory present, the tables regenerate on a CPU:
+The tables regenerate on a CPU:
 
     python -m reproduce.diagnostic_figures --out tables
     python -m reproduce.pg_granularity --results results_summary --out tables
