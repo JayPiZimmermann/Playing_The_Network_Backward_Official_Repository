@@ -22,9 +22,14 @@ and writes
 
 Missing inputs are written as a red ``??``.  No torch needed.
 
+Where an experiment output directory does not exist, the recorded measurements
+shipped in ``results_summary/diagnostics/`` are read instead (written there by
+``reproduce.collect_diagnostics``; gzip-compressed CSVs are read transparently).
+
 Usage::
 
     python -m reproduce.diagnostic_figures --paper <paper dir>
+    python -m reproduce.diagnostic_figures --out tables          # tables and macros only
 """
 from __future__ import annotations
 
@@ -45,6 +50,7 @@ MISSING = r"\textcolor{red}{??}"
 MODELS = (("vgg16", "VGG-16"), ("resnet50", "ResNet-50"), ("vit_b_16", "ViT-B/16"))
 SELECTION_MODEL = {"vit_b_16": "vit_b16"}
 EXP = REPO / "experiments"
+SUMMARY = REPO / "results_summary"
 COORDS = re.compile(r"coordinates \{([^}]*)\}")
 PAIR = re.compile(r"\(([^,()]+),\s*([^()]+)\)")
 
@@ -65,10 +71,27 @@ MAP_VARIANTS = (("gradient__fixed", "spearman_abs"), ("gradient__fixed", "hog_pe
 
 
 def _read(path: Path) -> Optional[pd.DataFrame]:
-    if not path.exists():
-        logger.warning("missing %s", path)
-        return None
-    return pd.read_csv(path)
+    """Read ``path`` or its gzip-compressed copy ``path.gz`` (as shipped in the summaries)."""
+    for cand in (path, path.with_name(path.name + ".gz")):
+        if cand.exists():
+            return pd.read_csv(cand)
+    logger.warning("missing %s", path)
+    return None
+
+
+def _default_dir(experiment: str, sub: str, shipped: str) -> Path:
+    """The experiment output directory if it exists, else the shipped measurements."""
+    live = EXP / experiment / sub
+    return live if live.exists() else SUMMARY / "diagnostics" / shipped
+
+
+def _selection(model: str) -> Dict:
+    name = SELECTION_MODEL.get(model, model)
+    for root in (REPO / "results", SUMMARY):
+        path = root / "selection" / name / "selected.json"
+        if path.exists():
+            return json.loads(path.read_text())
+    raise FileNotFoundError(f"no selected.json for {name} under results/ or results_summary/")
 
 
 def _write(path: Path, lines: Sequence[str]) -> None:
@@ -94,6 +117,9 @@ def _set_coords(line: str, pts: Sequence[Tuple[float, float]], xfmt: str = "{:g}
 
 def _rewrite(template: Path, per_panel) -> None:
     """Replace the data of every \\addplot of a 3-panel groupplot (VGG, ResNet, ViT)."""
+    if not template.exists():
+        logger.warning("no figure template %s; figure data not written", template)
+        return
     out, panel = [], -1
     for line in template.read_text().splitlines():
         s = line.strip()
@@ -158,8 +184,7 @@ def input_noise_figure(ndir: Path, paper: Path) -> None:
 # ---------------------------------------------------------------------------
 def _sanity_rows(model: str) -> List[Tuple[str, str]]:
     """(cache label, display name) of the rows of the sanity table for one model."""
-    sel = json.loads((REPO / "results/selection" / SELECTION_MODEL.get(model, model)
-                      / "selected.json").read_text())
+    sel = _selection(model)
     rows = []
     for method in MODEL_METHODS[SELECTION_MODEL.get(model, model)]:
         rec = sel["methods"].get(method)
@@ -361,18 +386,27 @@ def input_baseline_rows(ndir: Path, out: Path) -> None:
 
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--paper", type=Path, required=True,
+    ap.add_argument("--paper", type=Path, default=None,
                     help="Directory of the paper sources (figures/plots, tables/generated).")
-    ap.add_argument("--hellinger", type=Path, default=EXP / "hellinger_randomization" / "results")
+    ap.add_argument("--out", type=Path, default=None,
+                    help="Directory of the tables (default: <paper>/tables/generated). "
+                         "Without --paper only the tables and macros are written.")
+    ap.add_argument("--hellinger", type=Path,
+                    default=_default_dir("hellinger_randomization", "results", "hellinger_randomization"))
     ap.add_argument("--double-random", type=Path,
-                    default=EXP / "hellinger_randomization" / "results_double_random")
-    ap.add_argument("--input-noise", type=Path, default=EXP / "hellinger_input_noise" / "results")
-    ap.add_argument("--sanity", type=Path, default=EXP / "sanity_check_randomization" / "results")
+                    default=_default_dir("hellinger_randomization", "results_double_random", "double_random"))
+    ap.add_argument("--input-noise", type=Path,
+                    default=_default_dir("hellinger_input_noise", "results", "hellinger_input_noise"))
+    ap.add_argument("--sanity", type=Path,
+                    default=_default_dir("sanity_check_randomization", "results", "sanity_check_randomization"))
     args = ap.parse_args(argv)
     setup_logging()
-    out = args.paper / "tables" / "generated"
-    cascade_figures(args.hellinger, args.double_random, args.paper)
-    input_noise_figure(args.input_noise, args.paper)
+    if args.paper is None and args.out is None:
+        ap.error("give --paper (figures and tables) or --out (tables only)")
+    out = args.out if args.out is not None else args.paper / "tables" / "generated"
+    if args.paper is not None:
+        cascade_figures(args.hellinger, args.double_random, args.paper)
+        input_noise_figure(args.input_noise, args.paper)
     macros: Dict[str, str] = {}
     macros.update(sanity_table(args.sanity, out))
     macros.update(double_random_rows(args.double_random, out))

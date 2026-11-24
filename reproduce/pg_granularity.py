@@ -19,15 +19,23 @@ For each variant our rows are compared with the best baseline row by McNemar's
 chi-squared test with continuity correction.  Rows: the reported row of every method (localisation selection or
 the single fixed configuration) and the faith rows of our games.
 
+The per-image measurements are written to
+``<results>/analysis/pg_granularity_per_image.csv.gz``.  Where no maps are cached,
+the table and the tests are recomputed from such a file (``--from-per-image``, by
+default ``<results>/diagnostics/pg_granularity_per_image.csv.gz``); this checks the
+reported statistics but not the map processing.
+
 Usage::
 
     python -m reproduce.pg_granularity --results results \\
         --out ../paper/tables/generated
+    python -m reproduce.pg_granularity --results results_summary --out tables
 """
 from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -94,26 +102,22 @@ def _load_cache(test_dir: Path, label: str) -> Optional[Dict[str, np.ndarray]]:
         return {"maps": d[key], "masks": d["masks"], "image_ids": d["image_ids"].astype(str)}
 
 
-def analyse_model(results: Path, model: str) -> Tuple[List[Dict], List[Dict]]:
-    from bwgame.evaluation.stats import mcnemar_test
-    test_dir = results / "test" / model
-    selection = load_json(results / "selection" / model / "selected.json")
+PER_IMAGE_FIELDS = ("model", "method", "role", "row_label", "image_id") + VARIANTS + ("max_px",)
+PER_IMAGE_FILE = "pg_granularity_per_image.csv.gz"
+
+Entry = Tuple[str, str, str, np.ndarray, Dict[str, np.ndarray]]   # method, role, label, ids, values
+
+
+def summarise(model: str, entries: List[Entry]) -> Tuple[List[Dict], List[Dict]]:
+    """Row means and paired tests from the per-image granularity measurements."""
+    from bwgame.evaluation.stats import mcnemar_test, paired_bootstrap_test
     per_row, per_image = [], {}
     ids = None
-    for method, role, label in reported_rows(selection):
-        c = _load_cache(test_dir, label)
-        if c is None:
-            logger.warning("%s %s: no cached maps for %s; skipped", model, method, label)
-            continue
+    for method, role, label, image_ids, v in entries:
         if ids is None:
-            ids = c["image_ids"]
-        if not np.array_equal(ids, c["image_ids"]):
+            ids = image_ids
+        if not np.array_equal(ids, image_ids):
             raise RuntimeError(f"{model}/{label}: image order differs from the other rows")
-        masks = c["masks"].any(axis=-1) if c["masks"].ndim == 4 else c["masks"]
-        v = pg_variants(c["maps"], masks)
-        stored = np.load(test_dir / "per_image" / f"{label}.npz")["pointing_game"]
-        if not np.allclose(stored, v["PG"], equal_nan=True):
-            raise RuntimeError(f"{model}/{label}: recomputed PG differs from the stored values")
         per_image[label] = v
         per_row.append({"model": model, "method": method, "role": role, "row_label": label,
                         "ours": get_spec(method).ours,
@@ -128,7 +132,6 @@ def analyse_model(results: Path, model: str) -> Tuple[List[Dict], List[Dict]]:
             best = max(base, key=lambda b: b[var])
             x, y = per_image[r["row_label"]][var], per_image[best["row_label"]][var]
             if var == "PG_1px":           # fractional per-image hits: paired sign of the difference
-                from bwgame.evaluation.stats import paired_bootstrap_test
                 p = paired_bootstrap_test(x, y, n_bootstrap=10000, seed=0)["p_value"]
             else:
                 p = mcnemar_test(x > 0.5, y > 0.5)["p_value"]
@@ -136,6 +139,61 @@ def analyse_model(results: Path, model: str) -> Tuple[List[Dict], List[Dict]]:
                           "role": r["role"], "variant": var, "ours": r[var],
                           "best_baseline": best["method"], "baseline": best[var], "p": float(p)})
     return per_row, tests
+
+
+def measure_model(results: Path, model: str) -> List[Entry]:
+    """Per-image granularity measurements of one model from the cached maps."""
+    test_dir = results / "test" / model
+    selection = load_json(results / "selection" / model / "selected.json")
+    entries: List[Entry] = []
+    for method, role, label in reported_rows(selection):
+        c = _load_cache(test_dir, label)
+        if c is None:
+            logger.warning("%s %s: no cached maps for %s; skipped", model, method, label)
+            continue
+        masks = c["masks"].any(axis=-1) if c["masks"].ndim == 4 else c["masks"]
+        v = pg_variants(c["maps"], masks)
+        stored = np.load(test_dir / "per_image" / f"{label}.npz")["pointing_game"]
+        if not np.allclose(stored, v["PG"], equal_nan=True):
+            raise RuntimeError(f"{model}/{label}: recomputed PG differs from the stored values")
+        entries.append((method, role, label, c["image_ids"], v))
+    return entries
+
+
+def analyse_model(results: Path, model: str) -> Tuple[List[Dict], List[Dict]]:
+    return summarise(model, measure_model(results, model))
+
+
+def write_per_image(entries_by_model: Dict[str, List[Entry]], path: Path) -> None:
+    """One line per model, row and test image; floats are written with full precision."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(path, "wt", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(PER_IMAGE_FIELDS)
+        for model, entries in entries_by_model.items():
+            for method, role, label, ids, v in entries:
+                for i, image_id in enumerate(ids):
+                    w.writerow([model, method, role, label, image_id]
+                               + [repr(float(v[k][i])) for k in VARIANTS] + [int(v["max_px"][i])])
+
+
+def read_per_image(path: Path) -> Dict[str, List[Entry]]:
+    """Inverse of :func:`write_per_image`; keeps the model and row order of the file."""
+    grouped: Dict[str, Dict[Tuple[str, str, str], List[List[str]]]] = {}
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", newline="") as f:
+        for rec in csv.DictReader(f):
+            key = (rec["method"], rec["role"], rec["row_label"])
+            grouped.setdefault(rec["model"], {}).setdefault(key, []).append(
+                [rec["image_id"]] + [rec[k] for k in VARIANTS + ("max_px",)])
+    out: Dict[str, List[Entry]] = {}
+    for model, rows in grouped.items():
+        out[model] = []
+        for (method, role, label), recs in rows.items():
+            cols = list(zip(*recs))
+            v = {k: np.asarray(cols[j + 1], dtype=float) for j, k in enumerate(VARIANTS + ("max_px",))}
+            out[model].append((method, role, label, np.asarray(cols[0], dtype=str), v))
+    return out
 
 
 def write_table(rows: List[Dict], path: Path) -> None:
@@ -170,15 +228,34 @@ def main(argv=None) -> None:
     ap.add_argument("--results", type=Path, default=Path("results"))
     ap.add_argument("--out", type=Path, default=Path("results/tables"))
     ap.add_argument("--models", type=str, default=",".join(MODELS))
+    ap.add_argument("--from-per-image", type=Path, default=None,
+                    help="Recompute the table and the tests from recorded per-image measurements "
+                         f"instead of the cached maps (default: <results>/diagnostics/{PER_IMAGE_FILE} "
+                         "if no maps are cached under <results>/test).")
     args = ap.parse_args(argv)
     setup_logging()
+    models = [m.strip() for m in args.models.split(",") if m.strip()]
+    recorded = args.from_per_image
+    if recorded is None and not any((args.results / "test" / m / ".saliency_cache").exists()
+                                    for m in models):
+        recorded = args.results / "diagnostics" / PER_IMAGE_FILE
+    if recorded is not None:
+        if not recorded.exists():
+            raise SystemExit(f"no cached maps under {args.results}/test and no recorded "
+                             f"per-image measurements at {recorded}")
+        entries = {m: e for m, e in read_per_image(recorded).items() if m in models}
+        logger.info("using the recorded per-image measurements %s", recorded)
+    else:
+        entries = {m: measure_model(args.results, m) for m in models}
     rows, tests = [], []
-    for model in [m.strip() for m in args.models.split(",") if m.strip()]:
-        r, t = analyse_model(args.results, model)
+    for model in models:
+        r, t = summarise(model, entries.get(model, []))
         rows += r
         tests += t
     analysis = args.results / "analysis"
     analysis.mkdir(parents=True, exist_ok=True)
+    if recorded is None:
+        write_per_image(entries, analysis / PER_IMAGE_FILE)
     for name, data in (("pg_granularity_rows.csv", rows), ("pg_granularity_tests.csv", tests)):
         with open(analysis / name, "w", newline="") as f:
             if data:

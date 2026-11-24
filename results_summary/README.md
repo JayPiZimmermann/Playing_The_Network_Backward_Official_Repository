@@ -28,9 +28,32 @@ check with different Monte Carlo precision):
     python -m reproduce.make_tables --results results_summary --out tables --strict
 
 `python -m reproduce.bootstrap_ci --results results_summary/test/<model> --out-dir tables/ci/<model>`
-recomputes the intervals and tests of one setting. The randomization, Hellinger and pointing-game
-granularity tables and the figures come from the `experiments/` runs (see the top-level
-README) and are not covered by this directory.
+recomputes the intervals and tests of one setting.
+
+## Diagnostic measurements
+
+The randomization, Hellinger and pointing-game granularity tables are not computed from
+`test/`. Their recorded measurements belong in `diagnostics/`, written by
+`python -m reproduce.collect_diagnostics` from the outputs of the `experiments/` runs and
+of `reproduce.pg_granularity`. **This release does not yet contain that directory.**
+
+| File under `diagnostics/` | Content | Output |
+|---|---|---|
+| `sanity_check_randomization/avg.csv.gz` | mean map similarity per model, method row, metric and cascade step | `sanity_check_tabular.tex`, `\sanity…` macros |
+| `sanity_check_randomization/per_image.csv.gz` | per-image map similarity (Spearman of absolute maps, HOG) at full randomization and at the step aligned with the Hellinger cascade | constant-map marks of `sanity_check_tabular.tex`, `per_image_corr_tabular.tex` |
+| `hellinger_randomization/avg.csv.gz`, `per_image.csv.gz` | Hellinger distance and its survival-conditioned variant per cascade step, and per image | cascade figure, `per_image_corr_tabular.tex`, `\perImage…` macros |
+| `double_random/aggregate.csv.gz`, `per_round.csv.gz` | double-randomization reference, aggregated and per round | `double_random_tabular.tex`, `\dr…` macros, reference lines of the cascade figure |
+| `hellinger_input_noise/avg.csv.gz`, `clean_pair_baselines.csv.gz`, `random_baselines.csv.gz` | Hellinger distance per noise level and for the reference pairs | input-noise figure, `input_baseline_tabular.tex` |
+| `pg_granularity_per_image.csv.gz` | per model, reported row and test image: pointing-game hit, single-pixel hit fraction, hit on the 16-pixel grid, size of the maximum set | `pg_granularity_tabular.tex` and its paired tests |
+| `MANIFEST.json` | source path, size and SHA-256 of every file | |
+
+With the directory present, the tables regenerate on a CPU:
+
+    python -m reproduce.diagnostic_figures --out tables
+    python -m reproduce.pg_granularity --results results_summary --out tables
+
+The pointing-game table is then recomputed from per-image hit values; this checks the
+reported statistics and paired tests, not the processing of the attribution maps.
 
 For VOC, use `python -m reproduce.bootstrap_ci --results results_summary/voc/test --out-dir tables/ci/voc`.
 This resamples whole images while retaining their class records and the pairing

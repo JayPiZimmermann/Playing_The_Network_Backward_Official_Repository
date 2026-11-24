@@ -67,7 +67,8 @@ files) and is resumable with `--resume`. `M` is one of `vit_b16`, `vgg16`, `resn
 | Main ViT table, test tables with CIs | `python -m reproduce.evaluate_selected --model M --selection results/selection/M/selected.json --split test --out results/test/M --robustness-subset 200 --resume`; `python -m reproduce.bootstrap_ci --results results/test/M --n-boot 10000 --seed 0`; `python -m reproduce.runtime_benchmark --model M --selection results/selection/M/selected.json --n-images 50 --warmup 5 --out results/runtime/M.csv` | `main_vit_tabular.tex`, `test_M_ci_longtable.tex` |
 | One-factor ablations, attention-rule table (appendix) | `python -m reproduce.ablation_rows --model M --selection results/selection/M/selected.json --out results/ablations_M.json` (ViT-B/16: plus the tau / lambda_sm sweep rows of `python -m reproduce.sweep_rows --model vit_b16 --selection results/selection/vit_b16/selected.json --out results/sweeps_vit.json`); `python -m reproduce.evaluate_selected --model M --selection results/selection/M/selected.json --extra-rows results/ablations_M.json --split test --out results/test/M --skip-robustness --resume` | `ablations_M_longtable.tex`, `attention_rule_vit_b16_tabular.tex` |
 | VOC transfer | `python -m reproduce.pascal_voc --stage tune [--shard i --num-shards n] --resume`; `--stage select`; `--stage test --selection results/selection/vit_b16/selected.json --resume` | `results/voc/`; `test_voc_vit_b16_ci_longtable.tex` |
-| Pointing game at matched granularity (appendix) | `python -m reproduce.pg_granularity --results results --out results/tables` (CPU; uses the maps cached by `evaluate_selected --cache-maps`) | `pg_granularity_tabular.tex`, `results/analysis/pg_granularity_*.csv` |
+| Pointing game at matched granularity (appendix) | `python -m reproduce.pg_granularity --results results --out results/tables` (CPU; uses the maps cached by `evaluate_selected --cache-maps`) | `pg_granularity_tabular.tex`, `results/analysis/pg_granularity_*.csv`, per-image measurements `results/analysis/pg_granularity_per_image.csv.gz` |
+| Archive the diagnostic measurements | `python -m reproduce.collect_diagnostics` (CPU; after the randomisation runs and `pg_granularity`) | `results_summary/diagnostics/` |
 | Tables from the shipped results (no GPU) | `python -m reproduce.make_tables --results results_summary --out tables --strict` (CPU, a few minutes) | all `.tex` tables above, `numbers.tex` |
 | Tables and numbers in the text | `python -m reproduce.make_tables --results results --out results/tables` (after the steps above for all models and VOC) | the `.tex` files above, `numbers.tex` |
 | Randomisation figures / tables | `python -m reproduce.hellinger_sanity --block all` (blocks: `sanity`, `hellinger`, `double-random`, `input-noise`), then `python -m reproduce.diagnostic_figures --paper <paper dir>` | under `results/` (`results_double_random/` for the double-random block) of each experiment; `sanity_check_tabular.tex`, `double_random_tabular.tex`, `per_image_corr_tabular.tex`, `input_baseline_tabular.tex`, `diagnostic_numbers.tex` and the data of the two randomisation figures |
@@ -104,11 +105,27 @@ scores, validation selections and runtime benchmarks; see `results_summary/READM
 `python -m reproduce.make_tables --results results_summary --out tables --strict`
 regenerates 13 outputs without a GPU: the main table, four test CI tables, three
 validation-selection tables, three ablation tables, the attention-rule table and
-`numbers.tex`. Six diagnostic outputs require inputs that are not shipped here:
-`diagnostic_numbers.tex`, `double_random_tabular.tex`, `input_baseline_tabular.tex`,
-`per_image_corr_tabular.tex`, `pg_granularity_tabular.tex` and
-`sanity_check_tabular.tex`. Recreating those diagnostics requires the corresponding
-experiment outputs or cached attribution maps.
+`numbers.tex`.
+
+Six diagnostic outputs are computed from the recorded measurements of the
+`experiments/` runs rather than from `results_summary/test`: `sanity_check_tabular.tex`,
+`double_random_tabular.tex`, `per_image_corr_tabular.tex`, `input_baseline_tabular.tex`,
+`diagnostic_numbers.tex` and `pg_granularity_tabular.tex`. They regenerate without a GPU,
+the dataset or cached attribution maps from `results_summary/diagnostics/`:
+
+```bash
+python -m reproduce.diagnostic_figures --out tables                        # randomisation and Hellinger tables, macros
+python -m reproduce.pg_granularity --results results_summary --out tables  # pointing game at matched granularity
+```
+
+`results_summary/diagnostics/` holds the gzip-compressed CSV measurements (per image, per
+round and per noise level) and is written by `python -m reproduce.collect_diagnostics`
+after the experiment runs; `results_summary/README.md` lists the files and the table each
+one feeds. **This release does not yet contain these measurement files**, so the two
+commands above currently need the outputs of the `experiments/` runs (table above). The
+pointing-game table is then recomputed from recorded per-image hit values, which checks
+the reported statistics and paired tests but not the map processing; the latter needs the
+maps cached by `evaluate_selected --cache-maps`.
 
 ### Compute estimate
 
@@ -166,7 +183,7 @@ bwgame/
 reproduce/
   build_grids.py, select_configs.py, evaluate_selected.py, ablation_rows.py, sweep_rows.py,
   bootstrap_ci.py, runtime_benchmark.py, make_tables.py, pg_granularity.py, pascal_voc.py,
-  main_tables_imagenet_s.py, hellinger_sanity.py, diagnostic_figures.py,
+  main_tables_imagenet_s.py, hellinger_sanity.py, diagnostic_figures.py, collect_diagnostics.py,
   qualitative_figure.py, common.py
   control_*.py                            Additional controls (see above)
   temperature_precision_probe.py           Low-temperature precision comparison
