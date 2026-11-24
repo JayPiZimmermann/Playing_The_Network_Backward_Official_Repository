@@ -54,8 +54,8 @@ The tables regenerate on a CPU:
     python -m reproduce.diagnostic_figures --out tables
     python -m reproduce.pg_granularity --results results_summary --out tables
 
-The pointing-game table is then recomputed from per-image hit values; this checks the
-reported statistics and paired tests, not the processing of the attribution maps.
+The pointing-game table, its statistics and its paired tests are computed from the
+recorded per-image hit values.
 
 For VOC, use `python -m reproduce.bootstrap_ci --results results_summary/voc/test --out-dir tables/ci/voc`.
 This resamples whole images while retaining their class records and the pairing

@@ -69,7 +69,7 @@ files) and is resumable with `--resume`. `M` is one of `vit_b16`, `vgg16`, `resn
 | VOC transfer | `python -m reproduce.pascal_voc --stage tune [--shard i --num-shards n] --resume`; `--stage select`; `--stage test --selection results/selection/vit_b16/selected.json --resume` | `results/voc/`; `test_voc_vit_b16_ci_longtable.tex` |
 | Pointing game at matched granularity (appendix) | `python -m reproduce.pg_granularity --results results --out results/tables` (CPU; uses the maps cached by `evaluate_selected --cache-maps`) | `pg_granularity_tabular.tex`, `results/analysis/pg_granularity_*.csv`, per-image measurements `results/analysis/pg_granularity_per_image.csv.gz` |
 | Archive the diagnostic measurements | `python -m reproduce.collect_diagnostics` (CPU; after the randomisation runs and `pg_granularity`) | `results_summary/diagnostics/` |
-| Tables from the shipped results (no GPU) | `python -m reproduce.make_tables --results results_summary --out tables --strict` (CPU, a few minutes) | all `.tex` tables above, `numbers.tex` |
+| Tables from the shipped results (no GPU) | `python -m reproduce.make_tables --results results_summary --out tables --strict` (CPU, a few minutes); `python -m reproduce.diagnostic_figures --out tables`; `python -m reproduce.pg_granularity --results results_summary --out tables` | all `.tex` tables of this table, `numbers.tex`, `diagnostic_numbers.tex` |
 | Tables and numbers in the text | `python -m reproduce.make_tables --results results --out results/tables` (after the steps above for all models and VOC) | the `.tex` files above, `numbers.tex` |
 | Randomisation figures / tables | `python -m reproduce.hellinger_sanity --block all` (blocks: `sanity`, `hellinger`, `double-random`, `input-noise`), then `python -m reproduce.diagnostic_figures --paper <paper dir>` | under `results/` (`results_double_random/` for the double-random block) of each experiment; `sanity_check_tabular.tex`, `double_random_tabular.tex`, `per_image_corr_tabular.tex`, `input_baseline_tabular.tex`, `diagnostic_numbers.tex` and the data of the two randomisation figures |
 | Qualitative figure (appendix) | `python -m reproduce.qualitative_figure --selection results/selection/vit_b16/selected.json --out <dir>` | one PNG per example and method |
@@ -122,10 +122,9 @@ python -m reproduce.pg_granularity --results results_summary --out tables  # poi
 round and per noise level) and is written by `python -m reproduce.collect_diagnostics`
 after the experiment runs; `results_summary/README.md` lists the files and the table each
 one feeds. The measurements of the paper's runs ship in this directory, so the two
-commands above regenerate all six outputs from it. The
-pointing-game table is then recomputed from recorded per-image hit values, which checks
-the reported statistics and paired tests but not the map processing; the latter needs the
-maps cached by `evaluate_selected --cache-maps`.
+commands above regenerate all six outputs from it. The pointing-game table is computed
+from the recorded per-image hit values; processing the attribution maps themselves uses
+the maps cached by `evaluate_selected --cache-maps`.
 
 ### Compute estimate
 
@@ -192,7 +191,9 @@ experiments/
   plot_rg_temperature_ablation.py          Qualitative routing-temperature sweep
   sanity_check_randomization/, hellinger_*/  Randomisation and Hellinger diagnostics
 results_summary/                           Row results, per-image scores, selections and runtime benchmarks of the paper's runs (see its README)
+  diagnostics/                             Recorded measurements of the randomisation, Hellinger and pointing-game diagnostics
   controls/                                Aggregated outputs of the additional controls
+  low_temperature/                         Routing temperature 0.2 point of the ViT-B/16 temperature sweep
 tools/export_results_summary.py            Export of results_summary/ from a full results/ directory
 data/
   download_imagenet_s.sh, download_imagenet_val.py, download_pascal_voc.sh
